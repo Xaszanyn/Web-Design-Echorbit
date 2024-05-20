@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Echorbit Audio</title>
     <link rel="stylesheet" href="./resources/assets/css/main.css?v=0.3" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <nav class="initial">
@@ -15,12 +22,11 @@
         <li><a href="#">Home</a></li>
         <li class="small"><a href="#about-us">About us</a></li>
         <li class="small"><a href="#our-services">Our services</a></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">SFX</a></li>
-        <li><a href="#">Music</a></li>
+        <li><a href="#">Store</a></li>
         <li><a href="#">Services</a></li>
         <li><a href="#">Contact</a></li>
-        <li><a href="#">Sign up</a></li>
+        <li id="register-button"><a href="#">Sign up</a></li>
+        <li id="login-button"><a href="#">Sign in</a></li>
         <a id="close" href="#"><img src="./resources/images/Close.png" /></a>
         <div id="close-screen"></div>
       </ul>
@@ -123,10 +129,51 @@
       </div>
       <p>2023 &copy; Company Name. All rights reserved.</p>
     </footer>
-    <!-- <p style="color: red; margin-top: 100px; margin-bottom: 100px">
-      The service worker navigation preload request was cancelled before 'preloadResponse' settled. If you intend to use
-      'preloadResponse', use waitUntil() or respondWith() to wait for the promise to settle.
-    </p> -->
+    <section id="pop-up">
+      <section id="register-section">
+        <i class="fa-solid fa-xmark close"></i>
+        <h3>Sign up</h3>
+        <div class="form">
+          <div class="input">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="text" placeholder="E-mail" />
+          </div>
+          <button class="button"><i class="fa-solid fa-right-to-bracket"></i> Sign up</button>
+        </div>
+        <hr />
+        <p>
+          Already signed? <u><i class="fa-solid fa-user"></i> Sign in</u>
+        </p>
+      </section>
+      <section id="login-section">
+        <i class="fa-solid fa-xmark close"></i>
+        <h3>Sign in</h3>
+        <div class="form">
+          <div class="input">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="text" placeholder="E-mail" />
+          </div>
+          <div class="input">
+            <i class="fa-solid fa-key"></i>
+            <input type="password" placeholder="Password" />
+          </div>
+          <div class="checkbox">
+            <button></button>
+            Remember me
+          </div>
+
+          <button class="button"><i class="fa-solid fa-right-to-bracket"></i> Sign up</button>
+        </div>
+        <hr />
+        <p>
+          Not an user? <u><i class="fa-solid fa-user"></i> Sign up</u>
+        </p>
+      </section>
+      <section>adssadfdsa</section>
+    </section>
+    <script src="./resources/assets/js/variables.js?v=0.3"></script>
+    <script src="./resources/assets/js/functions.js?v=0.3"></script>
+    <script src="./resources/assets/js/events.js?v=0.3"></script>
     <script src="./resources/assets/js/main.js?v=0.3"></script>
   </body>
 </html>

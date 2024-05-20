@@ -447,3 +447,107 @@ footer p {
 #store section:last-of-type ul li .download {
   margin-right: 0;
 }
+
+/* ================================================== Pop-Up ================================================== */
+
+#pop-up {
+  position: fixed;
+  top: 0;
+  left: calc(100vw + 10rem);
+  width: 100vw;
+  height: 100vh;
+  z-index: 110;
+  background-color: var(--fade);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity var(--fast), left var(--fast-delay);
+}
+
+#pop-up.active {
+  left: 0;
+  opacity: 1;
+  transition: opacity var(--fast);
+}
+
+#pop-up section {
+  background-color: var(--white);
+  width: 40rem;
+  padding: 2.5rem;
+  font-size: 1.5rem;
+  position: absolute;
+  left: calc(50% + 100vw);
+  transform: translate(-50%, 5rem);
+  transition: transform var(--fast), left var(--fast-delay);
+  box-shadow: 0.5rem 0.5rem 1rem var(--fade);
+}
+
+#pop-up section.active {
+  left: 50%;
+  transform: translate(-50%, 0);
+  transition: transform var(--fast);
+}
+
+#pop-up section .close {
+  position: absolute;
+  color: var(--red);
+  cursor: pointer;
+  padding: 0.25rem 0.4rem;
+  border-radius: 10rem;
+  top: 1rem;
+  right: 1rem;
+}
+
+#pop-up section h3 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+#pop-up section hr {
+  border: 0.1rem solid var(--blue);
+  margin: 2.5rem 0 1rem;
+}
+
+#pop-up section u {
+  cursor: pointer;
+}
+
+/* ================================================== Input ================================================== */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.input input {
+  width: 22.5rem;
+  border: 0.2rem solid var(--blue);
+  border-radius: 10rem;
+  padding: 0.25rem 0.5rem 0.25rem 3rem;
+  color: var(--blue);
+}
+
+.input i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--blue);
+}
+
+.button {
+  cursor: pointer;
+  background-color: var(--blue);
+  color: var(--white) !important;
+  padding: 0.25rem 1.5rem;
+  border-radius: 10rem;
+  margin-bottom: 1rem;
+}
