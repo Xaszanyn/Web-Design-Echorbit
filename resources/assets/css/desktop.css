@@ -551,3 +551,67 @@ footer p {
   border-radius: 10rem;
   margin-bottom: 1rem;
 }
+
+.form p {
+  margin-bottom: 0.5rem;
+}
+
+/* ================================================== Sign-Up ================================================== */
+
+#register-phase {
+  position: relative;
+  transition: height var(--slow);
+}
+
+#register-phase.first {
+  height: 12.5rem;
+}
+
+#register-phase.second {
+  height: 10.5rem;
+}
+
+#register-phase.third {
+  height: 7.5rem;
+}
+
+#register-phase.first .first,
+#register-phase.second .second,
+#register-phase.third .third {
+  opacity: 1;
+  z-index: 10;
+}
+
+#register-phase > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity var(--slow);
+}
+
+/* ================================================== Loading ================================================== */
+
+#loading {
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  z-index: 120;
+  left: calc(100vw + 10rem);
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--fade);
+  color: var(--white);
+  transition: opacity var(--instant), left var(--instant-delay);
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#loading.loading {
+  opacity: 1;
+  left: 0;
+  transition: opacity var(--instant);
+}

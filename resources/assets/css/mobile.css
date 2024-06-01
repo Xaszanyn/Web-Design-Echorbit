@@ -373,4 +373,71 @@
   #store section:last-of-type ul li .download {
     margin-right: 0;
   }
+
+  /* ================================================== Pop-Up ================================================== */
+
+  #pop-up section {
+    width: 115rem;
+    padding: 5rem;
+    font-size: 6rem;
+    transform: translate(-50%, 15rem);
+    box-shadow: 1rem 1rem 5rem var(--fade);
+  }
+
+  #pop-up section .close {
+    padding: 0.5rem 1.2rem;
+    top: 5rem;
+    right: 3rem;
+  }
+
+  #pop-up section h3 {
+    font-size: 7.5rem;
+    margin-bottom: 10rem;
+  }
+
+  #pop-up section hr {
+    border: 0.4rem solid var(--blue);
+    margin: 10rem 0 5rem;
+  }
+
+  /* ================================================== Input ================================================== */
+
+  .input {
+    margin-bottom: 5rem;
+  }
+
+  .input input {
+    width: 80rem;
+    border: 0.8rem solid var(--blue);
+    padding: 0.75rem 2.5rem 0.75rem 10rem;
+  }
+
+  .input i {
+    position: absolute;
+    left: 3rem;
+    top: 50%;
+  }
+
+  .button {
+    padding: 0.75rem 5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .form p {
+    margin-bottom: 2.5rem;
+  }
+
+  /* ================================================== Sign Up ================================================== */
+
+  #register-phase.first {
+    height: 55rem;
+  }
+
+  #register-phase.second {
+    height: 50rem;
+  }
+
+  #register-phase.third {
+    height: 30rem;
+  }
 }

@@ -14,3 +14,11 @@ popUpCloses.forEach((close) => assign(close, closePopUp));
 
 assign(registerButton, () => openPopUp(registerSection));
 assign(loginButton, () => openPopUp(loginSection));
+assign(registerFromLoginSection, () => {
+  closePopUp();
+  setTimeout(() => openPopUp(registerSection), 200);
+});
+assign(loginFromRegisterSection, () => {
+  closePopUp();
+  setTimeout(() => openPopUp(loginSection), 200);
+});

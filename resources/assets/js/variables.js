@@ -11,6 +11,7 @@ const popUpCloses = document.querySelectorAll("#pop-up section .close");
 
 const registerButton = document.querySelector("#register-button");
 const registerSection = document.querySelector("#register-section");
-
 const loginButton = document.querySelector("#login-button");
 const loginSection = document.querySelector("#login-section");
+const registerFromLoginSection = document.querySelector("#login-section #register-from-login-section");
+const loginFromRegisterSection = document.querySelector("#register-section #login-from-register-section");

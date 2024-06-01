@@ -132,22 +132,41 @@
     <section id="pop-up">
       <section id="register-section">
         <i class="fa-solid fa-xmark close"></i>
-        <h3>Sign up</h3>
-        <div class="form">
-          <div class="input">
-            <i class="fa-solid fa-envelope"></i>
-            <input type="text" placeholder="E-mail" />
+        <h3>Sign-up</h3>
+        <div id="register-phase" class="first">
+          <div class="first">
+            <div class="form">
+              <div class="input">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="text" placeholder="E-mail" />
+              </div>
+              <button class="button"><i class="fa-solid fa-right-to-bracket"></i> Sign-up</button>
+            </div>
+            <hr />
+            <p>
+              Already signed? <u id="login-from-register-section"><i class="fa-solid fa-user"></i> Sign-in</u>
+            </p>
           </div>
-          <button class="button"><i class="fa-solid fa-right-to-bracket"></i> Sign up</button>
+          <div class="second form">
+            <p>If you cannot find the verification code, check your spam folder.</p>
+            <div class="input">
+              <i class="fa-solid fa-shield-halved"></i>
+              <input type="text" placeholder="Verification Code" />
+            </div>
+            <button class="button"><i class="fa-solid fa-right-to-bracket"></i> Continue</button>
+          </div>
+          <div class="third form">
+            <div class="input">
+              <i class="fa-solid fa-key"></i>
+              <input type="password" placeholder="Password" />
+            </div>
+            <button class="button"><i class="fa-solid fa-check"></i> Complete</button>
+          </div>
         </div>
-        <hr />
-        <p>
-          Already signed? <u><i class="fa-solid fa-user"></i> Sign in</u>
-        </p>
       </section>
       <section id="login-section">
         <i class="fa-solid fa-xmark close"></i>
-        <h3>Sign in</h3>
+        <h3>Sign-in</h3>
         <div class="form">
           <div class="input">
             <i class="fa-solid fa-envelope"></i>
@@ -161,15 +180,17 @@
             <button></button>
             Remember me
           </div>
-
-          <button class="button"><i class="fa-solid fa-right-to-bracket"></i> Sign up</button>
+          <button class="button"><i class="fa-solid fa-right-to-bracket"></i> Sign-up</button>
         </div>
         <hr />
         <p>
-          Not an user? <u><i class="fa-solid fa-user"></i> Sign up</u>
+          Not an user? <u id="register-from-login-section"><i class="fa-solid fa-user"></i> Sign-up</u>
         </p>
       </section>
       <section>adssadfdsa</section>
+    </section>
+    <section id="loading">
+      <i class="fa-solid fa-circle-notch fa-spin"></i>
     </section>
     <script src="./resources/assets/js/variables.js?v=0.3"></script>
     <script src="./resources/assets/js/functions.js?v=0.3"></script>
