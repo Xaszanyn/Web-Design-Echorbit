@@ -64,8 +64,7 @@ async function registerFirstPhase(event) {
     return;
   }
 
-  // let response = await post("register.php", { phase: "register", email: register.email.value });
-  let response = { status: "success" };
+  let response = await post("register.php", { phase: "register", email: register.email.value });
 
   switch (response.status) {
     case "error":
@@ -90,8 +89,7 @@ async function registerSecondPhase(event) {
     return;
   }
 
-  // let response = await post("register.php", { phase: "confirm", code: register.code.value });
-  let response = { status: "success", code: "1234" };
+  let response = await post("register.php", { phase: "confirm", code: register.code.value });
 
   register.hidden.value = response.code;
 
@@ -132,16 +130,11 @@ async function registerThirdPhase(event) {
     return;
   }
 
-  // let response = await post("register.php", {
-  //   phase: "create",
-  //   code: registerSection.secondCode.value,
-  //   name: registerSection.name.value,
-  //   address: registerSection.address.value, total wrong
-  //   phone: registerSection.phone.value,
-  //   password: registerSection.password.value,
-  // });
-
-  let response = { status: "success" };
+  let response = await post("register.php", {
+    phase: "create",
+    code: register.secondCode.value,
+    password: register.password.value,
+  });
 
   switch (response.status) {
     case "error":
@@ -177,7 +170,6 @@ async function registerThirdPhase(event) {
 /* =========={ Login }======================================== */
 
 function loginUser() {
-  console.log("aa");
   if (!login.email.value) {
     notify("Please enter your e-mail address.");
     return;
@@ -190,12 +182,10 @@ function loginUser() {
 }
 
 async function loginDirect(email, password, remembered = false) {
-  // let response = await post("login.php", {
-  //   email,
-  //   password,
-  // });
-
-  let response = { status: "success" };
+  let response = await post("login.php", {
+    email,
+    password,
+  });
 
   switch (response.status) {
     case "error":
