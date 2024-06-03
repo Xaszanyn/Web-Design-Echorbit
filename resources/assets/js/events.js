@@ -22,3 +22,9 @@ assign(loginFromRegisterSection, () => {
   closePopUp();
   setTimeout(() => openPopUp(loginSection), 200);
 });
+
+assign(register.firstButton, registerFirstPhase);
+assign(register.secondButton, registerSecondPhase);
+assign(register.thirdButton, registerThirdPhase);
+
+assign(login.button, loginUser);

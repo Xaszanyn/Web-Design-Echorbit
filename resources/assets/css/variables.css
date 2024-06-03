@@ -13,7 +13,7 @@
   --instant-delay: 0s ease 0.1s;
   --fast: 0.2s;
   --fast-delay: 0s ease 0.2s;
-  --slow: 0.4s;
+  --slow: 0.35s;
 
   --shadow: rgba(25, 25, 27, 25%);
   --navigation-shadow: linear-gradient(rgba(25, 25, 27, 15%), transparent);

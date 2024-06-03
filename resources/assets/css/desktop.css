@@ -568,11 +568,11 @@ footer p {
 }
 
 #register-phase.second {
-  height: 10.5rem;
+  height: 12.5rem;
 }
 
 #register-phase.third {
-  height: 7.5rem;
+  height: 10.5rem;
 }
 
 #register-phase.first .first,
@@ -614,4 +614,28 @@ footer p {
   opacity: 1;
   left: 0;
   transition: opacity var(--instant);
+}
+
+/* ================================================== Notification ================================================== */
+
+#notification {
+  position: fixed;
+  z-index: 200;
+  top: -25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90vw;
+  min-width: 40rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--white);
+  background-color: var(--blue);
+  transition: top var(--slow);
+  box-shadow: 0 0 1rem var(--fade);
+}
+
+#notification.active {
+  top: 5rem;
 }

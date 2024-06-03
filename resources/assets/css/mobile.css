@@ -438,6 +438,20 @@
   }
 
   #register-phase.third {
-    height: 30rem;
+    height: 45rem;
+  }
+
+  /* ================================================== Notification ================================================== */
+
+  #notification {
+    top: -50rem;
+    min-width: 100rem;
+    font-size: 6rem;
+    padding: 2rem;
+    box-shadow: 0 0 5rem var(--fade);
+  }
+
+  #notification.active {
+    top: 10rem;
   }
 }
