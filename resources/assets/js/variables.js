@@ -10,6 +10,7 @@ const popUp = document.querySelector("#pop-up");
 const popUpCloses = document.querySelectorAll("#pop-up section .close");
 
 const notification = document.querySelector("#notification");
+const loading = document.querySelector("#loading");
 
 const loginButton = document.querySelector("#login-button");
 const loginFromRegisterSection = document.querySelector("#register-section #login-from-register-section");

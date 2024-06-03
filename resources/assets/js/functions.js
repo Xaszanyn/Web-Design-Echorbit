@@ -64,7 +64,11 @@ async function registerFirstPhase(event) {
     return;
   }
 
+  loading.classList.add("loading");
+
   let response = await post("register.php", { phase: "register", email: register.email.value });
+
+  loading.classList.remove("loading");
 
   switch (response.status) {
     case "error":
@@ -89,7 +93,11 @@ async function registerSecondPhase(event) {
     return;
   }
 
+  loading.classList.add("loading");
+
   let response = await post("register.php", { phase: "confirm", code: register.code.value });
+
+  loading.classList.remove("loading");
 
   register.hidden.value = response.code;
 
@@ -130,11 +138,15 @@ async function registerThirdPhase(event) {
     return;
   }
 
+  loading.classList.add("loading");
+
   let response = await post("register.php", {
     phase: "create",
     code: register.hidden.value,
     password: register.password.value,
   });
+
+  loading.classList.remove("loading");
 
   switch (response.status) {
     case "error":
@@ -182,10 +194,14 @@ function loginUser() {
 }
 
 async function loginDirect(email, password, remembered = false) {
+  loading.classList.add("loading");
+
   let response = await post("login.php", {
     email,
     password,
   });
+
+  loading.classList.remove("loading");
 
   switch (response.status) {
     case "error":
