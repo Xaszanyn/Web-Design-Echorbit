@@ -1,21 +1,26 @@
 /* =========={ General }========================================================================================== */
 
-function assign(element, action, mobile = false) {
-  if (mobile) {
-    element.addEventListener("keypress", (event) => {
-      event.preventDefault();
-      action(event);
-    });
+function assign(element, action, mobile = false, event = true) {
+  if (event)
+    if (mobile) {
+      element.addEventListener("keypress", (event) => {
+        event.preventDefault();
+        action(event);
+      });
 
-    element.addEventListener("touchstart", (event) => {
-      event.preventDefault();
-      action(event);
-    });
-  } else
-    element.addEventListener("click", (event) => {
-      event.preventDefault();
-      action(event);
-    });
+      element.addEventListener("touchstart", (event) => {
+        event.preventDefault();
+        action(event);
+      });
+    } else
+      element.addEventListener("click", (event) => {
+        event.preventDefault();
+        action(event);
+      });
+  else if (mobile) {
+    element.addEventListener("keypress", (event) => action(event));
+    element.addEventListener("touchstart", (event) => action(event));
+  } else element.addEventListener("click", (event) => action(event));
 }
 
 function notify(message = "An error occurred, please try again.", duration = 5000) {

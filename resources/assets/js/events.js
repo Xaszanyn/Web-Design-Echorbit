@@ -7,7 +7,7 @@ assign(menuButton, () => menu.classList.toggle("closed"), true);
 assign(menuCloseButton, () => menu.classList.add("closed"), true);
 assign(menuCloseScreenButton, () => menu.classList.add("closed"), true);
 menuCategories.forEach((category) => {
-  assign(category, () => menu.classList.add("closed"));
+  assign(category, () => menu.classList.add("closed"), false, false);
 }, true);
 
 popUpCloses.forEach((close) => assign(close, closePopUp));

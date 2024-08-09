@@ -19,15 +19,14 @@
       <a href="/"><img id="logo" src="../resources/images/Logo.png" alt="Logo" /></a>
       <a href="/"><h1>Echorbit Audio</h1></a>
       <ul class="closed">
-        <li><a href="#">Home</a></li>
+        <li><a href="../">Home</a></li>
         <li class="small"><a href="#about-us">About us</a></li>
         <li class="small"><a href="#our-services">Our services</a></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">SFX</a></li>
-        <li><a href="#">Music</a></li>
+        <li><a href="">Store</a></li>
         <li><a href="#">Services</a></li>
         <li><a href="#">Contact</a></li>
-        <li><a href="#">Sign up</a></li>
+        <li id="register-button"><a href="#">Sign up</a></li>
+        <li id="login-button"><a href="#">Sign in</a></li>
         <a id="close" href="#"><img src="../resources/images/Close.png" /></a>
         <div id="close-screen"></div>
       </ul>
@@ -247,11 +246,76 @@
       </div>
       <p>2023 &copy; Company Name. All rights reserved.</p>
     </footer>
-    <!-- <p style="color: red; margin-top: 100px; margin-bottom: 100px">
-      The service worker navigation preload request was cancelled before 'preloadResponse' settled. If you intend to use
-      'preloadResponse', use waitUntil() or respondWith() to wait for the promise to settle.
-    </p> -->
-    <script src="../resources/assets/js/main.js?v=0.3"></script>
+    <section id="pop-up">
+      <section id="register-section">
+        <i class="fa-solid fa-xmark close"></i>
+        <h3>Sign-up</h3>
+        <div id="register-phase" class="first">
+          <div class="first">
+            <div class="form">
+              <div class="input">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="text" placeholder="E-mail" />
+              </div>
+              <button class="button"><i class="fa-solid fa-right-to-bracket"></i> Sign-up</button>
+            </div>
+            <hr />
+            <p>
+              Already signed? <u id="login-from-register-section"><i class="fa-solid fa-user"></i> Sign-in</u>
+            </p>
+          </div>
+          <div class="second form">
+            <p>If you cannot find the verification code, check your spam folder.</p>
+            <div class="input">
+              <i class="fa-solid fa-shield-halved"></i>
+              <input type="text" placeholder="Verification Code" />
+            </div>
+            <button class="button"><i class="fa-solid fa-right-to-bracket"></i> Continue</button>
+          </div>
+          <div class="third form">
+            <input type="hidden" />
+            <div class="input">
+              <i class="fa-solid fa-key"></i>
+              <input type="password" placeholder="Password" />
+            </div>
+            <div class="input">
+              <i class="fa-solid fa-check"></i>
+              <input type="password" placeholder="Password (Again)" />
+            </div>
+            <button class="button"><i class="fa-solid fa-check"></i> Complete</button>
+          </div>
+        </div>
+      </section>
+      <section id="login-section">
+        <i class="fa-solid fa-xmark close"></i>
+        <h3>Sign-in</h3>
+        <div class="form">
+          <div class="input">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="text" placeholder="E-mail" />
+          </div>
+          <div class="input">
+            <i class="fa-solid fa-key"></i>
+            <input type="password" placeholder="Password" />
+          </div>
+          <div class="checkbox">
+            <button></button>
+            Remember me
+          </div>
+          <button class="button"><i class="fa-solid fa-right-to-bracket"></i> Sign-up</button>
+        </div>
+        <hr />
+        <p>
+          Not an user? <u id="register-from-login-section"><i class="fa-solid fa-user"></i> Sign-up</u>
+        </p>
+      </section>
+    </section>
+    <section id="loading">
+      <i class="fa-solid fa-circle-notch fa-spin"></i>
+    </section>
+    <script src="../resources/assets/js/variables.js?v=0.4"></script>
+    <script src="../resources/assets/js/functions.js?v=0.4"></script>
+    <script src="../resources/assets/js/events.js?v=0.4"></script>
     <script src="../resources/assets/js/store.js?v=0.3"></script>
   </body>
 </html>
