@@ -356,6 +356,12 @@ footer p {
   border-color: var(--black);
 }
 
+#store section:first-of-type #category center {
+  width: 100%;
+  margin: 2.5rem 0;
+  font-size: 1.2rem;
+}
+
 #store section:last-of-type {
   padding: 2.5rem 0 0;
 }

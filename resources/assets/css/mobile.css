@@ -322,6 +322,11 @@
     border: 0.5rem solid var(--gray);
   }
 
+  #store section:first-of-type #category center {
+    margin: 15rem 0;
+    font-size: 4rem;
+  }
+
   #store section:last-of-type {
     margin-top: 25rem;
     padding: 0;

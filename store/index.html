@@ -41,31 +41,19 @@
         </div>
         <hr />
         <h5>Category</h5>
-        <div id="category">
-          <button><img src="../resources/images/icons/Atmosphere.svg" /> Atmospheres</button>
-          <button><img src="../resources/images/icons/Click.svg" />Clicks</button>
-          <button><img src="../resources/images/icons/Foley.svg" />Foley</button>
-          <button><img src="../resources/images/icons/Glitch.svg" />Glitches</button>
-          <button><img src="../resources/images/icons/Hit.svg" />Hits</button>
-          <button><img src="../resources/images/icons/Keyed Hit.svg" />Keyed Hits</button>
-          <button><img src="../resources/images/icons/Rhythm.svg" />Rhythms</button>
-          <button><img src="../resources/images/icons/Riser.svg" />Risers</button>
-          <button><img src="../resources/images/icons/Sound Design Track.svg" />Sound Design Tracks</button>
-          <button><img src="../resources/images/icons/Undertone.svg" />Undertones</button>
-          <button><img src="../resources/images/icons/Whoosh.svg" />Whooshes</button>
-        </div>
+        <div id="category"></div>
         <hr />
         <h5>Sort</h5>
         <div id="sort">
-          <button class="radio">
+          <button class="radio selected" onclick="sort(0)">
             <div></div>
             Featured
           </button>
-          <button class="radio">
+          <button class="radio" onclick="sort(1)">
             <div></div>
             Popular
           </button>
-          <button class="radio">
+          <button class="radio" onclick="sort(2)">
             <div></div>
             Latest
           </button>
