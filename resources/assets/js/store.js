@@ -1,6 +1,8 @@
 const list = document.querySelector("#store ul");
 
 async function renderMusics() {
+  list.innerHTML = `<center><i class="fa-solid fa-circle-notch fa-spin"></i></center>`;
+
   let musics = await get("get.php?target=musics");
 
   list.innerHTML = "";

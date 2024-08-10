@@ -387,6 +387,11 @@ footer p {
   box-shadow: 0 0 1rem var(--shadow);
 }
 
+#store section:last-of-type ul center {
+  font-size: 2rem;
+  margin: 5rem 0;
+}
+
 #store section:last-of-type ul li {
   display: flex;
   align-items: center;

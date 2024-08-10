@@ -328,6 +328,11 @@
     box-shadow: 0 0 0.25rem var(--shadow);
   }
 
+  #store section:last-of-type ul center {
+    font-size: 6rem;
+    margin: 10rem 0;
+  }
+
   #store section:last-of-type ul li {
     margin-bottom: 5rem;
   }
