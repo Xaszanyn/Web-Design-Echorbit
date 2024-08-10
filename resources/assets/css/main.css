@@ -46,3 +46,17 @@ input {
   border: none;
   font: inherit;
 }
+
+audio::-webkit-media-controls-panel {
+  background-color: var(--white) !important;
+  color: var(--black) !important;
+}
+
+audio::-webkit-media-controls-current-time-display {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+
+audio::-webkit-media-controls-time-remaining-display {
+  display: none;
+}
