@@ -424,6 +424,7 @@ footer p {
 
 #store section:last-of-type ul li .soundwave {
   width: 35rem;
+  z-index: -1;
 }
 
 #store section:last-of-type ul li .price,
@@ -463,6 +464,10 @@ footer p {
 #store section:last-of-type ul li .like:hover,
 #store section:last-of-type ul li .price:hover {
   background-color: var(--light-gray);
+}
+
+#store section:last-of-type ul li .like .fa-solid {
+  color: var(--red);
 }
 
 /* ================================================== Pop-Up ================================================== */

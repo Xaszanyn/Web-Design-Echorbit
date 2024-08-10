@@ -1,4 +1,20 @@
 @media (max-aspect-ratio: 1/1) {
+  audio::-webkit-media-controls-mute-button,
+  audio::-webkit-media-controls-timeline-container,
+  audio::-webkit-media-controls-current-time-display,
+  audio::-webkit-media-controls-time-remaining-display,
+  audio::-webkit-media-controls-timeline,
+  audio::-webkit-media-controls-volume-slider-container,
+  audio::-webkit-media-controls-volume-slider,
+  audio::-webkit-media-controls-seek-back-button,
+  audio::-webkit-media-controls-seek-forward-button,
+  audio::-webkit-media-controls-fullscreen-button,
+  audio::-webkit-media-controls-rewind-button,
+  audio::-webkit-media-controls-return-to-realtime-button,
+  audio::-webkit-media-controls-toggle-closed-captions-button {
+    display: none;
+  }
+
   /* ================================================== Navigation ================================================== */
 
   nav {
@@ -334,49 +350,46 @@
   }
 
   #store section:last-of-type ul li {
+    grid-template-columns: 20rem 20rem 20rem auto 5rem;
+    column-gap: 5rem;
     margin-bottom: 5rem;
+    height: 20rem;
   }
 
   #store section:last-of-type ul li > a img {
-    width: 20rem;
-    height: 20rem;
     border-radius: 3rem;
-    margin-right: 5rem;
   }
 
   #store section:last-of-type ul li > a + div {
-    margin-right: 5rem;
     font-size: 4rem;
   }
 
   #store section:last-of-type ul li > a + div span:first-of-type {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
 
   #store section:last-of-type ul li .soundwave {
-    margin: 0 2.5rem 0 auto;
-    width: 50rem;
+    width: 35rem;
+    overflow-x: hidden;
   }
 
   #store section:last-of-type ul li .soundwave + span {
     font-size: 4rem;
-    margin-right: 2.5rem;
   }
 
   #store section:last-of-type ul li .like,
-  #store section:last-of-type ul li .download {
+  #store section:last-of-type ul li .price {
     font-size: 4rem;
     padding: 0;
-    margin-right: 2.5rem;
   }
 
-  #store section:last-of-type ul li .like:hover,
-  #store section:last-of-type ul li .download:hover {
-    background-color: unset;
+  #store section:last-of-type ul li .price {
+    padding: 1rem 2rem;
+    border-radius: 3rem;
   }
 
-  #store section:last-of-type ul li .download {
-    margin-right: 0;
+  #store section:last-of-type ul li .price i {
+    margin: 0 2rem;
   }
 
   /* ================================================== Pop-Up ================================================== */

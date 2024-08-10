@@ -22,3 +22,8 @@ async function renderMusics() {
 }
 
 renderMusics();
+
+function like(id) {
+  document.querySelectorAll(".like")[id - 1].children[0].classList.toggle("fa-regular");
+  document.querySelectorAll(".like")[id - 1].children[0].classList.toggle("fa-solid");
+}
