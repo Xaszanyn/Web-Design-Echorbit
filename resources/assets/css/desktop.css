@@ -390,6 +390,7 @@ footer p {
 #store section:last-of-type ul li {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 1rem;
 }
 
@@ -401,11 +402,9 @@ footer p {
   width: 7.5rem;
   height: 7.5rem;
   border-radius: 1rem;
-  margin-right: 2rem;
 }
 
 #store section:last-of-type ul li > a + div {
-  margin-right: 2rem;
   display: flex;
   flex-direction: column;
   font-size: 1.2rem;
@@ -417,35 +416,38 @@ footer p {
 }
 
 #store section:last-of-type ul li .soundwave {
-  margin: 0 2rem 0 auto;
+  margin: 0 2rem;
   width: 35rem;
-  cursor: pointer;
 }
 
-#store section:last-of-type ul li .soundwave + span {
-  margin-right: 2rem;
+#store section:last-of-type ul li i {
+  margin: 0 0.25rem;
 }
 
-#store section:last-of-type ul li .like,
-#store section:last-of-type ul li .download {
-  padding: 0.5rem 0.6rem;
-  border-radius: 10rem;
-  margin-right: 0.5rem;
+#store section:last-of-type ul li .price,
+#store section:last-of-type ul li .like {
+  font-size: 1.4rem;
+  font-weight: 300;
   cursor: pointer;
   transition: background-color var(--fast);
+}
+
+#store section:last-of-type ul li .price span {
+  color: var(--green);
+}
+
+#store section:last-of-type ul li .like {
+  padding: 0.5rem 0.6rem;
+  border-radius: 10rem;
+  cursor: pointer;
 }
 
 #store section:last-of-type ul li .like .fa-solid {
   color: var(--red);
 }
 
-#store section:last-of-type ul li .like:hover,
-#store section:last-of-type ul li .download:hover {
+#store section:last-of-type ul li .like:hover {
   background-color: var(--light-gray);
-}
-
-#store section:last-of-type ul li .download {
-  margin-right: 0;
 }
 
 /* ================================================== Pop-Up ================================================== */
