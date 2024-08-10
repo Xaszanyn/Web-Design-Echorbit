@@ -11,6 +11,7 @@ async function initialize() {
   sfxCategories = await get("get.php?target=sfx_categories");
 
   renderMusics();
+  renderMusicCategories();
 }
 
 initialize();
