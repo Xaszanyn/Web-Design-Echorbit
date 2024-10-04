@@ -416,16 +416,22 @@ footer p {
 #store section:last-of-type #products button img {
   border-radius: 1rem;
   margin-bottom: 0.5rem;
+  transition: border-radius var(--fast), transform var(--fast);
 }
 
-#store section:last-of-type #products button h6,
-#store section:last-of-type #products button span {
+#store section:last-of-type #products button:hover img {
+  border-radius: 0;
+  transform: scale(0.9);
+}
+
+#store section:last-of-type #products button h6 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
 #store section:last-of-type #products button h6 span {
   color: var(--green);
+  font-weight: 500;
 }
 
 #store section:last-of-type #products button a {
@@ -435,6 +441,12 @@ footer p {
   padding: 0.25rem 0.5rem;
   border-radius: 10rem;
   text-transform: uppercase;
+  transition: background-color var(--fast), color var(--fast);
+}
+
+#store section:last-of-type #products button a:hover {
+  background-color: var(--blue);
+  color: var(--white);
 }
 
 /* ================================================== Pop-Up ================================================== */
