@@ -349,51 +349,51 @@
     box-shadow: 0 0 0.25rem var(--shadow);
   }
 
-  #store section:last-of-type ul center {
+  #store section:last-of-type #products center {
     font-size: 6rem;
     margin: 10rem 0;
   }
 
-  #store section:last-of-type ul li {
+  #store section:last-of-type #products li {
     grid-template-columns: 20rem 20rem 20rem auto 5rem;
     column-gap: 5rem;
     margin-bottom: 5rem;
     height: 20rem;
   }
 
-  #store section:last-of-type ul li > a img {
+  #store section:last-of-type #products li > a img {
     border-radius: 3rem;
   }
 
-  #store section:last-of-type ul li > a + div {
+  #store section:last-of-type #products li > a + div {
     font-size: 4rem;
   }
 
-  #store section:last-of-type ul li > a + div span:first-of-type {
+  #store section:last-of-type #products li > a + div span:first-of-type {
     margin-bottom: 1.25rem;
   }
 
-  #store section:last-of-type ul li .soundwave {
+  #store section:last-of-type #products li .soundwave {
     width: 35rem;
     overflow-x: hidden;
   }
 
-  #store section:last-of-type ul li .soundwave + span {
+  #store section:last-of-type #products li .soundwave + span {
     font-size: 4rem;
   }
 
-  #store section:last-of-type ul li .like,
-  #store section:last-of-type ul li .price {
+  #store section:last-of-type #products li .like,
+  #store section:last-of-type #products li .price {
     font-size: 4rem;
     padding: 0;
   }
 
-  #store section:last-of-type ul li .price {
+  #store section:last-of-type #products li .price {
     padding: 1rem 2rem;
     border-radius: 3rem;
   }
 
-  #store section:last-of-type ul li .price i {
+  #store section:last-of-type #products li .price i {
     margin: 0 2rem;
   }
 

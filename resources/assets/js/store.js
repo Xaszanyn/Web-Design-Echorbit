@@ -1,4 +1,4 @@
-const list = document.querySelector("#store ul");
+const list = document.querySelector("#store #products");
 const category = document.querySelector("#category");
 const radios = document.querySelectorAll("button.radio");
 
@@ -20,7 +20,7 @@ function renderProducts() {
   let content = "";
 
   products.forEach((product) => {
-    content += `<button onclick="view(${product.id})"><img src="https://echorbitaudio.com/resources/products/images/${product.image}" /><span>${product.name}</span><span>${product.price}</span><button onclick="cart(${product.id})">Add to Cart</button></button>`;
+    content += `<button onclick="view(${product.id})"><img src="https://echorbitaudio.com/resources/products/images/${product.image}" /><h6>${product.name}</h6><span>${product.price}</span><button onclick="cart(${product.id})">Add to Cart</button></button>`;
   });
 
   list.innerHTML = content;

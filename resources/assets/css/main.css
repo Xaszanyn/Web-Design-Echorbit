@@ -39,6 +39,7 @@ ul {
 
 button,
 input {
+  background-color: unset;
   color: inherit;
   outline: none;
   border: none;
