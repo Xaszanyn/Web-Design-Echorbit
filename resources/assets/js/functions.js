@@ -23,7 +23,10 @@ function assign(element, action, mobile = false, event = true) {
   } else element.addEventListener("click", (event) => action(event));
 }
 
-function notify(message = "An error occurred, please try again.", duration = 5000) {
+function notify(
+  message = "An error occurred, please try again.",
+  duration = 5000
+) {
   notification.innerHTML = message;
   notification.classList.add("active");
   setTimeout(() => {
@@ -34,7 +37,7 @@ function notify(message = "An error occurred, please try again.", duration = 500
 
 async function post(endpoint, body) {
   try {
-    return await fetch("https://www.echorbitaudio.com/services/" + endpoint, {
+    return await fetch("https://echorbitaudio.com/services/" + endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -48,7 +51,7 @@ async function post(endpoint, body) {
 
 async function get(endpoint) {
   try {
-    return await fetch("https://www.echorbitaudio.com/services/" + endpoint, {
+    return await fetch("https://echorbitaudio.com/services/" + endpoint, {
       headers: { "Content-Type": "application/json" },
     }).then((response) => response.json());
   } catch {
@@ -83,7 +86,10 @@ async function registerFirstPhase(event) {
 
   loading.classList.add("loading");
 
-  let response = await post("register.php", { phase: "register", email: register.email.value });
+  let response = await post("register.php", {
+    phase: "register",
+    email: register.email.value,
+  });
 
   loading.classList.remove("loading");
 
@@ -95,7 +101,9 @@ async function registerFirstPhase(event) {
       notify("Please enter a valid e-mail address.");
       break;
     case "email_used":
-      notify("This e-mail address is in use, please enter a new e-mail address.");
+      notify(
+        "This e-mail address is in use, please enter a new e-mail address."
+      );
       break;
     case "success":
       register.phase.classList.remove("first");
@@ -112,7 +120,10 @@ async function registerSecondPhase(event) {
 
   loading.classList.add("loading");
 
-  let response = await post("register.php", { phase: "confirm", code: register.code.value });
+  let response = await post("register.php", {
+    phase: "confirm",
+    code: register.code.value,
+  });
 
   loading.classList.remove("loading");
 
