@@ -2,7 +2,7 @@ const list = document.querySelector("#store ul");
 const category = document.querySelector("#category");
 const radios = document.querySelectorAll("button.radio");
 
-var musics, sfxs, musicCategories, sfxCategories;
+var products, sfxs, musicCategories, sfxCategories;
 
 async function initialize() {
   products = await get("get.php?target=products");
@@ -21,30 +21,6 @@ function renderProducts() {
 
   products.forEach((product) => {
     content += `<button onclick="view(${product.id})"><img src="https://echorbitaudio.com/resources/products/images/${product.image}" /><span>${product.name}</span><span>${product.price}</span><button onclick="cart(${product.id})">Add to Cart</button></button>`;
-  });
-
-  list.innerHTML = html;
-}
-
-function renderMusics() {
-  list.innerHTML = `<center><i class="fa-solid fa-circle-notch fa-spin"></i></center>`;
-  let html = "";
-
-  musics.forEach((music) => {
-    html += `<li><a href="#"><img src="https://www.echorbitaudio.com/resources/musics/images/${
-      music.image
-    }" /></a><div><span>${music.name}</span><span>${
-      music.album ? music.album : " "
-    }</span></div>
-  <audio class="soundwave" controls><source src="https://www.echorbitaudio.com/resources/musics/audios/${
-    music.audio
-  }" type="audio/mp3" /></audio>
-  <div class="price" onclick="cart(${music.id})"><span>${
-      music.price
-    }$</span> <i class="fa-solid fa-cart-shopping"></i> Add to cart</div>
-  <div class="like" onclick="like(${
-    music.id
-  })"><i class="fa-regular fa-heart"></i></div></li>`;
   });
 
   list.innerHTML = html;
@@ -69,22 +45,22 @@ function sort(state) {
   switch (state) {
     case 0:
       radios[0].classList.add("selected");
-      musics.sort((first, second) => first.id - second.id);
+      products.sort((first, second) => first.id - second.id);
       break;
     case 1:
       radios[1].classList.add("selected");
-      musics.sort((first, second) => second.favorite - first.favorite);
+      products.sort((first, second) => second.favorite - first.favorite);
       break;
     case 2:
       radios[2].classList.add("selected");
-      musics.sort(
+      products.sort(
         (first, second) =>
           new Date(first.date).getTime() - new Date(second.date).getTime()
       );
       break;
   }
 
-  renderMusics();
+  // renderMusics();
 }
 
 function like(id) {
