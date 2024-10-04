@@ -23,7 +23,7 @@ function renderProducts() {
     content += `<button onclick="view(${product.id})"><img src="https://echorbitaudio.com/resources/products/images/${product.image}" /><span>${product.name}</span><span>${product.price}</span><button onclick="cart(${product.id})">Add to Cart</button></button>`;
   });
 
-  list.innerHTML = html;
+  list.innerHTML = content;
 }
 
 function renderMusicCategories() {
