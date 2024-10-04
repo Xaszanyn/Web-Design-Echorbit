@@ -408,30 +408,31 @@ footer p {
 
 /* ============================================================================ CONT ========== */
 
-#store section:last-of-type #products > button {
+#store section:last-of-type #products button {
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
 }
 
-#store section:last-of-type #products > button img {
+#store section:last-of-type #products button img {
   border-radius: 1rem;
   margin-bottom: 0.5rem;
 }
 
-#store section:last-of-type #products > button h6,
-#store section:last-of-type #products > button span {
+#store section:last-of-type #products button h6,
+#store section:last-of-type #products button span {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
-#store section:last-of-type #products > button span {
+#store section:last-of-type #products button span {
   color: var(--green);
 }
 
-#store section:last-of-type #products > button button {
+#store section:last-of-type #products button a {
   background-color: var(--blue);
+  color: var(--white);
 }
 
 #store section:last-of-type #products li {
