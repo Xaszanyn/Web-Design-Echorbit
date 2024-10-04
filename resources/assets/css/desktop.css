@@ -406,8 +406,6 @@ footer p {
   column-gap: 2.5rem;
 }
 
-/* ============================================================================ CONT ========== */
-
 #store section:last-of-type #products button {
   display: flex;
   flex-direction: column;
@@ -426,7 +424,7 @@ footer p {
   margin-bottom: 0.5rem;
 }
 
-#store section:last-of-type #products button span {
+#store section:last-of-type #products button h6 span {
   color: var(--green);
 }
 
@@ -438,86 +436,6 @@ footer p {
   border-radius: 10rem;
   text-transform: uppercase;
 }
-
-#store section:last-of-type #products li {
-  display: grid;
-  grid-template-columns: 7.5rem 5rem auto 17.5rem 2.5rem;
-  column-gap: 2.5rem;
-  align-items: center;
-  margin-bottom: 2.5rem;
-  height: 7.5rem;
-}
-
-#store section:last-of-type #products li:last-of-type {
-  margin-bottom: 0;
-}
-
-#store section:last-of-type #products li > a img {
-  width: 100%;
-  height: 100%;
-  border-radius: 1rem;
-}
-
-#store section:last-of-type #products li > a + div {
-  display: flex;
-  flex-direction: column;
-  font-size: 1.2rem;
-}
-
-#store section:last-of-type #products li > a + div span:first-of-type {
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-#store section:last-of-type #products li .soundwave {
-  width: 35rem;
-  z-index: -1;
-}
-
-#store section:last-of-type #products li .price,
-#store section:last-of-type #products li .like {
-  font-size: 1.4rem;
-
-  cursor: pointer;
-  transition: background-color var(--fast);
-}
-
-#store section:last-of-type #products li .price {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem 0.75rem;
-  border-radius: 1rem;
-}
-
-#store section:last-of-type #products li .price span {
-  color: var(--green);
-  font-weight: 400;
-}
-
-#store section:last-of-type #products li .price i {
-  margin: 0 0.5rem 0 1.5rem;
-}
-
-#store section:last-of-type #products li .like {
-  border-radius: 10rem;
-  cursor: pointer;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#store section:last-of-type #products li .like:hover,
-#store section:last-of-type #products li .price:hover {
-  background-color: var(--light-gray);
-}
-
-#store section:last-of-type #products li .like .fa-solid {
-  color: var(--red);
-}
-
-/* ============================================================================ CONT ========== */
 
 /* ================================================== Pop-Up ================================================== */
 
