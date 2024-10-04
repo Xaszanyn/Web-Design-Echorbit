@@ -5,16 +5,26 @@ const radios = document.querySelectorAll("button.radio");
 var musics, sfxs, musicCategories, sfxCategories;
 
 async function initialize() {
-  musics = await get("get.php?target=musics");
-  sfxs = await get("get.php?target=sfxs");
+  products = await get("get.php?target=products");
   musicCategories = await get("get.php?target=music_categories");
   sfxCategories = await get("get.php?target=sfx_categories");
 
-  renderMusics();
+  renderProducts();
   renderMusicCategories();
 }
 
 initialize();
+
+function renderProducts() {
+  list.innerHTML = `<center><i class="fa-solid fa-circle-notch fa-spin"></i></center>`;
+  let content = "";
+
+  products.forEach((product) => {
+    content += `<button onclick="view(${product.id})"><img src="https://echorbitaudio.com/resources/products/images/${product.image}" /><span>${product.name}</span><span>${product.price}</span><button onclick="cart(${product.id})">Add to Cart</button></button>`;
+  });
+
+  list.innerHTML = html;
+}
 
 function renderMusics() {
   list.innerHTML = `<center><i class="fa-solid fa-circle-notch fa-spin"></i></center>`;
@@ -23,14 +33,18 @@ function renderMusics() {
   musics.forEach((music) => {
     html += `<li><a href="#"><img src="https://www.echorbitaudio.com/resources/musics/images/${
       music.image
-    }" /></a><div><span>${music.name}</span><span>${music.album ? music.album : " "}</span></div>
+    }" /></a><div><span>${music.name}</span><span>${
+      music.album ? music.album : " "
+    }</span></div>
   <audio class="soundwave" controls><source src="https://www.echorbitaudio.com/resources/musics/audios/${
     music.audio
   }" type="audio/mp3" /></audio>
   <div class="price" onclick="cart(${music.id})"><span>${
       music.price
     }$</span> <i class="fa-solid fa-cart-shopping"></i> Add to cart</div>
-  <div class="like" onclick="like(${music.id})"><i class="fa-regular fa-heart"></i></div></li>`;
+  <div class="like" onclick="like(${
+    music.id
+  })"><i class="fa-regular fa-heart"></i></div></li>`;
   });
 
   list.innerHTML = html;
@@ -63,7 +77,10 @@ function sort(state) {
       break;
     case 2:
       radios[2].classList.add("selected");
-      musics.sort((first, second) => new Date(first.date).getTime() - new Date(second.date).getTime());
+      musics.sort(
+        (first, second) =>
+          new Date(first.date).getTime() - new Date(second.date).getTime()
+      );
       break;
   }
 
@@ -71,8 +88,12 @@ function sort(state) {
 }
 
 function like(id) {
-  document.querySelectorAll(".like")[id - 1].children[0].classList.toggle("fa-regular");
-  document.querySelectorAll(".like")[id - 1].children[0].classList.toggle("fa-solid");
+  document
+    .querySelectorAll(".like")
+    [id - 1].children[0].classList.toggle("fa-regular");
+  document
+    .querySelectorAll(".like")
+    [id - 1].children[0].classList.toggle("fa-solid");
 }
 
 function selectCategory(id) {
