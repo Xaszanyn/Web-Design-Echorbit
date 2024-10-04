@@ -431,8 +431,12 @@ footer p {
 }
 
 #store section:last-of-type #products button a {
-  background-color: var(--blue);
-  color: var(--white);
+  color: var(--blue);
+  border: 0.2rem solid var(--blue);
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10rem;
+  text-transform: uppercase;
 }
 
 #store section:last-of-type #products li {
