@@ -28,7 +28,9 @@ function renderFeatured() {
   products
     .filter((product) => product.feature)
     .forEach((product, index) => {
-      featured.children[index].children[0].src = product.image;
+      featured.children[
+        index
+      ].children[0].src = `https://echorbitaudio.com/resources/products/images/${product.image}`;
       featured.children[index].setAttribute("onclick", `view(${product.id})`);
     });
 }
