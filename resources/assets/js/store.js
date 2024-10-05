@@ -84,7 +84,7 @@ function view(id) {
   let product = products.find((item) => id == item.id);
 
   productImage.src = `https://echorbitaudio.com/resources/products/images/${product.image}`;
-  productContent.innerHTML = `<h3>${product.name}<span>${product.type}</span><button onclick="cart(${product.id})">&euro;_PRICE_ <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button></h3>${product.soundcloud}<p>${product.content}</p>`;
+  productContent.innerHTML = `<h3>${product.name}<span>${product.type}</span><button onclick="cart(${product.id})">&euro;${product.price} <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button></h3>${product.soundcloud}<p>${product.content}</p>`;
 
   openPopUp(productSection);
 }
