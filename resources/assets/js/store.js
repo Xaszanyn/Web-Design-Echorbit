@@ -4,6 +4,10 @@ const radios = document.querySelectorAll("button.radio");
 
 var products, sfxs, musicCategories, sfxCategories;
 
+const productSection = document.querySelector("#product-section");
+const productImage = document.querySelector("#product-section img");
+const productContent = document.querySelector("#product-section #product");
+
 async function initialize() {
   products = await get("get.php?target=products");
   musicCategories = await get("get.php?target=music_categories");
@@ -74,4 +78,13 @@ function like(id) {
 
 function selectCategory(id) {
   category.children[id - 1].classList.toggle("selected");
+}
+
+function view(id) {
+  let product = products.find((item) => id == item.id);
+
+  productImage.src = product.image;
+  productContent.innerHTML = `<h3>${product.name}<span>${product.type}</span><button onclick="cart(${product.id})">&euro;_PRICE_ <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button></h3>${product.soundcloud}<p>${product.content}</p>`;
+
+  openPopUp(productSection);
 }
