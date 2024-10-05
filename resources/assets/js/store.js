@@ -8,16 +8,30 @@ const productSection = document.querySelector("#product-section");
 const productImage = document.querySelector("#product-section img");
 const productContent = document.querySelector("#product-section #product");
 
+const featured = document.querySelector("#featured");
+
 async function initialize() {
   products = await get("get.php?target=products");
   musicCategories = await get("get.php?target=music_categories");
   sfxCategories = await get("get.php?target=sfx_categories");
 
   renderProducts();
+  renderFeatured();
   renderMusicCategories();
 }
 
 initialize();
+
+function renderFeatured() {
+  let featuredProducts = products.filter((product) => product.feature);
+
+  products
+    .filter((product) => product.feature)
+    .forEach((product, index) => {
+      featured.children[index].children[0].src = product.image;
+      featured.children[index].setAttribute("onclick", `view(${product.id})`);
+    });
+}
 
 function renderProducts() {
   list.innerHTML = `<center><i class="fa-solid fa-circle-notch fa-spin"></i></center>`;
