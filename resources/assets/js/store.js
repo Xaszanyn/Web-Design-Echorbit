@@ -83,7 +83,7 @@ function selectCategory(id) {
 function view(id) {
   let product = products.find((item) => id == item.id);
 
-  productImage.src = product.image;
+  productImage.src = `https://echorbitaudio.com/resources/products/images/${product.image}`;
   productContent.innerHTML = `<h3>${product.name}<span>${product.type}</span><button onclick="cart(${product.id})">&euro;_PRICE_ <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button></h3>${product.soundcloud}<p>${product.content}</p>`;
 
   openPopUp(productSection);
