@@ -374,7 +374,7 @@ footer p {
 
 #store section:last-of-type #featured {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto 20rem 20rem;
   column-gap: 2.5rem;
   margin-bottom: 5rem;
 }
