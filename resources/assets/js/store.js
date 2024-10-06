@@ -4,7 +4,8 @@ const radios = document.querySelectorAll("button.radio");
 
 var products, sfxs, allCategories;
 
-var type, search, categories, sort;
+var type, search, sort;
+var categories = [];
 
 const productSection = document.querySelector("#product-section");
 const productImage = document.querySelector("#product-section img");
@@ -21,7 +22,7 @@ const typeSFX = document.querySelector("#type .sfx");
 
   renderProducts();
   renderFeatured();
-  // renderMusicCategories();
+  renderCategories();
 })();
 
 document.querySelector("#search input").addEventListener("input", (event) => {
@@ -53,6 +54,7 @@ function selectType(selectedType) {
       break;
   }
 
+  renderCategories();
   renderProducts();
 }
 
@@ -80,12 +82,28 @@ function renderProducts() {
     result = result.filter((product) =>
       product.name.toLowerCase().includes(search)
     );
+  // if (categories.length)
+  //   result = result.filter((product) =>
+  //     product.name.toLowerCase().includes(search)
+  //   );
 
   result.forEach((product) => {
     content += `<button onclick="view(${product.id})"><img src="https://echorbitaudio.com/resources/products/images/${product.image}" /><h6>${product.name} | <span>&euro;${product.price}</span></h6><a href="#" onclick="cart(${product.id})">Add to Cart</a></button>`;
   });
 
   list.innerHTML = content;
+}
+
+function renderCategories() {
+  category.innerHTML = `<center><i class="fa-solid fa-circle-notch fa-spin"></i></center>`;
+  content = "";
+
+  allCategories.forEach((category) => {
+    if (type == category.type)
+      content += `<button data-id="${category.id}" onclick="selectCategory(event)"><img src="https://www.echorbitaudio.com/resources/images/icons/${category.image}" /> ${category.name}</button>`;
+  });
+
+  category.innerHTML = content;
 }
 
 function sort(state) {
@@ -114,8 +132,16 @@ function sort(state) {
   // renderMusics();
 }
 
-function selectCategory(id) {
-  category.children[id - 1].classList.toggle("selected");
+function selectCategory(event) {
+  event.target.classList.toggle("selected");
+
+  let index = categories.indexOf(event.target.dataset.id);
+
+  if (index == -1) categories.push(event.target.dataset.id);
+  else categories.splice(index, 1);
+
+  console.log(categories);
+  renderProducts();
 }
 
 function view(id) {
