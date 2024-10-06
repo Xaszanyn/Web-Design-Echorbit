@@ -131,7 +131,7 @@ main h4 {
   font-weight: 300;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 10rem;
 }
 
 main p {
@@ -141,10 +141,16 @@ main p {
   margin-bottom: 3rem;
 }
 
+/* ================================================== Main Home ================================================== */
+
+main #home {
+  padding-bottom: 0;
+}
+
 /* ================================================== Main About Us ================================================== */
 
 main #about-us-showcase {
-  padding: 5rem 12.5rem 0;
+  padding: 5rem 12.5rem 5rem;
   display: grid;
   grid-template-columns: auto auto;
   column-gap: 3rem;
@@ -188,10 +194,10 @@ main #about-us-showcase a:hover span {
 /* ================================================== Main Our Services ================================================== */
 
 main #our-services-showcase {
-  padding-top: 5rem;
+  padding-bottom: 10rem;
   width: max-content;
   display: flex;
-  height: 20rem;
+  height: 30rem;
   animation: slide 40s linear infinite;
 }
 
@@ -211,6 +217,22 @@ main #our-services-showcase a:hover {
 main #our-services-showcase img {
   height: 100%;
   width: auto;
+}
+
+main h5 {
+  text-align: center;
+  font-weight: 300;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+main #our-services p {
+  margin-bottom: 10rem;
+}
+
+main #our-services p:last-of-type {
+  margin-bottom: 0;
 }
 
 /* ================================================== Footer ================================================== */
