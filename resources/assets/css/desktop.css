@@ -296,9 +296,61 @@ footer p {
   padding: 2.5rem 0;
 }
 
-#store section:first-of-type h4 {
+#store section:first-of-type #type {
+  display: grid;
+  grid-template-columns: 5fr 3fr;
+  column-gap: 1rem;
+}
+
+#store section:first-of-type #type div {
+  position: relative;
+  height: 3.5rem;
+  padding: 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+#store section:first-of-type #type h4 {
+  position: absolute;
+  margin-bottom: 0;
   font-size: 2.5rem;
-  margin-bottom: 2rem;
+  padding: 0.25rem 1rem;
+  width: 100%;
+}
+
+#store section:first-of-type #type div h4:last-of-type {
+  transition: clip-path var(--fast), background-color var(--fast);
+  color: var(--white);
+  background-color: var(--blue);
+}
+
+#store section:first-of-type #type .music h4 {
+  text-align: right;
+}
+
+#store section:first-of-type #type .sfx h4 {
+  text-align: left;
+}
+
+#store section:first-of-type #type .music h4:last-of-type {
+  clip-path: inset(0% 0% 0% 100%);
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+#store section:first-of-type #type .sfx h4:last-of-type {
+  clip-path: inset(0% 100% 0% 0%);
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+#store section:first-of-type #type div:hover h4:last-of-type {
+  clip-path: inset(0% 0% 0% 0%);
+}
+
+#store section:first-of-type #type div.selected h4:last-of-type {
+  background-color: var(--black);
+  clip-path: inset(0% 0% 0% 0%);
 }
 
 #store section:first-of-type #search {

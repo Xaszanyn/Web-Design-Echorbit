@@ -2,7 +2,9 @@ const list = document.querySelector("#store #products");
 const category = document.querySelector("#category");
 const radios = document.querySelectorAll("button.radio");
 
-var products, sfxs, musicCategories, sfxCategories;
+var products, sfxs, allCategories;
+
+var type, search, categories, sort;
 
 const productSection = document.querySelector("#product-section");
 const productImage = document.querySelector("#product-section img");
@@ -10,17 +12,49 @@ const productContent = document.querySelector("#product-section #product");
 
 const featured = document.querySelector("#featured");
 
-async function initialize() {
+const typeMusic = document.querySelector("#type .music");
+const typeSFX = document.querySelector("#type .sfx");
+
+(async function () {
   products = await get("get.php?target=products");
-  musicCategories = await get("get.php?target=music_categories");
-  sfxCategories = await get("get.php?target=sfx_categories");
+  allCategories = await get("get.php?target=categories");
 
   renderProducts();
   renderFeatured();
-  renderMusicCategories();
-}
+  // renderMusicCategories();
+})();
 
-initialize();
+document.querySelector("#search input").addEventListener("input", (event) => {
+  search = event.target.value.toLowerCase();
+  renderProducts();
+});
+
+function selectType(selectedType) {
+  if (type == selectedType) {
+    type = null;
+
+    typeMusic.classList.remove("selected");
+    typeSFX.classList.remove("selected");
+
+    renderProducts();
+    return;
+  }
+
+  type = selectedType;
+
+  switch (selectedType) {
+    case "music":
+      typeMusic.classList.add("selected");
+      typeSFX.classList.remove("selected");
+      break;
+    case "sfx":
+      typeMusic.classList.remove("selected");
+      typeSFX.classList.add("selected");
+      break;
+  }
+
+  renderProducts();
+}
 
 function renderFeatured() {
   let featuredProducts = products.filter((product) => product.feature);
@@ -39,22 +73,19 @@ function renderProducts() {
   list.innerHTML = `<center><i class="fa-solid fa-circle-notch fa-spin"></i></center>`;
   let content = "";
 
-  products.forEach((product) => {
+  let result = Array.from(products);
+
+  if (type) result = result.filter((product) => product.type == type);
+  if (search)
+    result = result.filter((product) =>
+      product.name.toLowerCase().includes(search)
+    );
+
+  result.forEach((product) => {
     content += `<button onclick="view(${product.id})"><img src="https://echorbitaudio.com/resources/products/images/${product.image}" /><h6>${product.name} | <span>&euro;${product.price}</span></h6><a href="#" onclick="cart(${product.id})">Add to Cart</a></button>`;
   });
 
   list.innerHTML = content;
-}
-
-function renderMusicCategories() {
-  category.innerHTML = `<center><i class="fa-solid fa-circle-notch fa-spin"></i></center>`;
-  let html = "";
-
-  musicCategories.forEach((musicCategory) => {
-    html += `<button onclick="selectCategory(${musicCategory.id})"><img src="https://www.echorbitaudio.com/resources/images/icons/${musicCategory.icon}" /> ${musicCategory.name}</button>`;
-  });
-
-  category.innerHTML = html;
 }
 
 function sort(state) {
@@ -81,15 +112,6 @@ function sort(state) {
   }
 
   // renderMusics();
-}
-
-function like(id) {
-  document
-    .querySelectorAll(".like")
-    [id - 1].children[0].classList.toggle("fa-regular");
-  document
-    .querySelectorAll(".like")
-    [id - 1].children[0].classList.toggle("fa-solid");
 }
 
 function selectCategory(id) {
