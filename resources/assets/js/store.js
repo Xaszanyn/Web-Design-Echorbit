@@ -22,7 +22,6 @@ const typeSFX = document.querySelector("#type .sfx");
 
   renderProducts();
   renderFeatured();
-  renderCategories();
 })();
 
 document.querySelector("#search input").addEventListener("input", (event) => {
@@ -31,15 +30,7 @@ document.querySelector("#search input").addEventListener("input", (event) => {
 });
 
 function selectType(selectedType) {
-  if (type == selectedType) {
-    type = null;
-
-    typeMusic.classList.remove("selected");
-    typeSFX.classList.remove("selected");
-
-    renderProducts();
-    return;
-  }
+  if (type == selectedType) return;
 
   type = selectedType;
 
@@ -82,10 +73,13 @@ function renderProducts() {
     result = result.filter((product) =>
       product.name.toLowerCase().includes(search)
     );
-  // if (categories.length)
-  //   result = result.filter((product) =>
-  //     product.name.toLowerCase().includes(search)
-  //   );
+  if (categories.length)
+    result = result.filter(
+      (product) =>
+        product.category
+          .split(",")
+          .filter((category) => categories.includes(category)).length
+    );
 
   result.forEach((product) => {
     content += `<button onclick="view(${product.id})"><img src="https://echorbitaudio.com/resources/images/covers/small/${product.image}" /><h6>${product.name} | <span>&euro;${product.price}</span></h6><a href="#" onclick="cart(${product.id})">Add to Cart</a></button>`;
@@ -140,7 +134,6 @@ function selectCategory(event) {
   if (index == -1) categories.push(event.target.dataset.id);
   else categories.splice(index, 1);
 
-  console.log(categories);
   renderProducts();
 }
 

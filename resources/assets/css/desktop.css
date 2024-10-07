@@ -392,6 +392,13 @@ footer p {
   font-weight: 600;
 }
 
+#store section:first-of-type #category span {
+  font-weight: 600;
+  color: var(--blue);
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
 #store section:first-of-type button {
   background-color: transparent;
   width: 100%;
