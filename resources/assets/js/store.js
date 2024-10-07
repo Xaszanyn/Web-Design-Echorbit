@@ -88,7 +88,7 @@ function renderProducts() {
   //   );
 
   result.forEach((product) => {
-    content += `<button onclick="view(${product.id})"><img src="https://echorbitaudio.com/resources/products/images/${product.image}" /><h6>${product.name} | <span>&euro;${product.price}</span></h6><a href="#" onclick="cart(${product.id})">Add to Cart</a></button>`;
+    content += `<button onclick="view(${product.id})"><img src="https://echorbitaudio.com/resources/products/images/covers/small/${product.image}" /><h6>${product.name} | <span>&euro;${product.price}</span></h6><a href="#" onclick="cart(${product.id})">Add to Cart</a></button>`;
   });
 
   list.innerHTML = content;
@@ -147,7 +147,7 @@ function selectCategory(event) {
 function view(id) {
   let product = products.find((item) => id == item.id);
 
-  productImage.src = `https://echorbitaudio.com/resources/products/images/${product.image}`;
+  productImage.src = `https://echorbitaudio.com/resources/products/images/covers/${product.image}`;
   productContent.innerHTML = `<h3>${product.name}<span>${product.type}</span><button onclick="cart(${product.id})">&euro;${product.price} <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button></h3>${product.soundcloud}<p>${product.content}</p>`;
 
   openPopUp(productSection);

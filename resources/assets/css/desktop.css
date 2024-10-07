@@ -29,6 +29,7 @@ nav h1 {
   font-weight: 400;
   font-size: 2rem;
   text-transform: uppercase;
+  transform: translateY(-0.15rem);
 }
 
 nav ul {
