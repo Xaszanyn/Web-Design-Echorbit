@@ -209,27 +209,27 @@ function cart(event, id) {
   console.log(id);
 }
 
-function favorite(element, id) {
+async function favorite(element, id) {
   element.classList.add("active");
   element.innerHTML += "d";
   element.setAttribute("onclick", "un" + element.getAttribute("onclick"));
 
   let session = localStorage.getItem("session");
 
+  user.favorites.push(id);
+
   if (session)
-    post("user.php", {
+    await post("user.php", {
       action: "favorite",
+      session,
       id,
     });
-  else {
-    user.favorites.push(id);
-    localStorage.setItem("guest", JSON.stringify(user));
-  }
+  else localStorage.setItem("guest", JSON.stringify(user));
 
   renderProducts();
 }
 
-function unfavorite(element, id) {
+async function unfavorite(element, id) {
   element.classList.remove("active");
   element.innerHTML = element.innerHTML.substring(
     0,
@@ -239,14 +239,16 @@ function unfavorite(element, id) {
 
   let session = localStorage.getItem("session");
 
+  let index = user.favorites.indexOf(id);
+  if (index >= 0) user.favorites.splice(index, 1);
+
   if (session)
-    post("user.php", {
-      action: "favorite",
+    await post("user.php", {
+      action: "unfavorite",
+      session,
       id,
     });
   else {
-    let index = user.favorites.indexOf(id);
-    if (index >= 0) user.favorites.splice(index, 1);
     localStorage.setItem("guest", JSON.stringify(user));
   }
 
