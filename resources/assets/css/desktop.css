@@ -212,7 +212,7 @@ main #our-services-showcase a:not(:last-of-type) {
 }
 
 main #our-services-showcase a:hover {
-  transform: scale(115%);
+  transform: scale(110%);
 }
 
 main #our-services-showcase img {
@@ -496,6 +496,7 @@ footer p {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  position: relative;
 }
 
 #store section:last-of-type #products button img {
@@ -506,7 +507,7 @@ footer p {
 
 #store section:last-of-type #products button:hover img {
   border-radius: 0;
-  transform: scale(0.9);
+  transform: scale(90%);
 }
 
 #store section:last-of-type #products button h6 {
@@ -532,6 +533,20 @@ footer p {
 #store section:last-of-type #products button a:hover {
   background-color: var(--blue);
   color: var(--white);
+}
+
+#store section:last-of-type #products button i {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  color: var(--red);
+  font-size: 2rem;
+  transition: font-size var(--fast), transform var(--fast);
+}
+
+#store section:last-of-type #products button:hover i {
+  font-size: 3rem;
+  transform: translate(1.5rem, -1rem) rotate(30deg);
 }
 
 /* ================================================== Pop-Up ================================================== */
@@ -766,15 +781,46 @@ footer p {
   font-size: 1.2rem;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--white);
-  background-color: var(--blue);
   padding: 0.5rem 1rem;
   border-radius: 1rem;
-  border: 0.2rem solid var(--blue);
-  transition: background-color var(--fast), color var(--fast);
+  border: 0.2rem solid;
+  transition: background-color var(--fast), color var(--fast),
+    transform var(--fast);
 }
 
-#pop-up #product-section #product h3 button:hover {
+#pop-up #product-section #product h3 button:first-of-type {
+  background-color: var(--white);
+  color: var(--red);
+}
+
+#pop-up #product-section #product h3 button:first-of-type:hover {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+#pop-up #product-section #product h3 button:first-of-type.active {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+#pop-up #product-section #product h3 button:first-of-type.active:hover {
+  background-color: var(--white);
+  color: var(--red);
+}
+
+#pop-up #product-section #product h3 button:first-of-type:active {
+  transform: scale(110%);
+}
+
+#pop-up #product-section #product h3 button:last-of-type {
+  background-color: var(--blue);
+  border-color: var(--blue);
+  color: var(--white);
+}
+
+#pop-up #product-section #product h3 button:last-of-type:hover {
   background-color: var(--white);
   color: var(--blue);
 }

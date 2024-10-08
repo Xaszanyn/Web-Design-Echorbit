@@ -209,7 +209,7 @@ async function registerThirdPhase(event) {
 
 /* =========={ Login }======================================== */
 
-function loginUser() {
+async function loginUser() {
   if (!login.email.value) {
     notify("Please enter your e-mail address.");
     return;
@@ -218,15 +218,11 @@ function loginUser() {
     return;
   }
 
-  loginDirect(login.email.value, login.password.value);
-}
-
-async function loginDirect(email, password, remembered = false) {
   loading.classList.add("loading");
 
   let response = await post("login.php", {
-    email,
-    password,
+    email: login.email.value,
+    password: login.password.value,
   });
 
   loading.classList.remove("loading");
@@ -239,73 +235,8 @@ async function loginDirect(email, password, remembered = false) {
       notify("E-mail or password is incorrect, please try again.");
       break;
     case "success":
-      // userButton.style.display = "flex";
-      // loginButton.style.display = "none";
-      // registerButton.style.display = "none";
-      // menuLoginButton.style.display = "none";
-      // document.querySelector("#menu hr").style.display = "none";
-
-      // userName.innerHTML = response.information.name;
-      // userEmail.innerHTML = response.information.email;
-      // userPhone.innerHTML = response.information.phone;
-      // userAddress.innerHTML = response.information.address;
-
-      // response.information.orders.individual.forEach((order) => {
-      //   userOrders.innerHTML += `<li>
-      //     <span>Tarih: ${order.date}</span>
-      //     <span>Menü: ${order.menu_id}</span>
-      //     <span>Gün Sayısı: ${order.days}</span>
-      //     <span>Teslimat Saati: ${order.time}</span>
-      //     <span>Adres: ${order.province_id} ${order.district_id} ${order.address}</span>
-      //   </li>`;
-      // });
-
-      // response.information.orders.company.forEach((order) => {
-      //   userOrders.innerHTML += `<li>
-      //     <span>Şirket: ${order.company_name}</span>
-      //     <span>Tarih: ${order.date}</span>
-      //     <span>Gün Sayısı: ${order.days}</span>
-      //     <span>Teslimat Saati: ${order.time}</span>
-      //     <span>Teslimat Adresi: ${order.province_id} ${order.district_id} ${order.address}</span>
-      //     <span>Menü: ${order.menu_id}</span>
-      //     <span>Alerji Durumu: ${order.allergy}</span>
-      //     <span>Hastalık Durumu: ${order.disease}</span>
-      //     <span>Ek Açıklama: ${order.extra}</span>
-      //   </li>`;
-      // });
-
-      // if (response.information.picture == "-") {
-      //   userPicture.style.display = "none";
-      // } else {
-      //   userPictureDefault.style.display = "none";
-      //   userPicture.src = response.information.picture;
-      // }
-
-      if (!remembered) {
-        // localStorage.email = email;
-        // localStorage.password = password;
-        // localStorage.time = new Date().getTime();
-
-        notify("Successfully logged in. { SUCCESS: 'USER DATA FETCHED' }");
-        // load(userButton, user);
-        closePopUp();
-      }
+      localStorage.setItem("session", response.session);
+      location.replace("/store");
       break;
   }
 }
-
-// function loginRememberedUser() {
-//   if (!localStorage.time) return;
-
-//   if ((new Date().getTime() - parseInt(localStorage.time)) / (1000 * 60 * 60 * 24) > 30) {
-//     localStorage.clear();
-//     return;
-//   }
-
-//   loginDirect(localStorage.email, localStorage.password, true);
-// }
-
-// function logoutUser() {
-//   localStorage.clear();
-//   location.reload();
-// }

@@ -2,7 +2,8 @@ const list = document.querySelector("#store #products");
 const category = document.querySelector("#category");
 const radios = document.querySelectorAll("button.radio");
 
-var products, sfxs, allCategories;
+var products, allCategories;
+var userCart, userFavorites;
 
 var type, search;
 var categories = [];
@@ -17,7 +18,14 @@ const featured = document.querySelector("#featured");
 const typeMusic = document.querySelector("#type .music");
 const typeSFX = document.querySelector("#type .sfx");
 
+var user = {
+  cart: [],
+  favorites: [],
+};
+
 (async function () {
+  await loginUserSession();
+
   products = await get("get.php?target=products");
   allCategories = await get("get.php?target=categories");
 
@@ -92,7 +100,19 @@ function renderProducts() {
   }
 
   result.forEach((product) => {
-    content += `<button onclick="view(${product.id})"><img src="https://echorbitaudio.com/resources/images/covers/small/${product.image}" /><h6>${product.name} | <span>&euro;${product.price}</span></h6><a href="#" onclick="cart(${product.id})">Add to Cart</a></button>`;
+    content += `<button onclick="view(${
+      product.id
+    })"><img src="https://echorbitaudio.com/resources/images/covers/small/${
+      product.image
+    }" /><h6>${product.name} | <span>&euro;${
+      product.price
+    }</span></h6><a href="#" onclick="cart(event, ${
+      product.id
+    })">Add to Cart</a>${
+      user.favorites.includes(product.id)
+        ? `<i class="fa-solid fa-heart"></i>`
+        : `<i class="fa-solid fa-heart hidden"></i>`
+    }</button>`;
   });
 
   list.innerHTML = content;
@@ -137,7 +157,98 @@ function view(id) {
   let product = products.find((item) => id == item.id);
 
   productImage.src = `https://echorbitaudio.com/resources/images/covers/${product.image}`;
-  productContent.innerHTML = `<h3>${product.name}<span>${product.type}</span><button onclick="cart(${product.id})">&euro;${product.price} <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button></h3>${product.soundcloud}<p>${product.content}</p>`;
+  productContent.innerHTML = `<h3>${product.name}<span>${product.type}</span>${
+    user.favorites.includes(product.id)
+      ? `<button class="active" onclick="unfavorite(this, ${product.id})"><i class="fa-solid fa-heart"></i> Liked</button>`
+      : `<button onclick="favorite(this, ${product.id})"><i class="fa-solid fa-heart"></i> Like</button>`
+  }<button onclick="cart(event, ${product.id})">&euro;${
+    product.price
+  } <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button></h3>${
+    product.soundcloud
+  }<p>${product.content}</p>`;
 
   openPopUp(productSection);
+}
+
+async function loginUserSession() {
+  let session = localStorage.getItem("session");
+
+  if (!session) {
+    let guest = localStorage.getItem("guest");
+    if (guest) user = JSON.parse(guest);
+    return;
+  }
+
+  loading.classList.add("loading");
+
+  let response = await post("login.php", { session });
+
+  loading.classList.remove("loading");
+
+  switch (response.status) {
+    case "success":
+      notify("Successfully logged in.", 1000);
+      registerButton.classList.add("hidden");
+      loginButton.classList.add("hidden");
+      handleUserData(response);
+      break;
+  }
+}
+
+function handleUserData(data) {
+  console.log(data);
+
+  user.cart = JSON.parse(data.cart);
+  user.favorites = JSON.parse(data.favorites);
+}
+
+function cart(event, id) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  console.log(id);
+}
+
+function favorite(element, id) {
+  element.classList.add("active");
+  element.innerHTML += "d";
+  element.setAttribute("onclick", "un" + element.getAttribute("onclick"));
+
+  let session = localStorage.getItem("session");
+
+  if (session)
+    post("user.php", {
+      action: "favorite",
+      id,
+    });
+  else {
+    user.favorites.push(id);
+    localStorage.setItem("guest", JSON.stringify(user));
+  }
+
+  renderProducts();
+}
+
+function unfavorite(element, id) {
+  element.classList.remove("active");
+  element.innerHTML = element.innerHTML.substring(
+    0,
+    element.innerHTML.length - 1
+  );
+  element.setAttribute("onclick", element.getAttribute("onclick").substring(2));
+
+  let session = localStorage.getItem("session");
+
+  if (session)
+    post("user.php", {
+      action: "favorite",
+      id,
+    });
+  else {
+    let index = user.favorites.indexOf(id);
+    if (index >= 0) user.favorites.splice(index, 1);
+    localStorage.setItem("guest", JSON.stringify(user));
+  }
+
+  renderProducts();
 }

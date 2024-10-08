@@ -63,3 +63,7 @@ input {
 ::-webkit-scrollbar-thumb:active {
   background-color: var(--dark-blue);
 }
+
+.hidden {
+  display: none !important;
+}
