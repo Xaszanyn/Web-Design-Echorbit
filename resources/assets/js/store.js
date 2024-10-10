@@ -208,8 +208,6 @@ async function loginUserSession() {
 }
 
 function handleUserData(data) {
-  console.log(data);
-
   user.cart = JSON.parse(data.cart);
   user.favorites = JSON.parse(data.favorites);
 }
