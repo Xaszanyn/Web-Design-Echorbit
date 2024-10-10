@@ -21,14 +21,33 @@
       /></a>
       <a href="/"><h1>Echorbit Audio</h1></a>
       <ul class="closed">
-        <li><a href="../">Home</a></li>
+        <li>
+          <a href="../">Home <i class="fa-solid fa-house"></i></a>
+        </li>
         <li class="small"><a href="../#about-us">About Us</a></li>
         <li class="small"><a href="../#our-services">Services</a></li>
-        <li><a href="">Store</a></li>
-        <li><a href="../#our-services">Services</a></li>
-        <li><a href="#">Contact</a></li>
-        <li id="register-button"><a href="#">Sign up</a></li>
-        <li id="login-button"><a href="#">Sign in</a></li>
+        <li>
+          <a href="">Store <i class="fa-solid fa-music"></i></a>
+        </li>
+        <li>
+          <a href="../#our-services"
+            >Services <i class="fa-solid fa-compact-disc"></i
+          ></a>
+        </li>
+        <li>
+          <a href="#">Contact <i class="fa-solid fa-address-book"></i></a>
+        </li>
+        <li id="register-button">
+          <a href="#">Sign up <i class="fa-solid fa-right-to-bracket"></i></a>
+        </li>
+        <li id="login-button">
+          <a href="#">Sign in <i class="fa-solid fa-user"></i></a>
+        </li>
+        <li id="cart-button">
+          <a href="#"
+            >Cart <i class="fa-solid fa-cart-shopping"></i> <span>0</span></a
+          >
+        </li>
         <a id="close" href="#"><img src="../resources/images/Close.png" /></a>
         <div id="close-screen"></div>
       </ul>
@@ -186,6 +205,22 @@
         <img id="product-image" />
         <div id="product">
           <center><i class="fa-solid fa-circle-notch fa-spin"></i></center>
+        </div>
+      </section>
+      <section id="cart-section">
+        <i class="fa-solid fa-xmark close"></i>
+        <h3>Cart</h3>
+        <div>
+          <span>Product</span>
+          <span>Price</span>
+        </div>
+        <hr />
+        <ul id="cart-products"></ul>
+        <div id="cart-checkout">
+          <p></p>
+          <button>
+            Checkout with Stripe <i class="fa-brands fa-stripe-s"></i>
+          </button>
         </div>
       </section>
     </section>

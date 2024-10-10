@@ -46,6 +46,10 @@ input {
   font: inherit;
 }
 
+button {
+  cursor: pointer;
+}
+
 ::-webkit-scrollbar {
   width: 15px;
 }
@@ -66,4 +70,13 @@ input {
 
 .hidden {
   display: none !important;
+}
+
+@keyframes beat {
+  50% {
+    transform: scale(110%);
+  }
+  100% {
+    transform: scale(100%);
+  }
 }

@@ -35,6 +35,7 @@ nav h1 {
 nav ul {
   margin-left: auto;
   display: flex;
+  place-items: center;
 }
 
 nav li.small {
@@ -46,6 +47,13 @@ nav ul a {
   font-weight: 600;
   text-transform: uppercase;
   padding: 0.5rem 1rem;
+  display: flex;
+  place-items: center;
+}
+
+nav ul a i {
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
 }
 
 nav #close {
@@ -248,8 +256,7 @@ footer {
 
 footer .flex {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  place-items: center;
   margin-bottom: 4rem;
 }
 
@@ -409,7 +416,6 @@ footer p {
   font-size: 1.2rem;
   font-weight: 500;
   transition: background-color var(--fast);
-  cursor: pointer;
 }
 
 #store section:first-of-type button.radio {
@@ -495,7 +501,7 @@ footer p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
+
   position: relative;
 }
 
@@ -527,12 +533,19 @@ footer p {
   padding: 0.25rem 0.5rem;
   border-radius: 10rem;
   text-transform: uppercase;
-  transition: background-color var(--fast), color var(--fast);
+  transition: background-color var(--fast), color var(--fast),
+    border-color var(--fast);
 }
 
 #store section:last-of-type #products button a:hover {
   background-color: var(--blue);
   color: var(--white);
+}
+
+#store section:last-of-type #products button a.disabled {
+  background-color: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
 }
 
 #store section:last-of-type #products button i {
@@ -560,8 +573,7 @@ footer p {
   z-index: 110;
   background-color: var(--fade);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  place-items: center;
   opacity: 0;
   transition: opacity var(--fast), left var(--fast-delay);
 }
@@ -645,7 +657,6 @@ footer p {
 }
 
 .button {
-  cursor: pointer;
   background-color: var(--blue);
   color: var(--white) !important;
   padding: 0.25rem 1.5rem;
@@ -769,14 +780,22 @@ footer p {
 }
 
 #pop-up #product-section #product h3 span {
-  margin-left: auto;
-  font-size: 1.5rem;
   text-transform: uppercase;
+}
+
+#pop-up #product-section #product h3 span:first-of-type {
+  margin-left: 2.5rem;
+  color: var(--green);
+}
+
+#pop-up #product-section #product h3 span:last-of-type {
+  margin-left: 2.5rem;
+  font-size: 1.5rem;
   font-weight: 400;
+  margin-left: auto;
 }
 
 #pop-up #product-section #product h3 button {
-  cursor: pointer;
   margin-left: 2.5rem;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -825,6 +844,120 @@ footer p {
   color: var(--blue);
 }
 
+#pop-up #product-section #product h3 button:last-of-type.disabled {
+  background-color: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+}
+
 #pop-up #product-section #product p {
   margin-top: 2.5rem;
+}
+
+/* ================================================== Cart ================================================== */
+
+#cart-button {
+  transition: background-color var(--fast), color var(--fast),
+    border-radius var(--fast);
+}
+
+#cart-button.active {
+  background-color: var(--green);
+  color: var(--white);
+  border-radius: 10rem;
+}
+
+#cart-button.beat {
+  animation: beat var(--slow);
+}
+
+#cart-button a {
+  padding: 0.25rem 1rem;
+}
+
+#cart-button span {
+  transition: max-width var(--fast), margin-left var(--fast);
+  max-width: 0;
+  overflow: hidden;
+}
+
+#cart-button.active span {
+  margin-left: 0.5rem;
+  max-width: 1rem;
+}
+
+#pop-up #cart-section {
+  width: 50rem;
+  max-height: calc(100vh - 5rem);
+  overflow-y: auto;
+}
+
+#pop-up #cart-section > div:first-of-type,
+#pop-up #cart-section ul li {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  font-size: 1.2rem;
+}
+
+#pop-up #cart-section > div span {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+#pop-up #cart-section hr {
+  margin: 1rem 0 0;
+}
+
+#pop-up #cart-section ul li {
+  padding: 1rem 0;
+  border-bottom: 0.2rem solid var(--gray);
+}
+
+#pop-up #cart-section ul li:last-of-type {
+  border-color: var(--blue);
+  margin-bottom: 2.5rem;
+}
+
+#pop-up #cart-section ul li > div {
+  display: flex;
+}
+
+#pop-up #cart-section ul li img {
+  width: 6rem;
+  margin-right: 1rem;
+}
+
+#pop-up #cart-section ul li > div div {
+  display: flex;
+  flex-direction: column;
+}
+
+#pop-up #cart-section ul li > div div span:not(:last-of-type) {
+  margin-bottom: 0.75rem;
+}
+
+#pop-up #cart-section ul li > div div span b {
+  font-weight: inherit;
+  text-transform: uppercase;
+}
+
+#pop-up #cart-section > div:last-of-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 7.5rem;
+}
+
+#pop-up #cart-section button {
+  background-color: var(--green);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 0.25rem 1.5rem;
+  border-radius: 10rem;
+  transition: background-color var(--fast);
+}
+
+#pop-up #cart-section button:hover {
+  background-color: var(--blue);
 }

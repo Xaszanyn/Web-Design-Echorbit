@@ -18,6 +18,11 @@ const featured = document.querySelector("#featured");
 const typeMusic = document.querySelector("#type .music");
 const typeSFX = document.querySelector("#type .sfx");
 
+const cartSection = document.querySelector("#cart-section");
+const cartButton = document.querySelector("#cart-button");
+const cartProducts = document.querySelector("#cart-products");
+const cartCheckout = document.querySelector("#cart-checkout");
+
 var user = {
   cart: [],
   favorites: [],
@@ -29,8 +34,11 @@ var user = {
   products = await get("get.php?target=products");
   allCategories = await get("get.php?target=categories");
 
+  renderCartButton();
   renderProducts();
   renderFeatured();
+
+  assign(cartButton, viewCart);
 })();
 
 document.querySelector("#search input").addEventListener("input", (event) => {
@@ -106,9 +114,11 @@ function renderProducts() {
       product.image
     }" /><h6>${product.name} | <span>&euro;${
       product.price
-    }</span></h6><a href="#" onclick="cart(event, ${
-      product.id
-    })">Add to Cart</a>${
+    }</span></h6><a href="#" ${
+      user.cart.includes(product.id)
+        ? `class="disabled" onclick="uncart(${product.id}, event)">Added`
+        : `onclick="cart(${product.id}, event)">Add`
+    } to Cart</a>${
       user.favorites.includes(product.id)
         ? `<i class="fa-solid fa-heart"></i>`
         : `<i class="fa-solid fa-heart hidden"></i>`
@@ -157,15 +167,17 @@ function view(id) {
   let product = products.find((item) => id == item.id);
 
   productImage.src = `https://echorbitaudio.com/resources/images/covers/${product.image}`;
-  productContent.innerHTML = `<h3>${product.name}<span>${product.type}</span>${
-    user.favorites.includes(product.id)
-      ? `<button class="active" onclick="unfavorite(this, ${product.id})"><i class="fa-solid fa-heart"></i> Liked</button>`
-      : `<button onclick="favorite(this, ${product.id})"><i class="fa-solid fa-heart"></i> Like</button>`
-  }<button onclick="cart(event, ${product.id})">&euro;${
+  productContent.innerHTML = `<h3>${product.name}<span>&euro;${
     product.price
-  } <i class="fa-solid fa-cart-shopping"></i> Add to Cart</button></h3>${
-    product.soundcloud
-  }<p>${product.content}</p>`;
+  }</span><span>${product.type}</span>${
+    user.favorites.includes(product.id)
+      ? `<button class="active" onclick="unfavorite(${product.id})"><i class="fa-solid fa-heart"></i> Liked</button>`
+      : `<button onclick="favorite(${product.id})"><i class="fa-solid fa-heart"></i> Like</button>`
+  }<button ${
+    user.cart.includes(product.id)
+      ? `class="disabled" onclick="uncart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Added`
+      : `onclick="cart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Add`
+  } to Cart</button></h3>${product.soundcloud}<p>${product.content}</p>`;
 
   openPopUp(productSection);
 }
@@ -202,18 +214,7 @@ function handleUserData(data) {
   user.favorites = JSON.parse(data.favorites);
 }
 
-function cart(event, id) {
-  event.preventDefault();
-  event.stopPropagation();
-
-  console.log(id);
-}
-
-async function favorite(element, id) {
-  element.classList.add("active");
-  element.innerHTML += "d";
-  element.setAttribute("onclick", "un" + element.getAttribute("onclick"));
-
+async function favorite(id) {
   let session = localStorage.getItem("session");
 
   user.favorites.push(id);
@@ -226,17 +227,13 @@ async function favorite(element, id) {
     });
   else localStorage.setItem("guest", JSON.stringify(user));
 
+  view(id);
   renderProducts();
+
+  notify("Product liked.", 1000);
 }
 
-async function unfavorite(element, id) {
-  element.classList.remove("active");
-  element.innerHTML = element.innerHTML.substring(
-    0,
-    element.innerHTML.length - 1
-  );
-  element.setAttribute("onclick", element.getAttribute("onclick").substring(2));
-
+async function unfavorite(id) {
   let session = localStorage.getItem("session");
 
   let index = user.favorites.indexOf(id);
@@ -252,5 +249,91 @@ async function unfavorite(element, id) {
     localStorage.setItem("guest", JSON.stringify(user));
   }
 
+  view(id);
   renderProducts();
+
+  notify("Product like removed.", 1000);
+}
+
+async function cart(id, event) {
+  event.stopPropagation();
+  event.preventDefault();
+
+  let session = localStorage.getItem("session");
+
+  user.cart.push(id);
+
+  if (session)
+    await post("user.php", {
+      action: "cart",
+      session,
+      id,
+    });
+  else localStorage.setItem("guest", JSON.stringify(user));
+
+  if (event.target.parentElement.parentElement.id == "product") view(id);
+  renderCartButton();
+  renderProducts();
+
+  notify("Product added to cart.", 1000);
+}
+
+async function uncart(id, event) {
+  event.stopPropagation();
+  event.preventDefault();
+
+  let session = localStorage.getItem("session");
+
+  let index = user.cart.indexOf(id);
+  if (index >= 0) user.cart.splice(index, 1);
+
+  if (session)
+    await post("user.php", {
+      action: "uncart",
+      session,
+      id,
+    });
+  else localStorage.setItem("guest", JSON.stringify(user));
+
+  if (event.target.parentElement.parentElement.id == "product") view(id);
+  renderCartButton();
+  renderProducts();
+
+  notify("Product removed from cart.", 1000);
+}
+
+function renderCartButton() {
+  cartButton.children[0].children[1].innerHTML = user.cart.length;
+
+  cartButton.classList.add("beat");
+  setTimeout(() => cartButton.classList.remove("beat"), 350);
+
+  if (user.cart.length) {
+    cartButton.classList.add("active");
+  } else cartButton.classList.remove("active");
+}
+
+function viewCart() {
+  let price = 0;
+
+  cartProducts.innerHTML = products.reduce((content, product) => {
+    if (user.cart.includes(product.id)) {
+      price += product.price;
+      return (
+        content +
+        `<li><div><img src="https://echorbitaudio.com/resources/images/covers/small/${product.image}" /><div><span>${product.name}</span><span>Type: <b>${product.type}</b></span></div></div><span>&euro;${product.price}</span></li>`
+      );
+    } else return content;
+  }, "");
+
+  if (price) {
+    cartCheckout.children[0].innerHTML = `Total Price: &euro;${price}`;
+    cartCheckout.style.display = "flex";
+  } else {
+    cartCheckout.children[0].innerHTML = "";
+    cartCheckout.style.display = "none";
+    cartProducts.innerHTML = `<li>Cart is empty.</li>`;
+  }
+
+  openPopUp(cartSection);
 }

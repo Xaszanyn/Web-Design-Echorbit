@@ -28,3 +28,7 @@ assign(register.secondButton, registerSecondPhase);
 assign(register.thirdButton, registerThirdPhase);
 
 assign(login.button, loginUser);
+
+assign(popUp, (event) => {
+  if (event.target == popUp) closePopUp();
+});
