@@ -261,7 +261,9 @@ footer img {
   width: 3rem;
   height: 3rem;
   margin-right: 1rem;
-  border-radius: 1rem;
+  padding: 0.5rem;
+  border-radius: 10rem;
+  background-color: var(--white);
 }
 
 footer span {
@@ -600,16 +602,6 @@ footer p {
   transition: transform var(--fast);
 }
 
-#pop-up section .close {
-  position: absolute;
-  color: var(--red);
-  cursor: pointer;
-  padding: 0.25rem 0.4rem;
-  border-radius: 10rem;
-  top: 1rem;
-  right: 1rem;
-}
-
 #pop-up section h3 {
   font-size: 2.5rem;
   font-weight: 300;
@@ -909,6 +901,7 @@ footer p {
 #pop-up #cart-section ul li {
   padding: 1rem 0;
   border-bottom: 0.2rem solid var(--gray);
+  position: relative;
 }
 
 #pop-up #cart-section ul li:last-of-type {

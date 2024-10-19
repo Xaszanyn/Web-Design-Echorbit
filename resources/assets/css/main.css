@@ -68,6 +68,16 @@ button {
   background-color: var(--dark-blue);
 }
 
+.close {
+  position: absolute;
+  color: var(--red);
+  cursor: pointer;
+  padding: 0.25rem 0.4rem;
+  border-radius: 10rem;
+  top: 1rem;
+  right: 1rem;
+}
+
 .hidden {
   display: none !important;
 }

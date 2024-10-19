@@ -294,6 +294,9 @@ async function uncart(id, event) {
   else localStorage.setItem("guest", JSON.stringify(user));
 
   if (event.target.parentElement.parentElement.id == "product") view(id);
+  else if (event.target.parentElement.parentElement.id == "cart-products")
+    viewCart();
+
   renderCartButton();
   renderProducts();
 
@@ -319,7 +322,7 @@ function viewCart() {
       price += product.price;
       return (
         content +
-        `<li><div><img src="https://echorbitaudio.com/resources/images/covers/small/${product.image}" /><div><span>${product.name}</span><span>Type: <b>${product.type}</b></span></div></div><span>&euro;${product.price}</span></li>`
+        `<li><i onclick="uncart(${product.id}, event)" class="fa-solid fa-xmark close"></i><div><img src="https://echorbitaudio.com/resources/images/covers/small/${product.image}" /><div><span>${product.name}</span><span>Type: <b>${product.type}</b></span></div></div><span>&euro;${product.price}</span></li>`
       );
     } else return content;
   }, "");
