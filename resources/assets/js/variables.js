@@ -48,3 +48,5 @@ const register = {
   secondButton: document.querySelector("#register-phase .second button"),
   thirdButton: document.querySelector("#register-phase .third button"),
 };
+
+const userButton = document.querySelector("#user-button");

@@ -182,31 +182,6 @@ function view(id) {
   openPopUp(productSection);
 }
 
-async function loginUserSession() {
-  let session = localStorage.getItem("session");
-
-  if (!session) {
-    let guest = localStorage.getItem("guest");
-    if (guest) user = JSON.parse(guest);
-    return;
-  }
-
-  loading.classList.add("loading");
-
-  let response = await post("login.php", { session });
-
-  loading.classList.remove("loading");
-
-  switch (response.status) {
-    case "success":
-      notify("Successfully logged in.", 1000);
-      registerButton.classList.add("hidden");
-      loginButton.classList.add("hidden");
-      handleUserData(response);
-      break;
-  }
-}
-
 function handleUserData(data) {
   user.cart = JSON.parse(data.cart);
   user.favorites = JSON.parse(data.favorites);

@@ -196,13 +196,11 @@ async function registerThirdPhase(event) {
       notify("You entered an incorrect code, please try again.");
       break;
     case "success":
-      notify("Signed up successfully.");
+      localStorage.setItem("registered", true);
       register.phase.classList.remove("third");
       register.phase.classList.add("first");
+      notify("Signed up successfully.");
       closePopUp();
-      // let email = localStorage.register;
-      // localStorage.clear();
-      // loginDirect(email, register.password.value);
       break;
   }
 }
@@ -237,6 +235,32 @@ async function loginUser() {
     case "success":
       localStorage.setItem("session", response.session);
       location.replace("/store");
+      break;
+  }
+}
+
+async function loginUserSession() {
+  let session = localStorage.getItem("session");
+
+  if (!session) {
+    let guest = localStorage.getItem("guest");
+    if (guest) user = JSON.parse(guest);
+    return;
+  }
+
+  loading.classList.add("loading");
+
+  let response = await post("login.php", { session });
+
+  loading.classList.remove("loading");
+
+  switch (response.status) {
+    case "success":
+      notify("Successfully logged in.", 1000);
+      registerButton.classList.add("hidden");
+      loginButton.classList.add("hidden");
+      userButton.classList.remove("hidden");
+      handleUserData(response);
       break;
   }
 }
