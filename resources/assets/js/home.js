@@ -2,7 +2,7 @@ const featuredShowcase = document.querySelector("#featured-showcase");
 const showcase = document.querySelector("#showcase");
 
 (async function () {
-  await get("get.php?target=featured-showcase").forEach(
+  (await get("get.php?target=featured-showcase")).forEach(
     (product) =>
       (featuredShowcase.innerHTML += `<a href="/product?${product.id}"><img src="/resources/images/covers/${product.image}" /><span>${product.name}</span></a>`)
   );
