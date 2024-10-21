@@ -159,32 +159,32 @@
 
   /* ================================================== Main About Us ================================================== */
 
-  main #about-us-showcase {
+  main #featured-showcase {
     padding: 15rem 5rem 0;
     grid-template-columns: auto;
     row-gap: 15rem;
   }
 
-  main #about-us-showcase img {
+  main #featured-showcase img {
     height: 80rem;
     border-radius: 3rem;
     margin-bottom: 2.5rem;
     box-shadow: 0 0 2.5rem var(--shadow);
   }
 
-  main #about-us-showcase span {
+  main #featured-showcase span {
     font-size: 8rem;
   }
 
-  main #about-us-showcase a:hover {
+  main #featured-showcase a:hover {
     transform: none;
   }
 
-  main #about-us-showcase a:hover img {
+  main #featured-showcase a:hover img {
     box-shadow: 0 0 2.5rem var(--shadow);
   }
 
-  main #about-us-showcase a:hover span {
+  main #featured-showcase a:hover span {
     transform: none;
   }
 

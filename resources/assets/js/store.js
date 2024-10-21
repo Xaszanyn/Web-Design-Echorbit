@@ -74,7 +74,7 @@ function renderFeatured() {
     .forEach((product, index) => {
       featured.children[
         index
-      ].children[0].src = `https://echorbitaudio.com/resources/images/covers/${product.image}`;
+      ].children[0].src = `/resources/images/covers/${product.image}`;
       featured.children[index].setAttribute("onclick", `view(${product.id})`);
     });
 }
@@ -164,7 +164,7 @@ function selectCategory(event) {
 function view(id) {
   let product = products.find((item) => id == item.id);
 
-  productImage.src = `https://echorbitaudio.com/resources/images/covers/${product.image}`;
+  productImage.src = `/resources/images/covers/${product.image}`;
   productContent.innerHTML = `<h3>${product.name}<span>&euro;${
     product.price
   }</span><span>${product.type}</span>${

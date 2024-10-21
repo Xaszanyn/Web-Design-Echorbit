@@ -154,7 +154,7 @@ main p {
 
 /* ================================================== Main About Us ================================================== */
 
-main #about-us-showcase {
+main #featured-showcase {
   padding: 5rem 12.5rem 5rem;
   display: grid;
   grid-template-columns: auto auto;
@@ -162,14 +162,14 @@ main #about-us-showcase {
   row-gap: 3rem;
 }
 
-main #about-us-showcase a {
+main #featured-showcase a {
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: transform var(--fast);
 }
 
-main #about-us-showcase img {
+main #featured-showcase img {
   width: 100%;
   height: 20rem;
   border-radius: 1rem;
@@ -178,21 +178,21 @@ main #about-us-showcase img {
   box-shadow: 0 0 0.5rem var(--shadow);
 }
 
-main #about-us-showcase span {
+main #featured-showcase span {
   font-size: 1.5rem;
   font-weight: 700;
   transition: transform var(--fast);
 }
 
-main #about-us-showcase a:hover {
+main #featured-showcase a:hover {
   transform: translateY(-1rem);
 }
 
-main #about-us-showcase a:hover img {
+main #featured-showcase a:hover img {
   box-shadow: 0 0 1rem var(--shadow);
 }
 
-main #about-us-showcase a:hover span {
+main #featured-showcase a:hover span {
   transform: translateY(0.5rem);
 }
 
