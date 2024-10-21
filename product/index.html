@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home | Echorbit Audio</title>
+    <title>Store | Echorbit Audio</title>
     <link rel="stylesheet" href="/resources/assets/css/main.css?v=0.61" />
     <link
       rel="stylesheet"
@@ -43,50 +43,50 @@
         <li id="user-button" class="hidden">
           <a href="#">User <i class="fa-solid fa-user"></i></a>
         </li>
+        <li id="cart-button">
+          <a href="#"
+            >Cart <i class="fa-solid fa-cart-shopping"></i> <span>0</span></a
+          >
+        </li>
         <a id="close" href="#"><i class="fa-solid fa-xmark"></i></a>
         <div id="close-screen"></div>
       </ul>
       <div id="shadow"></div>
     </nav>
-    <header>
-      <video autoplay loop muted>
-        <source src="/resources/videos/header.mp4" type="video/mp4" />
-      </video>
-      <div class="cover">
-        <h2>Stunning sounds and music for your videos and games.</h2>
+    <main id="product">
+      <section id="product-section" class="active">
+        <img id="product-image" src="/resources/images/covers/temp/temp2.png" />
+      </section>
+      <section id="product-content">
+        <h3>
+          Distorted Things<span>€25</span><span>music</span
+          ><button onclick="favorite(2)">
+            <i class="fa-solid fa-heart"></i> Like</button
+          ><button onclick="cart(2, event)">
+            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+          </button>
+        </h3>
+        <iframe
+          width="100%"
+          height="450"
+          scrolling="no"
+          frameborder="no"
+          allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1786084149&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true"
+        ></iframe>
         <p>
-          Crafting immersive soundscapes that transform every scene into an
-          unforgettable experience <br />— where creativity meets innovation.
-        </p>
-        <a href="/store">View</a>
-      </div>
-    </header>
-    <main>
-      <section id="home">
-        <p>
-          Welcome to Echorbit Audio – your partner in creating immersive and
-          high-quality sound design solutions for the film and gaming
-          industries. We specialize in providing comprehensive audio services,
-          including sound design, music composition, and post-production, that
-          bring your creative visions to life. With a commitment to innovation
-          and excellence, we collaborate closely with our clients to deliver
-          soundscapes that captivate audiences and elevate the impact of their
-          projects.
-        </p>
-        <div id="featured-showcase"></div>
-        <p>
-          At Echorbit Audio, we believe that sound has the power to transform
-          narratives and engage audiences on a deeper level. Our team of
-          experienced sound designers, composers, and engineers are dedicated to
-          pushing the boundaries of what is possible in sound design. From
-          crafting subtle ambient atmospheres to creating dynamic, action-packed
-          sound effects, we bring a passion for excellence and a focus on
-          quality to every project we undertake.
-        </p>
-        <div id="showcase"></div>
-        <p>
-          Explore our services, browse our sound design libraries, and discover
-          how we can help you create unforgettable audio experiences.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam sunt
+          esse fugiat repellat rerum sapiente, architecto unde facere omnis.
+          Qui, nostrum fugiat. A explicabo perferendis, nesciunt dolore vel
+          harum laudantium, iure enim omnis voluptatem deleniti, optio odit
+          eius. Labore facilis eum exercitationem veniam, corporis reiciendis
+          expedita fuga? Dolor odit fugit vel? Possimus, officia optio. Incidunt
+          vero exercitationem iure adipisci placeat saepe sit recusandae harum
+          expedita quam iste, reprehenderit, aut rerum inventore quas nemo
+          laboriosam? Asperiores nisi doloribus sequi quia ipsa quasi magnam,
+          debitis nihil praesentium harum impedit ipsam repellat similique
+          voluptas adipisci distinctio ut, illo non modi fugiat eius nobis quam,
+          maiores nostrum.
         </p>
       </section>
     </main>
@@ -183,6 +183,29 @@
           >
         </p>
       </section>
+      <section id="product-section">
+        <i class="fa-solid fa-xmark close"></i>
+        <img id="product-image" />
+        <div id="product">
+          <center><i class="fa-solid fa-circle-notch fa-spin"></i></center>
+        </div>
+      </section>
+      <section id="cart-section">
+        <i class="fa-solid fa-xmark close"></i>
+        <h3>Cart</h3>
+        <div>
+          <span>Product</span>
+          <span>Price</span>
+        </div>
+        <hr />
+        <ul id="cart-products"></ul>
+        <div id="cart-checkout">
+          <p></p>
+          <button>
+            Checkout with Stripe <i class="fa-brands fa-stripe-s"></i>
+          </button>
+        </div>
+      </section>
     </section>
     <section id="loading">
       <i class="fa-solid fa-circle-notch fa-spin"></i>
@@ -191,6 +214,6 @@
     <script src="/resources/assets/js/variables.js?v=0.61"></script>
     <script src="/resources/assets/js/functions.js?v=0.61"></script>
     <script src="/resources/assets/js/events.js?v=0.61"></script>
-    <script src="/resources/assets/js/home.js?v=0.61"></script>
+    <script src="/resources/assets/js/store-product.js?v=0.61"></script>
   </body>
 </html>
