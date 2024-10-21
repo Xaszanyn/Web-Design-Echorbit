@@ -190,16 +190,16 @@
 
   /* ================================================== Main Our Services ================================================== */
 
-  main #our-services-showcase {
+  main #showcase {
     padding-top: 15rem;
     height: 100rem;
   }
 
-  main #our-services-showcase a:not(:last-of-type) {
+  main #showcase a:not(:last-of-type) {
     margin-right: 10rem;
   }
 
-  main #our-services-showcase a:hover {
+  main #showcase a:hover {
     transform: none;
   }
 

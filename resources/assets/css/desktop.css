@@ -198,7 +198,7 @@ main #featured-showcase a:hover span {
 
 /* ================================================== Main Our Services ================================================== */
 
-main #our-services-showcase {
+main #showcase {
   padding-bottom: 10rem;
   width: max-content;
   display: flex;
@@ -206,20 +206,20 @@ main #our-services-showcase {
   animation: slide 40s linear infinite;
 }
 
-main #our-services-showcase a {
+main #showcase a {
   height: 100%;
   transition: transform var(--fast);
 }
 
-main #our-services-showcase a:not(:last-of-type) {
+main #showcase a:not(:last-of-type) {
   margin-right: 3rem;
 }
 
-main #our-services-showcase a:hover {
+main #showcase a:hover {
   transform: scale(110%);
 }
 
-main #our-services-showcase img {
+main #showcase img {
   height: 100%;
   width: auto;
 }
