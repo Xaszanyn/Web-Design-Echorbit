@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Echorbit Audio</title>
-    <link rel="stylesheet" href="./resources/assets/css/main.css?v=0.61" />
+    <title>Home | Echorbit Audio</title>
+    <link rel="stylesheet" href="/resources/assets/css/main.css?v=0.61" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -15,28 +15,42 @@
   </head>
   <body>
     <nav class="initial">
-      <a id="menu" href="#"><img src="./resources/images/Menu.png" /></a>
+      <a id="menu" href="#"><i class="fa-solid fa-bars"></i></a>
       <a href="/"
-        ><img id="logo" src="./resources/images/logo.png" alt="Logo"
+        ><img id="logo" src="/resources/images/logo.png" alt="Logo"
       /></a>
       <a href="/"><h1>Echorbit Audio</h1></a>
       <ul class="closed">
-        <li><a href="#">Home</a></li>
-        <li class="small"><a href="#about-us">About Us</a></li>
-        <li class="small"><a href="#our-services">Services</a></li>
-        <li><a href="store">Store</a></li>
-        <li><a href="#our-services">Services</a></li>
-        <li><a href="#">Contact</a></li>
-        <li id="register-button"><a href="#">Sign up</a></li>
-        <li id="login-button"><a href="#">Sign in</a></li>
-        <a id="close" href="#"><img src="./resources/images/Close.png" /></a>
+        <li>
+          <a href="/">Home <i class="fa-solid fa-house"></i></a>
+        </li>
+        <li>
+          <a href="/store">Store <i class="fa-solid fa-music"></i></a>
+        </li>
+        <li>
+          <a href="/about-us"
+            >About Us <i class="fa-solid fa-compact-disc"></i
+          ></a>
+        </li>
+        <!-- <li><a href="/services">Services <i class="fa-solid fa-headphones"></i></a></li> -->
+        <!-- <li><a href="#">Contact <i class="fa-solid fa-address-book"></i></a></li> -->
+        <li id="register-button">
+          <a href="#">Sign up <i class="fa-solid fa-right-to-bracket"></i></a>
+        </li>
+        <li id="login-button">
+          <a href="#">Sign in <i class="fa-solid fa-user"></i></a>
+        </li>
+        <li id="user-button" class="hidden">
+          <a href="#">User <i class="fa-solid fa-user"></i></a>
+        </li>
+        <a id="close" href="#"><i class="fa-solid fa-xmark"></i></a>
         <div id="close-screen"></div>
       </ul>
       <div id="shadow"></div>
     </nav>
     <header>
       <video autoplay loop muted>
-        <source src="./resources/videos/Header.mp4" type="video/mp4" />
+        <source src="/resources/videos/header.mp4" type="video/mp4" />
       </video>
       <div class="cover">
         <h2>Stunning sounds and music for your videos and games.</h2>
@@ -44,7 +58,7 @@
           Crafting immersive soundscapes that transform every scene into an
           unforgettable experience <br />— where creativity meets innovation.
         </p>
-        <a href="store">View</a>
+        <a href="/store">View</a>
       </div>
     </header>
     <main>
@@ -136,7 +150,7 @@
     <footer>
       <div class="flex">
         <span
-          ><img src="./resources/images/logo.png" alt="Logo" />Echorbit
+          ><img src="/resources/images/logo.png" alt="Logo" />Echorbit
           Audio</span
         >
         <ul>
@@ -233,8 +247,8 @@
       <i class="fa-solid fa-circle-notch fa-spin"></i>
     </section>
     <section id="notification"></section>
-    <script src="./resources/assets/js/variables.js?v=0.61"></script>
-    <script src="./resources/assets/js/functions.js?v=0.61"></script>
-    <script src="./resources/assets/js/events.js?v=0.61"></script>
+    <script src="/resources/assets/js/variables.js?v=0.61"></script>
+    <script src="/resources/assets/js/functions.js?v=0.61"></script>
+    <script src="/resources/assets/js/events.js?v=0.61"></script>
   </body>
 </html>

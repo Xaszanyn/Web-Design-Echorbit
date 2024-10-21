@@ -28,10 +28,11 @@
   }
 
   nav #menu {
-    height: 6rem;
+    font-size: 6rem;
+    padding: 2.5rem 5rem;
     display: block;
     position: absolute;
-    left: 5rem;
+    left: 0;
   }
 
   nav #logo {
@@ -258,7 +259,6 @@
   #store section:first-of-type #search input {
     font-size: 5rem;
     padding: 1rem 1rem 1rem 9rem;
-
     border: 1rem solid transparent;
   }
 
@@ -266,10 +266,10 @@
     border: 1rem solid var(--gray);
   }
 
-  #store section:first-of-type #search img {
+  #store section:first-of-type #search i {
+    font-size: 5rem;
     left: 2.5rem;
     transform: translateY(-50%);
-    height: 6rem;
   }
 
   #store section:first-of-type hr {

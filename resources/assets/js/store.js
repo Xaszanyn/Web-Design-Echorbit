@@ -110,11 +110,9 @@ function renderProducts() {
   result.forEach((product) => {
     content += `<button onclick="view(${
       product.id
-    })"><img src="https://echorbitaudio.com/resources/images/covers/small/${
-      product.image
-    }" /><h6>${product.name} | <span>&euro;${
-      product.price
-    }</span></h6><a href="#" ${
+    })"><img src="/resources/images/covers/small/${product.image}" /><h6>${
+      product.name
+    } | <span>&euro;${product.price}</span></h6><a href="#" ${
       user.cart.includes(product.id)
         ? `class="disabled" onclick="uncart(${product.id}, event)">Added`
         : `onclick="cart(${product.id}, event)">Add`
@@ -134,7 +132,7 @@ function renderCategories() {
 
   allCategories.forEach((category) => {
     if (type == category.type)
-      content += `<button data-id="${category.id}" onclick="selectCategory(event)"><img src="https://www.echorbitaudio.com/resources/images/icons/${category.image}" /> ${category.name}</button>`;
+      content += `<button data-id="${category.id}" onclick="selectCategory(event)"><img src="/resources/images/icons/${category.image}" /> ${category.name}</button>`;
   });
 
   category.innerHTML = content;
@@ -297,7 +295,7 @@ function viewCart() {
       price += product.price;
       return (
         content +
-        `<li><i onclick="uncart(${product.id}, event)" class="fa-solid fa-xmark close"></i><div><img src="https://echorbitaudio.com/resources/images/covers/small/${product.image}" /><div><span>${product.name}</span><span>Type: <b>${product.type}</b></span></div></div><span>&euro;${product.price}</span></li>`
+        `<li><i onclick="uncart(${product.id}, event)" class="fa-solid fa-xmark close"></i><div><img src="/resources/images/covers/small/${product.image}" /><div><span>${product.name}</span><span>Type: <b>${product.type}</b></span></div></div><span>&euro;${product.price}</span></li>`
       );
     } else return content;
   }, "");
