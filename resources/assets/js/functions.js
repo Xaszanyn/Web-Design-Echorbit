@@ -239,7 +239,7 @@ async function loginUser() {
   }
 }
 
-async function loginUserSession() {
+async function loginUserSession(handle = true) {
   let session = localStorage.getItem("session");
 
   if (!session) {
@@ -256,11 +256,13 @@ async function loginUserSession() {
 
   switch (response.status) {
     case "success":
-      notify("Successfully logged in.", 1000);
       registerButton.classList.add("hidden");
       loginButton.classList.add("hidden");
-      userButton.classList.remove("hidden");
-      handleUserData(response);
+      if (handle) {
+        notify("Successfully logged in.", 1000);
+        userButton.classList.remove("hidden");
+        handleUserData(response);
+      }
       break;
   }
 }

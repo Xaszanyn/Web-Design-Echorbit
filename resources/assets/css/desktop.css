@@ -1066,3 +1066,10 @@ footer p {
 #product #product-content p {
   margin-top: 2.5rem;
 }
+
+/* ================================================== About Us, Our Services ================================================== */
+
+#about-us,
+#our-services {
+  padding: 9rem 15rem 0;
+}
