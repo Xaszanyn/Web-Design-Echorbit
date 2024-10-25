@@ -71,9 +71,10 @@ function openPopUp(section) {
 function closePopUp() {
   popUp.classList.remove("active");
 
-  let section = document.querySelector("#pop-up .active");
+  let sections = document.querySelectorAll("#pop-up .active");
 
-  if (section) section.classList.remove("active");
+  if (sections.length)
+    sections.forEach((section) => section.classList.remove("active"));
 }
 
 /* =========={ Register }========================================================================================== */
