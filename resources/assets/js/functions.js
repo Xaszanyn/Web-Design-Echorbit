@@ -206,9 +206,9 @@ async function registerThirdPhase(event) {
         location.href.includes("store") ||
         location.href.includes("product")
       ) {
-        loginUserSession(true);
+        loginUserSession();
         break;
-      } else loginUserSession();
+      } else loginUserSession(false);
       notify("Signed up successfully.");
       closePopUp();
       break;
