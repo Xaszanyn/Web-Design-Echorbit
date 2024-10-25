@@ -404,6 +404,22 @@ function renderProduct() {
   // } to Cart</button></h3>${product.soundcloud}<p>${product.content}</p>`;
 }
 
-function checkout() {
-  //
+async function checkout() {
+  cartLoading.classList.add("loading");
+
+  let response = await post("user.php", {
+    action: "checkout",
+    session: localStorage.getItem("session"),
+  });
+
+  switch (response.status) {
+    case "success":
+      location.href = response.stripe;
+      break;
+    case "error":
+      notify();
+      break;
+  }
+
+  cartLoading.classList.remove("loading");
 }
