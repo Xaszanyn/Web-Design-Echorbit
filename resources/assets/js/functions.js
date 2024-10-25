@@ -201,11 +201,15 @@ async function registerThirdPhase(event) {
       localStorage.setItem("registered", true);
       register.phase.classList.remove("third");
       register.phase.classList.add("first");
-      notify("Signed up successfully.");
       localStorage.setItem("session", response.session);
-      if (location.href.includes("store") || location.href.includes("product"))
+      if (
+        location.href.includes("store") ||
+        location.href.includes("product")
+      ) {
         loginUserSession(true);
-      else loginUserSession();
+        break;
+      } else loginUserSession();
+      notify("Signed up successfully.");
       closePopUp();
       break;
   }
