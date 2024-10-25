@@ -31,6 +31,9 @@ const loginFromCartSection = document.querySelector(
 const registerFromCartSection = document.querySelector(
   "#cart-section #cart-control button:nth-of-type(2)"
 );
+const cartCheckoutButton = document.querySelector(
+  "#cart-section #cart-checkout button"
+);
 
 var user = {
   cart: [],
@@ -97,6 +100,7 @@ var scrollPosition = 0;
     closePopUp();
     setTimeout(() => openPopUp(registerSection), 300);
   });
+  assign(cartCheckoutButton, checkout);
 })();
 
 function selectType(selectedType) {
@@ -391,4 +395,8 @@ function renderProduct() {
   //     ? `class="disabled" onclick="uncart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Added`
   //     : `onclick="cart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Add`
   // } to Cart</button></h3>${product.soundcloud}<p>${product.content}</p>`;
+}
+
+function checkout() {
+  //
 }
