@@ -202,10 +202,11 @@ async function registerThirdPhase(event) {
       register.phase.classList.remove("third");
       register.phase.classList.add("first");
       notify("Signed up successfully.");
-      closePopUp();
+      localStorage.setItem("session", response.session);
       if (location.href.includes("store") || location.href.includes("product"))
-        loginUserSession(response.session, true);
-      else loginUserSession(response.session);
+        loginUserSession(true);
+      else loginUserSession();
+      closePopUp();
       break;
   }
 }
