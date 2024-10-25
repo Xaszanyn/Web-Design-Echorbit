@@ -881,6 +881,7 @@ footer p {
 #pop-up #cart-section {
   width: 50rem;
   max-height: calc(100vh - 5rem);
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
@@ -959,7 +960,8 @@ footer p {
   background-color: var(--blue);
 }
 
-#pop-up #cart-section #cart-control {
+#pop-up #cart-section #cart-control,
+#pop-up #cart-section #cart-loading {
   position: absolute;
   top: 0;
   left: 0;
@@ -986,6 +988,18 @@ footer p {
 
 #pop-up #cart-section #cart-control button:first-of-type {
   margin-right: 1rem;
+}
+
+#pop-up #cart-section #cart-loading {
+  opacity: 0;
+  left: calc(100vw + 10rem) !important;
+  transition: opacity var(--instant), left var(--instant-delay);
+}
+
+#pop-up #cart-section #cart-loading.loading {
+  opacity: 1;
+  left: 0 !important;
+  transition: opacity var(--instant);
 }
 
 /* ================================================== Product ================================================== */

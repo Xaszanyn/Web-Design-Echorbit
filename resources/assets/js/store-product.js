@@ -34,6 +34,7 @@ const registerFromCartSection = document.querySelector(
 const cartCheckoutButton = document.querySelector(
   "#cart-section #cart-checkout button"
 );
+const cartLoading = document.querySelector("#cart-section #cart-loading");
 
 var user = {
   cart: [],
@@ -315,6 +316,10 @@ async function uncart(id, event) {
   let index = user.cart.indexOf(id);
   if (index >= 0) user.cart.splice(index, 1);
 
+  let cart = event.target.parentElement.parentElement.id == "cart-products";
+
+  if (cart) cartLoading.classList.add("loading");
+
   if (session)
     await post("user.php", {
       action: "uncart",
@@ -324,8 +329,10 @@ async function uncart(id, event) {
   else localStorage.setItem("guest", JSON.stringify(user));
 
   if (event.target.parentElement.parentElement.id == "product") view(id);
-  else if (event.target.parentElement.parentElement.id == "cart-products")
+  else if (cart) {
+    cartLoading.classList.remove("loading");
     viewCart();
+  }
 
   renderCartButton();
   renderProducts();
