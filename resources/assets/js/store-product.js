@@ -22,8 +22,15 @@ const typeSFX = document.querySelector("#type .sfx");
 
 const cartSection = document.querySelector("#cart-section");
 const cartButton = document.querySelector("#cart-button");
-const cartProducts = document.querySelector("#cart-products");
-const cartCheckout = document.querySelector("#cart-checkout");
+const cartProducts = document.querySelector("#cart-section #cart-products");
+const cartCheckout = document.querySelector("#cart-section #cart-checkout");
+const cartControl = document.querySelector("#cart-section #cart-control");
+const loginFromCartSection = document.querySelector(
+  "#cart-section #cart-control button:nth-of-type(1)"
+);
+const registerFromCartSection = document.querySelector(
+  "#cart-section #cart-control button:nth-of-type(2)"
+);
 
 var user = {
   cart: [],
@@ -81,6 +88,15 @@ var scrollPosition = 0;
   renderCartButton();
 
   assign(cartButton, viewCart);
+
+  assign(loginFromCartSection, () => {
+    closePopUp();
+    setTimeout(() => openPopUp(loginSection), 300);
+  });
+  assign(registerFromCartSection, () => {
+    closePopUp();
+    setTimeout(() => openPopUp(registerSection), 300);
+  });
 })();
 
 function selectType(selectedType) {
@@ -325,6 +341,10 @@ function renderCartButton() {
 }
 
 function viewCart() {
+  localStorage.getItem("session")
+    ? cartControl.classList.add("hidden")
+    : cartControl.classList.remove("hidden");
+
   let price = 0;
 
   cartProducts.innerHTML = products.reduce((content, product) => {

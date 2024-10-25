@@ -172,6 +172,7 @@ async function registerThirdPhase(event) {
     phase: "create",
     code: register.hidden.value,
     password: register.password.value,
+    guest: localStorage.getItem("guest") ? localStorage.getItem("guest") : "-",
   });
 
   loading.classList.remove("loading");
