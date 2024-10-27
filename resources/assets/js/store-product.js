@@ -419,6 +419,8 @@ async function checkout() {
     case "error":
       notify();
       break;
+    case "intersection":
+      notify("You already own at least one product in your cart.");
   }
 
   cartLoading.classList.remove("loading");
