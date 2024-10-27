@@ -37,6 +37,7 @@ const cartCheckoutButton = document.querySelector(
 const cartLoading = document.querySelector("#cart-section #cart-loading");
 
 var user = {
+  inventory: [],
   cart: [],
   favorites: [],
 };
@@ -166,19 +167,20 @@ function renderProducts() {
   }
 
   result.forEach((product) => {
-    content += `<button onclick="view(${
-      product.id
-    })"><img src="/resources/images/covers/small/${product.image}" /><h6>${
-      product.name
-    } | <span>&euro;${product.price}</span></h6><a href="#" ${
-      user.cart.includes(product.id)
-        ? `class="disabled" onclick="uncart(${product.id}, event)">Added`
-        : `onclick="cart(${product.id}, event)">Add`
-    } to Cart</a>${
-      user.favorites.includes(product.id)
-        ? `<i class="fa-solid fa-heart"></i>`
-        : `<i class="fa-solid fa-heart hidden"></i>`
-    }</button>`;
+    if (!user.inventory.includes(product.id))
+      content += `<button onclick="view(${
+        product.id
+      })"><img src="/resources/images/covers/small/${product.image}" /><h6>${
+        product.name
+      } | <span>&euro;${product.price}</span></h6><a href="#" ${
+        user.cart.includes(product.id)
+          ? `class="disabled" onclick="uncart(${product.id}, event)">Added`
+          : `onclick="cart(${product.id}, event)">Add`
+      } to Cart</a>${
+        user.favorites.includes(product.id)
+          ? `<i class="fa-solid fa-heart"></i>`
+          : `<i class="fa-solid fa-heart hidden"></i>`
+      }</button>`;
   });
 
   list.innerHTML = content;
@@ -239,6 +241,7 @@ function view(id) {
 }
 
 function handleUserData(data) {
+  user.inventory = JSON.parse(data.inventory);
   user.cart = JSON.parse(data.cart);
   user.favorites = JSON.parse(data.favorites);
 }
