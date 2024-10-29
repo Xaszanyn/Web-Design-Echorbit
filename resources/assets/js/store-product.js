@@ -36,16 +36,24 @@ const cartCheckoutButton = document.querySelector(
 );
 const cartLoading = document.querySelector("#cart-section #cart-loading");
 
+var scrollPosition = 0;
+
 var user = {
   inventory: [],
   cart: [],
   favorites: [],
 };
 
-var scrollPosition = 0;
+const userSection = document.querySelector("#user-section");
+const userName = document.querySelector("#user-section #user-name");
+const userEmail = document.querySelector("#user-section #user-email");
+const userPhone = document.querySelector("#user-section #user-phone");
+const userCountry = document.querySelector("#user-section #user-country");
+const userSaveButton = document.querySelector("#user-section #user-save");
+const userLoading = document.querySelector("#user-section #user-loading");
 
 (async function () {
-  await loginUserSession();
+  await loginUserSession(setUser);
 
   products = await get("get.php?target=products");
 
@@ -103,6 +111,9 @@ var scrollPosition = 0;
     setTimeout(() => openPopUp(registerSection), 300);
   });
   assign(cartCheckoutButton, checkout);
+
+  assign(userButton, () => openPopUp(userSection));
+  assign(userSaveButton, userInputSave);
 })();
 
 function selectType(selectedType) {
@@ -240,10 +251,15 @@ function view(id) {
   openPopUp(productSection);
 }
 
-function handleUserData(data) {
-  user.inventory = JSON.parse(data.inventory);
-  user.cart = JSON.parse(data.cart);
-  user.favorites = JSON.parse(data.favorites);
+function setUser(response) {
+  user.inventory = JSON.parse(response.inventory);
+  user.cart = JSON.parse(response.cart);
+  user.favorites = JSON.parse(response.favorites);
+
+  userName.value = response.name;
+  userEmail.value = response.email;
+  userPhone.value = response.phone;
+  userCountry.value = response.country;
 }
 
 async function favorite(id) {
@@ -427,4 +443,38 @@ async function checkout() {
   }
 
   cartLoading.classList.remove("loading");
+}
+
+function userInput() {
+  userSaveButton.classList.remove("disabled");
+}
+
+async function userInputSave() {
+  if (userSaveButton.classList.contains("disabled")) return;
+
+  if (!userName.value) userName.value = "—";
+  if (!userPhone.value) userPhone.value = "—";
+  if (!userCountry.value) userCountry.value = "—";
+
+  userLoading.classList.add("loading");
+
+  let response = await post("user.php", {
+    action: "information",
+    session: localStorage.getItem("session"),
+    name: userName.value,
+    phone: userPhone.value,
+    country: userCountry.value,
+  });
+
+  userLoading.classList.remove("loading");
+
+  switch (response.status) {
+    case "success":
+      notify("Changes saved successfully.");
+      userSaveButton.classList.add("disabled");
+      break;
+    case "error":
+      notify();
+      break;
+  }
 }

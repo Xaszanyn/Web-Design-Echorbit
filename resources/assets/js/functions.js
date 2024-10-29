@@ -61,6 +61,22 @@ async function get(endpoint) {
   }
 }
 
+function redirect(redirect, action, alternative) {
+  if (typeof redirect == "string")
+    if (location.href.includes(redirect)) action();
+    else alternative();
+  else if (
+    redirect.reduce((redirected, string) => {
+      if (location.href.includes(string)) {
+        action();
+        return false;
+      }
+      return redirected;
+    }, true)
+  )
+    alternative();
+}
+
 /* =========={ UI }========================================================================================== */
 
 function openPopUp(section) {
@@ -199,23 +215,24 @@ async function registerThirdPhase(event) {
       break;
     case "success":
       localStorage.setItem("registered", true);
+      localStorage.setItem("session", response.session);
+
+      redirect(
+        ["store", "product"],
+        () => loginUserSession(setUser),
+        loginUserSession
+      );
+
+      notify("Signed up successfully.");
+
       register.phase.classList.remove("third");
       register.phase.classList.add("first");
-      localStorage.setItem("session", response.session);
-      if (
-        location.href.includes("store") ||
-        location.href.includes("product")
-      ) {
-        loginUserSession();
-        break;
-      } else loginUserSession(false);
-      notify("Signed up successfully.");
       closePopUp();
       break;
   }
 }
 
-/* =========={ Login }======================================== */
+/* =========={ Login }========================================================================================== */
 
 async function loginUser() {
   if (!login.email.value) {
@@ -249,7 +266,7 @@ async function loginUser() {
   }
 }
 
-async function loginUserSession(handle = true) {
+async function loginUserSession(user) {
   let session = localStorage.getItem("session");
 
   if (!session) {
@@ -268,11 +285,8 @@ async function loginUserSession(handle = true) {
     case "success":
       registerButton.classList.add("hidden");
       loginButton.classList.add("hidden");
-      if (handle) {
-        notify("Successfully logged in.", 1000);
-        userButton.classList.remove("hidden");
-        handleUserData(response);
-      }
+      userButton.classList.remove("hidden");
+      if (user) user(response);
       break;
   }
 }

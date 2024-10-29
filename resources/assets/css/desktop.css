@@ -632,12 +632,20 @@ footer p {
   margin-bottom: 1rem;
 }
 
-.input input {
-  width: 22.5rem;
+.input input,
+.input select {
+  width: 25rem;
   border: 0.2rem solid var(--blue);
   border-radius: 10rem;
-  padding: 0.25rem 0.5rem 0.25rem 3rem;
   color: var(--blue);
+}
+
+.input input {
+  padding: 0.25rem 0.5rem 0.25rem 3rem;
+}
+
+.input select {
+  padding: 0.25rem 0.5rem 0.25rem 2.5rem;
 }
 
 .input i {
@@ -846,7 +854,7 @@ footer p {
   margin-top: 2.5rem;
 }
 
-/* ================================================== Cart ================================================== */
+/* ================================================== Cart Pop-Up ================================================== */
 
 #cart-button {
   transition: background-color var(--fast), color var(--fast),
@@ -997,6 +1005,77 @@ footer p {
 }
 
 #pop-up #cart-section #cart-loading.loading {
+  opacity: 1;
+  left: 0 !important;
+  transition: opacity var(--instant);
+}
+
+/* ================================================== User Pop-Up ================================================== */
+
+#pop-up #user-section {
+  width: calc(100vw - 50rem);
+  max-height: calc(100vh - 5rem);
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+#pop-up #user-section h3 {
+  margin-bottom: 5rem;
+}
+
+#pop-up #user-section #user-information {
+  display: grid;
+  grid-template-columns: 2fr 12.5rem 3fr;
+  row-gap: 1rem;
+}
+
+#pop-up #user-section #user-image {
+  grid-row: span 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10rem;
+}
+
+#pop-up #user-section #user-information span {
+  font-weight: 500;
+}
+
+#pop-up #user-section #user-save {
+  font-weight: 500;
+  background-color: var(--green);
+  transition: background-color var(--fast);
+  margin: 1rem 0 0;
+}
+
+#pop-up #user-section #user-save.disabled {
+  background-color: var(--gray);
+  cursor: unset;
+}
+
+#pop-up #user-section hr {
+  width: 100%;
+}
+
+#pop-up #user-section #user-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(0.2rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  left: calc(100vw + 10rem) !important;
+  transition: opacity var(--instant), left var(--instant-delay);
+}
+
+#pop-up #user-section #user-loading.loading {
   opacity: 1;
   left: 0 !important;
   transition: opacity var(--instant);

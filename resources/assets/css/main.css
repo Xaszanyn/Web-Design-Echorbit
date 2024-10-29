@@ -38,7 +38,8 @@ ul {
 }
 
 button,
-input {
+input,
+select {
   background-color: unset;
   color: inherit;
   outline: none;
