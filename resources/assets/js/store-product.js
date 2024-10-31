@@ -51,11 +51,16 @@ const userPhone = document.querySelector("#user-section #user-phone");
 const userCountry = document.querySelector("#user-section #user-country");
 const userSaveButton = document.querySelector("#user-section #user-save");
 const userLoading = document.querySelector("#user-section #user-loading");
+const userInventoryProducts = document.querySelector(
+  "#user-section #inventory #inventory-products"
+);
 
 (async function () {
   await loginUserSession(setUser);
 
   products = await get("get.php?target=products");
+
+  setUserInventory();
 
   if (location.href.includes("store")) {
     allCategories = await get("get.php?target=categories");
@@ -69,6 +74,21 @@ const userLoading = document.querySelector("#user-section #user-loading");
         search = event.target.value.toLowerCase();
         renderProducts();
       });
+
+    redirect("user", () => {
+      if (localStorage.getItem("session")) openPopUp(userSection);
+    });
+
+    redirect("error", () =>
+      notify("An error occurred during checkout. Please try again.")
+    );
+
+    redirect("success", () => {
+      notify(
+        "Payment received successfully. The receipt has been sent to your e-mail."
+      );
+      openPopUp(userSection);
+    });
   } else {
     renderProduct();
 
@@ -137,8 +157,6 @@ function selectType(selectedType) {
 }
 
 function renderFeatured() {
-  let featuredProducts = products.filter((product) => product.feature);
-
   products
     .filter((product) => product.feature)
     .forEach((product, index) => {
@@ -151,9 +169,8 @@ function renderFeatured() {
 
 function renderProducts() {
   list.innerHTML = `<center><i class="fa-solid fa-circle-notch fa-spin"></i></center>`;
-  let content = "";
 
-  let result = Array.from(products);
+  let result = [...products];
 
   if (type) result = result.filter((product) => product.type == type);
   if (search)
@@ -177,24 +194,28 @@ function renderProducts() {
       );
   }
 
-  result.forEach((product) => {
-    if (!user.inventory.includes(product.id))
-      content += `<button onclick="view(${
-        product.id
-      })"><img src="/resources/images/covers/small/${product.image}" /><h6>${
-        product.name
-      } | <span>&euro;${product.price}</span></h6><a href="#" ${
-        user.cart.includes(product.id)
-          ? `class="disabled" onclick="uncart(${product.id}, event)">Added`
-          : `onclick="cart(${product.id}, event)">Add`
-      } to Cart</a>${
-        user.favorites.includes(product.id)
-          ? `<i class="fa-solid fa-heart"></i>`
-          : `<i class="fa-solid fa-heart hidden"></i>`
-      }</button>`;
-  });
-
-  list.innerHTML = content;
+  list.innerHTML = result.reduce((content, product) => {
+    return (
+      content +
+      (user.inventory.includes(product.id)
+        ? ""
+        : `<button onclick="view(${
+            product.id
+          })"><img src="/resources/images/covers/small/${
+            product.image
+          }" /><h6>${product.name} | <span>&euro;${
+            product.price
+          }</span></h6><a href="#" ${
+            user.cart.includes(product.id)
+              ? `class="disabled" onclick="uncart(${product.id}, event)">Added`
+              : `onclick="cart(${product.id}, event)">Add`
+          } to Cart</a>${
+            user.favorites.includes(product.id)
+              ? `<i class="fa-solid fa-heart"></i>`
+              : `<i class="fa-solid fa-heart hidden"></i>`
+          }</button>`)
+    );
+  }, "");
 }
 
 function renderCategories() {
@@ -472,6 +493,43 @@ async function userInputSave() {
     case "success":
       notify("Changes saved successfully.");
       userSaveButton.classList.add("disabled");
+      break;
+    case "error":
+      notify();
+      break;
+  }
+}
+
+function setUserInventory() {
+  userInventoryProducts.innerHTML = products.reduce((content, product) => {
+    return (
+      content +
+      (user.inventory.includes(product.id)
+        ? `<li><div><img src="/resources/images/covers/small/${product.image}" /><div><span>${product.name}</span><span>Type: <b>${product.type}</b></span></div></div><button class="button" onclick="download(${product.id})"><i class="fa-solid fa-cloud-arrow-down"></i> Download</button></li>`
+        : "")
+    );
+  }, "");
+}
+
+async function download(id) {
+  let session = localStorage.getItem("session");
+
+  if (!session) return;
+
+  userLoading.classList.add("loading");
+
+  let response = await post("user.php", {
+    action: "download",
+    session,
+    id,
+  });
+
+  userLoading.classList.remove("loading");
+
+  switch (response.status) {
+    case "success":
+      notify("Downloading.");
+      window.open(response.url, "_blank");
       break;
     case "error":
       notify();

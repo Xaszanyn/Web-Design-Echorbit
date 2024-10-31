@@ -61,7 +61,7 @@ async function get(endpoint) {
   }
 }
 
-function redirect(redirect, action, alternative) {
+function redirect(redirect, action, alternative = () => {}) {
   if (typeof redirect == "string")
     if (location.href.includes(redirect)) action();
     else alternative();
@@ -218,16 +218,11 @@ async function registerThirdPhase(event) {
       localStorage.setItem("session", response.session);
 
       redirect(
-        ["store", "product"],
+        "store",
         () => loginUserSession(setUser),
-        loginUserSession
+        () => (location.href = "/store/?user")
       );
 
-      notify("Signed up successfully.");
-
-      register.phase.classList.remove("third");
-      register.phase.classList.add("first");
-      closePopUp();
       break;
   }
 }

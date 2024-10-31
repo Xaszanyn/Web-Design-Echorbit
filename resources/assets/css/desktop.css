@@ -854,7 +854,7 @@ footer p {
   margin-top: 2.5rem;
 }
 
-/* ================================================== Cart Pop-Up ================================================== */
+/* ================================================== Cart Pop-Up & Inventory ================================================== */
 
 #cart-button {
   transition: background-color var(--fast), color var(--fast),
@@ -894,51 +894,63 @@ footer p {
 }
 
 #pop-up #cart-section > div:first-of-type,
-#pop-up #cart-section ul li {
+#pop-up #cart-section ul li,
+#pop-up #user-section #inventory > div:first-of-type,
+#pop-up #user-section #inventory ul li {
   display: grid;
   grid-template-columns: 2fr 1fr;
   font-size: 1.2rem;
+  align-items: center;
 }
 
-#pop-up #cart-section > div span {
+#pop-up #cart-section > div span,
+#pop-up #user-section #inventory > div span {
   text-transform: uppercase;
   font-weight: 500;
 }
 
-#pop-up #cart-section hr {
+#pop-up #cart-section hr,
+#pop-up #user-section #inventory hr {
   margin: 1rem 0 0;
 }
 
-#pop-up #cart-section ul li {
+#pop-up #cart-section ul li,
+#pop-up #user-section #inventory ul li {
   padding: 1rem 0;
   border-bottom: 0.2rem solid var(--gray);
   position: relative;
 }
 
-#pop-up #cart-section ul li:last-of-type {
+#pop-up #cart-section ul li:last-of-type,
+#pop-up #user-section #inventory ul li:last-of-type {
   border-color: var(--blue);
   margin-bottom: 2.5rem;
 }
 
-#pop-up #cart-section ul li > div {
+#pop-up #cart-section ul li > div,
+#pop-up #user-section #inventory ul li > div {
   display: flex;
 }
 
-#pop-up #cart-section ul li img {
+#pop-up #cart-section ul li img,
+#pop-up #user-section #inventory ul li img {
   width: 6rem;
   margin-right: 1rem;
 }
 
-#pop-up #cart-section ul li > div div {
+#pop-up #cart-section ul li > div div,
+#pop-up #user-section #inventory ul li > div div {
   display: flex;
   flex-direction: column;
 }
 
-#pop-up #cart-section ul li > div div span:not(:last-of-type) {
+#pop-up #cart-section ul li > div div span:not(:last-of-type),
+#pop-up #user-section #inventory ul li > div div span:not(:last-of-type) {
   margin-bottom: 0.75rem;
 }
 
-#pop-up #cart-section ul li > div div span b {
+#pop-up #cart-section ul li > div div span b,
+#pop-up #user-section #inventory ul li > div div span b {
   font-weight: inherit;
   text-transform: uppercase;
 }
@@ -1028,7 +1040,7 @@ footer p {
 
 #pop-up #user-section #user-information {
   display: grid;
-  grid-template-columns: 2fr 12.5rem 3fr;
+  grid-template-columns: 2fr 10rem 3fr;
   row-gap: 1rem;
 }
 
@@ -1058,6 +1070,7 @@ footer p {
 
 #pop-up #user-section hr {
   width: 100%;
+  margin: 5rem 0;
 }
 
 #pop-up #user-section #user-loading {
@@ -1079,6 +1092,14 @@ footer p {
   opacity: 1;
   left: 0 !important;
   transition: opacity var(--instant);
+}
+
+#pop-up #user-section #inventory {
+  width: 50rem;
+}
+
+#pop-up #user-section #inventory button {
+  justify-self: flex-start;
 }
 
 /* ================================================== Product ================================================== */
