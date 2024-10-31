@@ -55,6 +55,10 @@ const userInventoryProducts = document.querySelector(
   "#user-section #inventory #inventory-products"
 );
 
+const productCover = document.querySelector("#product");
+var coverPercentage = 0;
+var coverInterpolation = 0;
+
 (async function () {
   await loginUserSession(setUser);
 
@@ -89,35 +93,21 @@ const userInventoryProducts = document.querySelector(
       );
       openPopUp(userSection);
     });
+
+    assign(userSaveButton, userInputSave);
   } else {
     renderProduct();
 
-    window.addEventListener(
-      "wheel",
-      (event) => {
-        event.preventDefault();
+    setInterval(() => {
+      coverInterpolation =
+        coverInterpolation + (coverPercentage - coverInterpolation) * 0.025;
 
-        // let backgroundImageHeight = window.innerWidth * 2;
-
-        // let scrollRatio = Math.ceil(
-        //   (Math.max(0, window.scrollY - backgroundImageHeight) /
-        //     (document.body.offsetHeight - window.innerHeight - backgroundImageHeight)) *
-        //     100
-        // );
-
-        console.log(event.deltaY);
-
-        if (event.deltaY > 0) {
-          scrollPosition += 50;
-        } else {
-          scrollPosition -= 50;
-        }
-
-        window.scrollTo(0, scrollPosition);
-      },
-      { passive: false }
-    );
+      productCover.style.backgroundPosition = `50% ${coverInterpolation.toFixed(
+        2
+      )}%`;
+    }, 10);
   }
+
   renderCartButton();
 
   assign(cartButton, viewCart);
@@ -133,7 +123,6 @@ const userInventoryProducts = document.querySelector(
   assign(cartCheckoutButton, checkout);
 
   assign(userButton, () => openPopUp(userSection));
-  assign(userSaveButton, userInputSave);
 })();
 
 function selectType(selectedType) {
@@ -162,7 +151,7 @@ function renderFeatured() {
     .forEach((product, index) => {
       featured.children[
         index
-      ].children[0].src = `/resources/images/covers/${product.image}`;
+      ].children[0].src = `https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}`;
       featured.children[index].setAttribute("onclick", `view(${product.id})`);
     });
 }
@@ -201,7 +190,7 @@ function renderProducts() {
         ? ""
         : `<button onclick="view(${
             product.id
-          })"><img src="/resources/images/covers/small/${
+          })"><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/small/${
             product.image
           }" /><h6>${product.name} | <span>&euro;${
             product.price
@@ -224,7 +213,7 @@ function renderCategories() {
 
   allCategories.forEach((category) => {
     if (type == category.type)
-      content += `<button data-id="${category.id}" onclick="selectCategory(event)"><img src="/resources/images/icons/${category.image}" /> ${category.name}</button>`;
+      content += `<button data-id="${category.id}" onclick="selectCategory(event)"><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/icons/${category.image}" /> ${category.name}</button>`;
   });
 
   category.innerHTML = content;
@@ -256,7 +245,7 @@ function selectCategory(event) {
 function view(id) {
   let product = products.find((item) => id == item.id);
 
-  productImage.src = `/resources/images/covers/${product.image}`;
+  productImage.src = `https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}`;
   productContent.innerHTML = `<h3>${product.name}<span>&euro;${
     product.price
   }</span><span>${product.type}</span>${
@@ -277,10 +266,12 @@ function setUser(response) {
   user.cart = JSON.parse(response.cart);
   user.favorites = JSON.parse(response.favorites);
 
-  userName.value = response.name;
-  userEmail.value = response.email;
-  userPhone.value = response.phone;
-  userCountry.value = response.country;
+  redirect(["store", "product"], () => {
+    userName.value = response.name;
+    userEmail.value = response.email;
+    userPhone.value = response.phone;
+    userCountry.value = response.country;
+  });
 }
 
 async function favorite(id) {
@@ -296,8 +287,11 @@ async function favorite(id) {
     });
   else localStorage.setItem("guest", JSON.stringify(user));
 
-  view(id);
-  renderProducts();
+  redirect("store", () => {
+    view(id);
+    renderProducts();
+  });
+  redirect("product", renderProduct);
 
   notify("Product liked.", 1000);
 }
@@ -318,8 +312,11 @@ async function unfavorite(id) {
     localStorage.setItem("guest", JSON.stringify(user));
   }
 
-  view(id);
-  renderProducts();
+  redirect("store", () => {
+    view(id);
+    renderProducts();
+  });
+  redirect("product", renderProduct);
 
   notify("Product like removed.", 1000);
 }
@@ -341,8 +338,11 @@ async function cart(id, event) {
   else localStorage.setItem("guest", JSON.stringify(user));
 
   if (event.target.parentElement.parentElement.id == "product") view(id);
+
   renderCartButton();
-  renderProducts();
+
+  redirect("store", renderProducts);
+  redirect("product", renderProduct);
 
   notify("Product added to cart.", 1000);
 }
@@ -375,7 +375,9 @@ async function uncart(id, event) {
   }
 
   renderCartButton();
-  renderProducts();
+
+  redirect("store", renderProducts);
+  redirect("product", renderProduct);
 
   notify("Product removed from cart.", 1000);
 }
@@ -403,7 +405,7 @@ function viewCart() {
       price += product.price;
       return (
         content +
-        `<li><i onclick="uncart(${product.id}, event)" class="fa-solid fa-xmark close"></i><div><img src="/resources/images/covers/small/${product.image}" /><div><span>${product.name}</span><span>Type: <b>${product.type}</b></span></div></div><span>&euro;${product.price}</span></li>`
+        `<li><i onclick="uncart(${product.id}, event)" class="fa-solid fa-xmark close"></i><div><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/small/${product.image}" /><div><span>${product.name}</span><span>Type: <b>${product.type}</b></span></div></div><span>&euro;${product.price}</span></li>`
       );
     } else return content;
   }, "");
@@ -421,27 +423,29 @@ function viewCart() {
 }
 
 function renderProduct() {
-  let product = products.find((item) => location.href.split("?")[1] == item.id);
+  let product = products.find(
+    (item) => parseInt(location.href.split("?")[1]) == item.id
+  );
 
   if (!product) {
-    // HANDLE ERROR /* ============================================================================================= */
+    notify();
     return;
   }
 
-  console.log(product);
+  productCover.style.backgroundImage = `url("https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}")`;
 
-  // productImage.src = `/resources/images/covers/${product.image}`;
-  // productContent.innerHTML = `<h3>${product.name}<span>&euro;${
-  //   product.price
-  // }</span><span>${product.type}</span>${
-  //   user.favorites.includes(product.id)
-  //     ? `<button class="active" onclick="unfavorite(${product.id})"><i class="fa-solid fa-heart"></i> Liked</button>`
-  //     : `<button onclick="favorite(${product.id})"><i class="fa-solid fa-heart"></i> Like</button>`
-  // }<button ${
-  //   user.cart.includes(product.id)
-  //     ? `class="disabled" onclick="uncart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Added`
-  //     : `onclick="cart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Add`
-  // } to Cart</button></h3>${product.soundcloud}<p>${product.content}</p>`;
+  productImage.src = `https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}`;
+  productContent.innerHTML = `<h3>${product.name}<span>&euro;${
+    product.price
+  }</span><span>${product.type}</span>${
+    user.favorites.includes(product.id)
+      ? `<button class="active" onclick="unfavorite(${product.id})"><i class="fa-solid fa-heart"></i> Liked</button>`
+      : `<button onclick="favorite(${product.id})"><i class="fa-solid fa-heart"></i> Like</button>`
+  }<button ${
+    user.cart.includes(product.id)
+      ? `class="disabled" onclick="uncart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Added`
+      : `onclick="cart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Add`
+  } to Cart</button></h3>${product.soundcloud}<p>${product.content}</p>`;
 }
 
 async function checkout() {
@@ -505,7 +509,7 @@ function setUserInventory() {
     return (
       content +
       (user.inventory.includes(product.id)
-        ? `<li><div><img src="/resources/images/covers/small/${product.image}" /><div><span>${product.name}</span><span>Type: <b>${product.type}</b></span></div></div><button class="button" onclick="download(${product.id})"><i class="fa-solid fa-cloud-arrow-down"></i> Download</button></li>`
+        ? `<li><div><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/small/${product.image}" /><div><span>${product.name}</span><span>Type: <b>${product.type}</b></span></div></div><button class="button" onclick="download(${product.id})"><i class="fa-solid fa-cloud-arrow-down"></i> Download</button></li>`
         : "")
     );
   }, "");
@@ -535,4 +539,9 @@ async function download(id) {
       notify();
       break;
   }
+}
+
+function setCoverPercentage(cover) {
+  coverPercentage =
+    (cover.scrollTop / (cover.scrollHeight - cover.clientHeight)) * 100;
 }

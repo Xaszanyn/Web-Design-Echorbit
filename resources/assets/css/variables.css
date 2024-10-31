@@ -18,6 +18,7 @@
   --slow: 0.35s;
 
   --shadow: rgba(25, 25, 27, 25%);
+  --white-shadow: rgba(255, 255, 255, 25%);
   --navigation-shadow: linear-gradient(rgba(25, 25, 27, 15%), transparent);
 }
 

@@ -752,7 +752,7 @@ footer p {
   top: 5rem;
 }
 
-/* ================================================== Product Pop-Up ================================================== */
+/* ================================================== Product ================================================== */
 
 #pop-up #product-section {
   width: calc(100vw - 50rem);
@@ -774,28 +774,33 @@ footer p {
   padding: 2.5rem;
 }
 
-#pop-up #product-section #product-content h3 {
+#pop-up #product-section #product-content h3,
+#product #product-content h3 {
   display: flex;
   align-items: center;
 }
 
-#pop-up #product-section #product-content h3 span {
+#pop-up #product-section #product-content h3 span,
+#product #product-content h3 span {
   text-transform: uppercase;
 }
 
-#pop-up #product-section #product-content h3 span:first-of-type {
+#pop-up #product-section #product-content h3 span:first-of-type,
+#product #product-content h3 span:first-of-type {
   margin-left: 2.5rem;
   color: var(--green);
 }
 
-#pop-up #product-section #product-content h3 span:last-of-type {
+#pop-up #product-section #product-content h3 span:last-of-type,
+#product #product-content h3 span:last-of-type {
   margin-left: 2.5rem;
   font-size: 1.5rem;
   font-weight: 400;
   margin-left: auto;
 }
 
-#pop-up #product-section #product-content h3 button {
+#pop-up #product-section #product-content h3 button,
+#product #product-content h3 button {
   margin-left: 2.5rem;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -807,44 +812,52 @@ footer p {
     transform var(--fast);
 }
 
-#pop-up #product-section #product-content h3 button:first-of-type {
+#pop-up #product-section #product-content h3 button:first-of-type,
+#product #product-content h3 button:first-of-type {
   background-color: var(--white);
   color: var(--red);
 }
 
-#pop-up #product-section #product-content h3 button:first-of-type:hover {
+#pop-up #product-section #product-content h3 button:first-of-type:hover,
+#product #product-content h3 button:first-of-type:hover {
   background-color: var(--red);
   border-color: var(--red);
   color: var(--white);
 }
 
-#pop-up #product-section #product-content h3 button:first-of-type.active {
+#pop-up #product-section #product-content h3 button:first-of-type.active,
+#product #product-content h3 button:first-of-type.active {
   background-color: var(--red);
   border-color: var(--red);
   color: var(--white);
 }
 
-#pop-up #product-section #product-content h3 button:first-of-type.active:hover {
+#pop-up #product-section #product-content h3 button:first-of-type.active:hover,
+#product #product-content h3 button:first-of-type.active:hover {
   background-color: var(--white);
   color: var(--red);
 }
 
-#pop-up #product-section #product-content h3 button:first-of-type:active {
+#pop-up #product-section #product-content h3 button:first-of-type:active,
+#product #product-content h3 button:first-of-type:active {
   transform: scale(110%);
 }
 
-#pop-up #product-section #product-content h3 button:last-of-type {
+#pop-up #product-section #product-content h3 button:last-of-type,
+#product #product-content h3 button:last-of-type {
   background-color: var(--blue);
   border-color: var(--blue);
   color: var(--white);
 }
 
-#pop-up #product-section #product-content h3 button:last-of-type:hover {
+#pop-up #product-section #product-content h3 button:last-of-type:hover,
+#product #product-content h3 button:last-of-type:hover {
   background-color: var(--white);
   color: var(--blue);
 }
 
-#pop-up #product-section #product-content h3 button:last-of-type.disabled {
+#pop-up #product-section #product-content h3 button:last-of-type.disabled,
+#product #product-content h3 button:last-of-type.disabled {
   background-color: var(--blue);
   color: var(--white);
   border-color: var(--blue);
@@ -852,6 +865,42 @@ footer p {
 
 #pop-up #product-section #product-content p {
   margin-top: 2.5rem;
+}
+
+#product {
+  position: relative;
+  background-size: cover;
+  background-position: 50% 0%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 12rem 0 0;
+  height: 100vh;
+}
+
+#product #product-section {
+  padding: 0;
+  width: 100rem;
+  height: calc(100vh - 17rem);
+  overflow-y: scroll;
+  position: relative;
+  z-index: 10;
+  background-color: var(--white);
+  box-shadow: 0 0 2.5rem var(--white-shadow);
+}
+
+#product #product-section #product-image {
+  width: 100%;
+  height: 35rem;
+}
+
+#product #product-content {
+  padding: 5rem;
+}
+
+#product #product-content p {
+  text-align: justify;
+  margin-top: 5rem;
 }
 
 /* ================================================== Cart Pop-Up & Inventory ================================================== */
@@ -1100,118 +1149,6 @@ footer p {
 
 #pop-up #user-section #inventory button {
   justify-self: flex-start;
-}
-
-/* ================================================== Product ================================================== */
-
-#product {
-  padding: 9rem 0 0;
-  background-color: var(--dark-black);
-}
-
-#product #product-section {
-  padding: 0;
-}
-
-#product #product-section #product-image {
-  border: 1px solid red;
-  width: 100rem;
-  width: 100rem;
-}
-
-#product #product-content {
-  position: fixed;
-  z-index: 10;
-  top: 12.5rem;
-  right: 0rem;
-  width: 50rem;
-  height: 45rem;
-  background-color: var(--white);
-  padding: 2.5rem;
-}
-
-#product #product-content h3 {
-  display: flex;
-  align-items: center;
-}
-
-#product #product-content h3 span {
-  text-transform: uppercase;
-}
-
-#product #product-content h3 span:first-of-type {
-  margin-left: 2.5rem;
-  color: var(--green);
-}
-
-#product #product-content h3 span:last-of-type {
-  margin-left: 2.5rem;
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-left: auto;
-}
-
-#product #product-content h3 button {
-  margin-left: 2.5rem;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
-  border: 0.2rem solid;
-  transition: background-color var(--fast), color var(--fast),
-    transform var(--fast);
-}
-
-#product #product-content h3 button:first-of-type {
-  background-color: var(--white);
-  color: var(--red);
-}
-
-#product #product-content h3 button:first-of-type:hover {
-  background-color: var(--red);
-  border-color: var(--red);
-  color: var(--white);
-}
-
-#product #product-content h3 button:first-of-type.active {
-  background-color: var(--red);
-  border-color: var(--red);
-  color: var(--white);
-}
-
-#product
-  #product-section
-  #product-content
-  h3
-  button:first-of-type.active:hover {
-  background-color: var(--white);
-  color: var(--red);
-}
-
-#product #product-content h3 button:first-of-type:active {
-  transform: scale(110%);
-}
-
-#product #product-content h3 button:last-of-type {
-  background-color: var(--blue);
-  border-color: var(--blue);
-  color: var(--white);
-}
-
-#product #product-content h3 button:last-of-type:hover {
-  background-color: var(--white);
-  color: var(--blue);
-}
-
-#product #product-content h3 button:last-of-type.disabled {
-  background-color: var(--blue);
-  color: var(--white);
-  border-color: var(--blue);
-}
-
-#product #product-content p {
-  margin-top: 2.5rem;
 }
 
 /* ================================================== About Us, Our Services ================================================== */
