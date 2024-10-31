@@ -243,22 +243,26 @@ function selectCategory(event) {
 }
 
 function view(id) {
-  let product = products.find((item) => id == item.id);
+  window.open(`/product/?${id}`, "_blank");
 
-  productImage.src = `https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}`;
-  productContent.innerHTML = `<h3>${product.name}<span>&euro;${
-    product.price
-  }</span><span>${product.type}</span>${
-    user.favorites.includes(product.id)
-      ? `<button class="active" onclick="unfavorite(${product.id})"><i class="fa-solid fa-heart"></i> Liked</button>`
-      : `<button onclick="favorite(${product.id})"><i class="fa-solid fa-heart"></i> Like</button>`
-  }<button ${
-    user.cart.includes(product.id)
-      ? `class="disabled" onclick="uncart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Added`
-      : `onclick="cart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Add`
-  } to Cart</button></h3>${product.soundcloud}<p>${product.content}</p>`;
+  /* Pop-Up Removed */
 
-  openPopUp(productSection);
+  // let product = products.find((item) => id == item.id);
+
+  // productImage.src = `https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}`;
+  // productContent.innerHTML = `<h3>${product.name}<span>&euro;${
+  //   product.price
+  // }</span><span>${product.type}</span>${
+  //   user.favorites.includes(product.id)
+  //     ? `<button class="active" onclick="unfavorite(${product.id})"><i class="fa-solid fa-heart"></i> Liked</button>`
+  //     : `<button onclick="favorite(${product.id})"><i class="fa-solid fa-heart"></i> Like</button>`
+  // }<button ${
+  //   user.cart.includes(product.id)
+  //     ? `class="disabled" onclick="uncart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Added`
+  //     : `onclick="cart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Add`
+  // } to Cart</button></h3>${product.soundcloud}<p>${product.content}</p>`;
+
+  // openPopUp(productSection);
 }
 
 function setUser(response) {
