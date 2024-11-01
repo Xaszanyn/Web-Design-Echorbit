@@ -50,14 +50,15 @@
           <a>User <i class="fa-solid fa-user"></i></a>
         </li>
         <li id="cart-button">
-          <a>Cart <i class="fa-solid fa-cart-shopping"></i> <span>0</span></a>
+          <a>Cart <i class="fa-solid fa-cart-shopping"></i><span>0</span></a>
         </li>
-        <a id="close"><i class="fa-solid fa-xmark"></i></a>
+        <i id="close" class="fa-solid fa-xmark close"></i>
         <div id="close-screen"></div>
       </ul>
       <div id="shadow"></div>
     </nav>
     <main id="product">
+      <div id="product-cover"><div></div></div>
       <div class="blur"></div>
       <section id="product-section" onscroll="setCoverPercentage(this)">
         <img id="product-image" />
@@ -128,10 +129,6 @@
           <div class="input">
             <i class="fa-solid fa-key"></i>
             <input type="password" placeholder="Password" />
-          </div>
-          <div class="checkbox">
-            <button></button>
-            Remember me
           </div>
           <button class="button">
             <i class="fa-solid fa-right-to-bracket"></i> Sign-up
@@ -482,6 +479,9 @@
     <section id="loading">
       <i class="fa-solid fa-circle-notch fa-spin"></i>
     </section>
+    <button id="mobile-cart">
+      Cart <i class="fa-solid fa-cart-shopping"></i><span>0</span>
+    </button>
     <section id="notification"></section>
     <script src="/assets/scripts/variables.js?V=0.8"></script>
     <script src="/assets/scripts/functions.js?V=0.8"></script>

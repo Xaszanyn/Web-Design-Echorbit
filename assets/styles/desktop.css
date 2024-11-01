@@ -125,6 +125,11 @@ header a {
 
 /* ================================================== Main ================================================== */
 
+main#about-us,
+main#our-services {
+  padding-top: 9rem;
+}
+
 main section {
   padding: 15rem;
 }
@@ -147,6 +152,18 @@ main p {
   font-size: 1.5rem;
   line-height: 150%;
   margin-bottom: 3rem;
+}
+
+main h5 {
+  text-align: center;
+  font-weight: 300;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+main p:last-of-type {
+  margin-bottom: 0;
 }
 
 /* ================================================== Featured Showcase ================================================== */
@@ -196,7 +213,9 @@ main #featured-showcase a:hover span {
 /* ================================================== Showcase ================================================== */
 
 main #showcase {
-  padding-bottom: 10rem;
+  background-color: var(--black);
+  padding: 3rem;
+  margin: 10rem 0 5rem;
   width: max-content;
   display: flex;
   height: 30rem;
@@ -219,22 +238,6 @@ main #showcase a:hover {
 main #showcase img {
   height: 100%;
   width: auto;
-}
-
-main h5 {
-  text-align: center;
-  font-weight: 300;
-  font-size: 2rem;
-  text-transform: uppercase;
-  margin-bottom: 2.5rem;
-}
-
-main #our-services p {
-  margin-bottom: 10rem;
-}
-
-main #our-services p:last-of-type {
-  margin-bottom: 0;
 }
 
 /* ================================================== Footer ================================================== */
@@ -298,6 +301,19 @@ footer p {
 
 #store section:first-of-type {
   padding: 2.5rem 0;
+}
+
+#store section:first-of-type h5 {
+  font-size: 1.2rem;
+  color: var(--gray);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+#store section:first-of-type hr {
+  border: 0.1rem solid var(--gray);
+  margin: 1.5rem 0;
 }
 
 #store section:first-of-type #type {
@@ -383,17 +399,19 @@ footer p {
   transform: translateY(-45%);
 }
 
-#store section:first-of-type hr {
-  border: 0.1rem solid var(--gray);
-  margin: 1.5rem 0;
+#store section:first-of-type #category button:first-of-type {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 
-#store section:first-of-type h5 {
-  font-size: 1.2rem;
-  color: var(--gray);
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  font-weight: 600;
+#store section:first-of-type #category button:last-of-type {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+#store section:first-of-type #category button.selected {
+  background-color: var(--blue);
+  color: var(--white);
 }
 
 #store section:first-of-type #category span {
@@ -401,6 +419,12 @@ footer p {
   color: var(--blue);
   display: inline-block;
   margin-top: 0.5rem;
+}
+
+#store section:first-of-type #category center {
+  width: 100%;
+  margin: 2.5rem 0;
+  font-size: 1.2rem;
 }
 
 #store section:first-of-type button {
@@ -412,15 +436,7 @@ footer p {
   padding: 0.25rem 0.25rem 0.25rem 0.5rem;
   font-size: 1.2rem;
   font-weight: 500;
-  transition: background-color var(--fast);
-}
-
-#store section:first-of-type button.radio {
-  padding: 0.25rem 0;
-}
-
-#store section:first-of-type button.selected:not(.radio) {
-  background-color: var(--light-gray);
+  transition: background-color var(--fast), color var(--fast);
 }
 
 #store section:first-of-type button img,
@@ -431,23 +447,24 @@ footer p {
   object-fit: contain;
 }
 
+#store section:first-of-type button.radio {
+  padding: 0.25rem 0;
+}
+
 #store section:first-of-type button.radio div {
   width: 1.2rem;
   height: 1.2rem;
   border-radius: 10rem;
-  border: 0.2rem solid var(--gray);
+  border: 0.4rem solid var(--gray);
   transition: background-color var(--fast), border-color var(--fast);
 }
 
 #store section:first-of-type button.selected.radio div {
-  background-color: var(--blue);
   border-color: var(--black);
 }
 
-#store section:first-of-type #category center {
-  width: 100%;
-  margin: 2.5rem 0;
-  font-size: 1.2rem;
+#store #section-border {
+  display: none;
 }
 
 #store section:last-of-type {
@@ -482,11 +499,6 @@ footer p {
   box-shadow: 0 0 1rem var(--shadow);
 }
 
-#store section:last-of-type #products center {
-  font-size: 2rem;
-  margin: 5rem 0;
-}
-
 #store section:last-of-type #products {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -494,11 +506,16 @@ footer p {
   column-gap: 2.5rem;
 }
 
+#store section:last-of-type #products center {
+  grid-column: span 4;
+  font-size: 2rem;
+  margin: 5rem 0;
+}
+
 #store section:last-of-type #products button {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   position: relative;
 }
 
@@ -531,12 +548,16 @@ footer p {
   border-radius: 10rem;
   text-transform: uppercase;
   transition: background-color var(--fast), color var(--fast),
-    border-color var(--fast);
+    border-color var(--fast), transform var(--fast);
 }
 
 #store section:last-of-type #products button a:hover {
   background-color: var(--blue);
   color: var(--white);
+}
+
+#store section:last-of-type #products button a:active {
+  transform: scale(110%);
 }
 
 #store section:last-of-type #products button a.disabled {
@@ -648,8 +669,10 @@ footer p {
 .input i {
   position: absolute;
   left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
   color: var(--blue);
 }
 
@@ -751,128 +774,24 @@ footer p {
 
 /* ================================================== Product ================================================== */
 
-#pop-up #product-section {
-  width: calc(100vw - 50rem);
-  height: calc(100vh - 5rem);
-  padding: 0;
-  overflow-y: scroll;
-}
-
-#pop-up #product-section::-webkit-scrollbar {
-  display: none;
-}
-
-#pop-up #product-section #product-image {
-  width: calc(100vw - 50rem);
-  height: 30rem;
-}
-
-#pop-up #product-section #product-content {
-  padding: 2.5rem;
-}
-
-#pop-up #product-section #product-content h3,
-#product #product-content h3 {
-  display: flex;
-  align-items: center;
-}
-
-#pop-up #product-section #product-content h3 span,
-#product #product-content h3 span {
-  text-transform: uppercase;
-}
-
-#pop-up #product-section #product-content h3 span:first-of-type,
-#product #product-content h3 span:first-of-type {
-  margin-left: 2.5rem;
-  color: var(--green);
-}
-
-#pop-up #product-section #product-content h3 span:last-of-type,
-#product #product-content h3 span:last-of-type {
-  margin-left: 2.5rem;
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-left: auto;
-}
-
-#pop-up #product-section #product-content h3 button,
-#product #product-content h3 button {
-  margin-left: 2.5rem;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
-  border: 0.2rem solid;
-  transition: background-color var(--fast), color var(--fast),
-    transform var(--fast);
-}
-
-#pop-up #product-section #product-content h3 button:first-of-type,
-#product #product-content h3 button:first-of-type {
-  background-color: var(--white);
-  color: var(--red);
-}
-
-#pop-up #product-section #product-content h3 button:first-of-type:hover,
-#product #product-content h3 button:first-of-type:hover {
-  background-color: var(--red);
-  border-color: var(--red);
-  color: var(--white);
-}
-
-#pop-up #product-section #product-content h3 button:first-of-type.active,
-#product #product-content h3 button:first-of-type.active {
-  background-color: var(--red);
-  border-color: var(--red);
-  color: var(--white);
-}
-
-#pop-up #product-section #product-content h3 button:first-of-type.active:hover,
-#product #product-content h3 button:first-of-type.active:hover {
-  background-color: var(--white);
-  color: var(--red);
-}
-
-#pop-up #product-section #product-content h3 button:first-of-type:active,
-#product #product-content h3 button:first-of-type:active {
-  transform: scale(110%);
-}
-
-#pop-up #product-section #product-content h3 button:last-of-type,
-#product #product-content h3 button:last-of-type {
-  background-color: var(--blue);
-  border-color: var(--blue);
-  color: var(--white);
-}
-
-#pop-up #product-section #product-content h3 button:last-of-type:hover,
-#product #product-content h3 button:last-of-type:hover {
-  background-color: var(--white);
-  color: var(--blue);
-}
-
-#pop-up #product-section #product-content h3 button:last-of-type.disabled,
-#product #product-content h3 button:last-of-type.disabled {
-  background-color: var(--blue);
-  color: var(--white);
-  border-color: var(--blue);
-}
-
-#pop-up #product-section #product-content p {
-  margin-top: 2.5rem;
-}
-
 #product {
   position: relative;
-  background-size: cover;
-  background-position: 50% 0%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 12rem 0 0;
   height: 100vh;
+  background-color: var(--black);
+}
+
+#product #product-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 0%;
 }
 
 #product #product-section {
@@ -886,16 +805,134 @@ footer p {
   box-shadow: 0 0 2.5rem var(--white-shadow);
 }
 
+#pop-up #product-section {
+  width: calc(100vw - 50rem);
+  height: calc(100vh - 5rem);
+  padding: 0;
+  overflow-y: scroll;
+}
+
+#pop-up #product-section::-webkit-scrollbar {
+  display: none;
+}
+
 #product #product-section #product-image {
   width: 100%;
   height: 35rem;
 }
 
-#product #product-content {
+#pop-up #product-section #product-image {
+  width: calc(100vw - 50rem);
+  height: 30rem;
+}
+
+#product #product-section #product-content {
   padding: 5rem;
 }
 
-#product #product-content p {
+#pop-up #product-section #product-content {
+  padding: 2.5rem;
+}
+
+#pop-up #product-section #product-content h3,
+#product #product-section #product-content h3 {
+  display: flex;
+  align-items: center;
+}
+
+#pop-up #product-section #product-content h3 span,
+#product #product-section #product-content h3 span {
+  text-transform: uppercase;
+}
+
+#pop-up #product-section #product-content h3 span:first-of-type,
+#product #product-section #product-content h3 span:first-of-type {
+  margin-left: 2.5rem;
+  color: var(--green);
+}
+
+#pop-up #product-section #product-content h3 span:last-of-type,
+#product #product-section #product-content h3 span:last-of-type {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-left: auto;
+}
+
+#pop-up #product-section #product-content h3 button,
+#product #product-section #product-content h3 button {
+  margin-left: 2.5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: 0.2rem solid;
+  transition: background-color var(--fast), color var(--fast),
+    transform var(--fast);
+}
+
+#pop-up #product-section #product-content h3 button:first-of-type,
+#product #product-section #product-content h3 button:first-of-type {
+  background-color: var(--white);
+  color: var(--red);
+}
+
+#pop-up #product-section #product-content h3 button:first-of-type:hover,
+#product #product-section #product-content h3 button:first-of-type:hover {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+#pop-up #product-section #product-content h3 button:first-of-type.active,
+#product #product-section #product-content h3 button:first-of-type.active {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+#pop-up #product-section #product-content h3 button:first-of-type.active:hover,
+#product
+  #product-section
+  #product-content
+  h3
+  button:first-of-type.active:hover {
+  background-color: var(--white);
+  color: var(--red);
+}
+
+#pop-up #product-section #product-content h3 button:last-of-type,
+#product #product-section #product-content h3 button:last-of-type {
+  background-color: var(--white);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+#pop-up #product-section #product-content h3 button:last-of-type:hover,
+#product #product-section #product-content h3 button:last-of-type:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+#pop-up #product-section #product-content h3 button:last-of-type.disabled,
+#product #product-section #product-content h3 button:last-of-type.disabled {
+  background-color: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+}
+
+#pop-up #product-section #product-content h3 button:first-of-type:active,
+#product #product-section #product-content h3 button:first-of-type:active,
+#pop-up #product-section #product-content h3 button:last-of-type:active,
+#product #product-section #product-content h3 button:last-of-type:active {
+  transform: scale(110%);
+}
+
+#pop-up #product-section #product-content p {
+  margin-top: 2.5rem;
+}
+
+#product #product-section #product-content p {
   text-align: justify;
   margin-top: 5rem;
 }
@@ -1090,8 +1127,13 @@ footer p {
 
 #pop-up #user-section #user-information {
   display: grid;
+  align-items: center;
   grid-template-columns: 2fr 10rem 3fr;
   row-gap: 1rem;
+}
+
+#pop-up #user-section #user-information .input {
+  margin-bottom: 0;
 }
 
 #pop-up #user-section #user-image {
@@ -1099,7 +1141,8 @@ footer p {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 10rem;
+  font-size: 13rem;
+  margin-right: 2.5rem;
 }
 
 #pop-up #user-section #user-information span {
@@ -1110,7 +1153,7 @@ footer p {
   font-weight: 500;
   background-color: var(--green);
   transition: background-color var(--fast);
-  margin: 1rem 0 0;
+  margin: 2.5rem 0 0;
 }
 
 #pop-up #user-section #user-save.disabled {
@@ -1150,11 +1193,4 @@ footer p {
 
 #pop-up #user-section #inventory button {
   justify-self: flex-start;
-}
-
-/* ================================================== About Us, Our Services ================================================== */
-
-#about-us,
-#our-services {
-  padding: 9rem 15rem 0;
 }

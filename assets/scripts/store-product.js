@@ -56,9 +56,16 @@ const userInventoryProducts = document.querySelector(
   "#user-section #inventory #inventory-products"
 );
 
-const productCover = document.querySelector("#product");
+const productCover = document.querySelector("#product-cover");
 var coverPercentage = 0;
 var coverInterpolation = 0;
+
+const musicButton = document.querySelector(
+  "#store section:first-of-type #type .music"
+);
+const sfxButton = document.querySelector(
+  "#store section:first-of-type #type .sfx"
+);
 
 (async function () {
   await loginUserSession(setUser);
@@ -96,6 +103,9 @@ var coverInterpolation = 0;
     });
 
     assign(userSaveButton, userInputSave);
+
+    assign(musicButton, () => selectType("music"));
+    assign(sfxButton, () => selectType("sfx"));
   } else {
     renderProduct();
 
@@ -103,13 +113,18 @@ var coverInterpolation = 0;
       coverInterpolation =
         coverInterpolation + (coverPercentage - coverInterpolation) * 0.025;
 
-      productCover.style.backgroundPosition = `50% ${coverInterpolation.toFixed(
-        2
-      )}%`;
+      if (innerWidth / innerHeight > 1)
+        productCover.style.backgroundPosition = `50% ${coverInterpolation.toFixed(
+          2
+        )}%`;
+      else
+        productCover.style.backgroundPosition = `${coverInterpolation.toFixed(
+          2
+        )}% 50%`;
     }, 10);
   }
 
-  renderCartButton();
+  renderCartButtons();
 
   assign(cartButton, viewCart);
   assign(cartMobileButton, viewCart);
@@ -196,7 +211,7 @@ function renderProducts() {
             product.image
           }" /><h6>${product.name} | <span>&euro;${
             product.price
-          }</span></h6><a href="#" ${
+          }</span></h6><a ${
             user.cart.includes(product.id)
               ? `class="disabled" onclick="uncart(${product.id}, event)">Added`
               : `onclick="cart(${product.id}, event)">Add`
@@ -345,7 +360,7 @@ async function cart(id, event) {
 
   if (event.target.parentElement.parentElement.id == "product") view(id);
 
-  renderCartButton();
+  renderCartButtons();
 
   redirect("store", renderProducts);
   redirect("product", renderProduct);
@@ -380,7 +395,7 @@ async function uncart(id, event) {
     viewCart();
   }
 
-  renderCartButton();
+  renderCartButtons();
 
   redirect("store", renderProducts);
   redirect("product", renderProduct);
@@ -388,15 +403,25 @@ async function uncart(id, event) {
   notify("Product removed from cart.", 1000);
 }
 
-function renderCartButton() {
+function renderCartButtons() {
   cartButton.children[0].children[1].innerHTML = user.cart.length;
+  cartMobileButton.children[1].innerHTML = user.cart.length;
 
   cartButton.classList.add("beat");
-  setTimeout(() => cartButton.classList.remove("beat"), 350);
+  cartMobileButton.classList.add("beat");
+
+  setTimeout(() => {
+    cartButton.classList.remove("beat");
+    cartMobileButton.classList.remove("beat");
+  }, 350);
 
   if (user.cart.length) {
     cartButton.classList.add("active");
-  } else cartButton.classList.remove("active");
+    cartMobileButton.classList.add("active");
+  } else {
+    cartButton.classList.remove("active");
+    cartMobileButton.classList.remove("active");
+  }
 }
 
 function viewCart() {

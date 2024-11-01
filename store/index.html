@@ -50,9 +50,9 @@
           <a>User <i class="fa-solid fa-user"></i></a>
         </li>
         <li id="cart-button">
-          <a>Cart <i class="fa-solid fa-cart-shopping"></i> <span>0</span></a>
+          <a>Cart <i class="fa-solid fa-cart-shopping"></i><span>0</span></a>
         </li>
-        <a id="close"><i class="fa-solid fa-xmark"></i></a>
+        <i id="close" class="fa-solid fa-xmark close"></i>
         <div id="close-screen"></div>
       </ul>
       <div id="shadow"></div>
@@ -61,11 +61,11 @@
       <section>
         <h5>Type</h5>
         <div id="type">
-          <div class="music" onclick="selectType('music')">
+          <div class="music">
             <h4>Music</h4>
             <h4>Music</h4>
           </div>
-          <div class="sfx" onclick="selectType('sfx')">
+          <div class="sfx">
             <h4>SFX</h4>
             <h4>SFX</h4>
           </div>
@@ -96,6 +96,7 @@
           </button>
         </div>
       </section>
+      <hr id="section-border" />
       <section>
         <h5>Featured</h5>
         <div id="featured">
@@ -188,10 +189,6 @@
           <div class="input">
             <i class="fa-solid fa-key"></i>
             <input type="password" placeholder="Password" />
-          </div>
-          <div class="checkbox">
-            <button></button>
-            Remember me
           </div>
           <button class="button">
             <i class="fa-solid fa-right-to-bracket"></i> Sign-up
@@ -543,7 +540,7 @@
       <i class="fa-solid fa-circle-notch fa-spin"></i>
     </section>
     <button id="mobile-cart">
-      Cart <i class="fa-solid fa-cart-shopping"></i>
+      Cart <i class="fa-solid fa-cart-shopping"></i><span>0</span>
     </button>
     <section id="notification"></section>
     <script src="/assets/scripts/variables.js?V=0.8"></script>

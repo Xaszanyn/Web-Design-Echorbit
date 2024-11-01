@@ -5,9 +5,8 @@
   --blue: #3b658b;
   --dark-blue: #2b4966;
   --gray: #bfbecc;
-  --light-gray: #e6e6ee;
   --red: #e93535;
-  --green: #18aa05;
+  --green: #139e01;
 
   --fade: rgba(25, 25, 37, 85%);
 
@@ -17,9 +16,14 @@
   --fast-delay: 0s ease 0.2s;
   --slow: 0.35s;
 
-  --shadow: rgba(25, 25, 27, 25%);
+  --shadow: rgba(25, 25, 27, 45%);
   --white-shadow: rgba(255, 255, 255, 25%);
   --navigation-shadow: linear-gradient(rgba(25, 25, 27, 15%), transparent);
+  --navigation-shadow-mobile: linear-gradient(
+    rgba(25, 25, 27, 30%),
+    transparent
+  );
+  --cover-shadow-mobile: linear-gradient(transparent, #19191b);
 }
 
 @keyframes slide {

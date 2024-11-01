@@ -40,19 +40,20 @@
     padding: 15rem 5rem;
     font-size: 6rem;
     transition: left var(--fast);
+    z-index: 10;
   }
 
   nav ul.closed {
     left: -120rem;
   }
 
-  nav li.small {
-    display: block;
+  nav li {
+    border-bottom: 0.5rem solid var(--gray);
+    width: 100%;
   }
 
-  nav li {
-    border-bottom: 0.5rem solid var(--blue);
-    min-width: 50%;
+  nav li.small {
+    display: block;
   }
 
   nav ul a {
@@ -65,42 +66,38 @@
     margin-left: 2.5rem;
   }
 
-  nav #close {
-    display: inline;
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-  }
-
-  nav #close i {
-    margin-left: 0;
-    color: var(--red);
+  nav #close,
+  nav #close-screen {
+    display: unset;
   }
 
   nav #close-screen {
     display: block;
     position: absolute;
-    right: -20rem;
+    /* right: -20rem; */
+    right: calc(20rem - 100%);
     top: 0;
-    width: 20rem;
+    width: 100rem;
     height: calc(100vh - 20rem);
     background-color: var(--fade);
-    transition: right var(--fast);
+    transition: width var(--fast), right var(--fast);
   }
 
   nav ul.closed #close-screen {
+    width: 0;
     right: 0;
   }
 
   nav #shadow {
-    height: 3rem;
-    bottom: -3rem;
+    height: 10rem;
+    bottom: -10rem;
+    background: var(--navigation-shadow-mobile);
   }
 
   /* ================================================== Header ================================================== */
 
   header {
-    height: 90vh;
+    height: 80vh;
   }
 
   header .cover {
@@ -133,26 +130,43 @@
 
   /* ================================================== Main ================================================== */
 
+  main#about-us,
+  main#our-services {
+    padding-top: 25rem;
+  }
+
   main section {
-    padding: 22.5rem 5rem;
+    padding: 25rem 10rem;
   }
 
   main h4 {
     font-size: 10rem;
-    margin-bottom: 12.5rem;
+    margin-bottom: 15rem;
   }
 
   main p {
     font-size: 6rem;
     line-height: 150%;
     margin-bottom: 10rem;
-    text-align: justify;
+    text-align: left;
   }
 
-  /* ================================================== Main About Us ================================================== */
+  main h5 {
+    text-align: left;
+    font-weight: 500;
+    font-size: 8rem;
+    margin-bottom: 5rem;
+  }
+
+  main p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  /* ================================================== Featured Showcase ================================================== */
 
   main #featured-showcase {
-    padding: 15rem 5rem 0;
+    margin: 25rem 0 25rem;
+    padding: 0;
     grid-template-columns: auto;
     row-gap: 15rem;
   }
@@ -166,10 +180,11 @@
 
   main #featured-showcase span {
     font-size: 8rem;
+    margin-top: 5rem;
   }
 
   main #featured-showcase a:hover {
-    transform: none;
+    transform: translateY(-5rem);
   }
 
   main #featured-showcase a:hover img {
@@ -177,22 +192,19 @@
   }
 
   main #featured-showcase a:hover span {
-    transform: none;
+    transform: translateY(2.5rem);
   }
 
-  /* ================================================== Main Our Services ================================================== */
+  /* ================================================== Showcase ================================================== */
 
   main #showcase {
-    padding-top: 15rem;
-    height: 100rem;
+    margin: 25rem 0;
+    padding: 10rem;
+    height: 80rem;
   }
 
   main #showcase a:not(:last-of-type) {
     margin-right: 10rem;
-  }
-
-  main #showcase a:hover {
-    transform: none;
   }
 
   /* ================================================== Footer ================================================== */
@@ -235,17 +247,54 @@
 
   #store {
     display: block;
-    padding: 25rem 5rem 25rem;
+    padding: 25rem 10rem 25rem;
   }
 
   #store section:first-of-type {
     padding: 15rem 0 0;
   }
 
-  #store section:first-of-type h4 {
-    font-size: 8rem;
-    font-weight: 600;
-    margin-bottom: 10rem;
+  #store section:first-of-type h5 {
+    font-size: 4rem;
+    margin-bottom: 2.5rem;
+  }
+
+  #store section:first-of-type hr {
+    border: 0.5rem solid var(--gray);
+    margin: 2.5rem 0;
+  }
+
+  #store section:first-of-type #type {
+    grid-template-columns: 6fr 5fr;
+    column-gap: 5rem;
+  }
+
+  #store section:first-of-type #type div {
+    height: 12.5rem;
+  }
+
+  #store section:first-of-type #type h4 {
+    font-size: 6rem;
+    padding: 2.5rem 5rem;
+    font-weight: 500;
+  }
+
+  #store section:first-of-type #type div h4:last-of-type {
+    background-color: var(--black);
+  }
+
+  #store section:first-of-type #type .music h4:last-of-type {
+    border-top-left-radius: 10rem;
+    border-bottom-left-radius: 10rem;
+  }
+
+  #store section:first-of-type #type .sfx h4:last-of-type {
+    border-top-right-radius: 10rem;
+    border-bottom-right-radius: 10rem;
+  }
+
+  #store section:first-of-type #type div.selected h4:last-of-type {
+    background-color: var(--blue);
   }
 
   #store section:first-of-type #search input {
@@ -264,21 +313,26 @@
     transform: translateY(-50%);
   }
 
-  #store section:first-of-type hr {
-    border: 0.5rem solid var(--gray);
-    margin: 5rem 0;
-  }
-
-  #store section:first-of-type h5 {
-    font-size: 4rem;
-    margin-bottom: 2.5rem;
-  }
-
   #store section:first-of-type #category {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: -2.5rem;
+  }
+
+  #store section:first-of-type #category button:first-of-type,
+  #store section:first-of-type #category button:last-of-type {
+    border-radius: 0;
+  }
+
+  #store section:first-of-type #category span {
+    font-size: 4rem;
+    margin: 5rem 2.5rem;
+  }
+
+  #store section:first-of-type #category center {
+    margin: 15rem 0;
+    font-size: 4rem;
   }
 
   #store section:first-of-type button {
@@ -289,6 +343,13 @@
     margin: 2.5rem;
     flex: 1 0 auto;
     justify-content: center;
+  }
+
+  #store section:first-of-type button img,
+  #store section:first-of-type button div {
+    width: 8rem;
+    height: 8rem;
+    margin-right: 2.5rem;
   }
 
   #store section:first-of-type #sort {
@@ -303,110 +364,114 @@
     padding: 0;
   }
 
-  #store section:first-of-type button img,
-  #store section:first-of-type button div {
-    margin-right: 2.5rem;
-  }
-
   #store section:first-of-type button.radio div {
     width: 4rem;
     height: 4rem;
     border: 0.5rem solid var(--gray);
   }
 
-  #store section:first-of-type #category center {
-    margin: 15rem 0;
-    font-size: 4rem;
+  #store section:first-of-type button.selected.radio div {
+    background-color: var(--black);
+  }
+
+  #store #section-border {
+    display: block;
+    border: 0.5rem solid var(--blue);
+    margin: 10rem 0;
   }
 
   #store section:last-of-type {
-    margin-top: 25rem;
     padding: 0;
   }
 
   #store section:last-of-type h5 {
     font-size: 6rem;
     text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: 10rem;
   }
 
   #store section:last-of-type #featured {
-    column-gap: 5rem;
-    margin-bottom: 15rem;
+    grid-template-columns: 1fr;
+    row-gap: 5rem;
+    margin-bottom: 10rem;
   }
 
   #store section:last-of-type #featured img {
     height: 35rem;
     border-radius: 3rem;
-    box-shadow: 0 0 0.25rem var(--shadow);
+    box-shadow: 0 0 2.5rem var(--shadow);
+  }
+
+  #store section:last-of-type #products {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10rem;
+    column-gap: 10rem;
   }
 
   #store section:last-of-type #products center {
+    grid-column: span 2;
     font-size: 6rem;
     margin: 10rem 0;
   }
 
-  #store section:last-of-type #products li {
-    grid-template-columns: 20rem 20rem 20rem auto 5rem;
-    column-gap: 5rem;
-    margin-bottom: 5rem;
-    height: 20rem;
-  }
+  /* --- */
 
-  #store section:last-of-type #products li > a img {
+  /* --- */
+
+  #store section:last-of-type #products button img {
     border-radius: 3rem;
+    margin-bottom: 2.5rem;
   }
 
-  #store section:last-of-type #products li > a + div {
+  #store section:last-of-type #products button:hover img {
+    transform: scale(110%);
+  }
+
+  #store section:last-of-type #products button h6 {
     font-size: 4rem;
+    margin-bottom: 2.5rem;
   }
 
-  #store section:last-of-type #products li > a + div span:first-of-type {
-    margin-bottom: 1.25rem;
-  }
-
-  #store section:last-of-type #products li .soundwave {
-    width: 35rem;
-    overflow-x: hidden;
-  }
-
-  #store section:last-of-type #products li .soundwave + span {
+  #store section:last-of-type #products button a {
+    border: 0.8rem solid var(--blue);
     font-size: 4rem;
+    padding: 0.5rem 5rem;
   }
 
-  #store section:last-of-type #products li .like,
-  #store section:last-of-type #products li .price {
-    font-size: 4rem;
-    padding: 0;
+  #store section:last-of-type #products button a:hover {
+    background-color: var(--blue);
+    color: var(--white);
   }
 
-  #store section:last-of-type #products li .price {
-    padding: 1rem 2rem;
-    border-radius: 3rem;
+  #store section:last-of-type #products button a.disabled {
+    background-color: var(--blue);
+    color: var(--white);
+    border-color: var(--blue);
   }
 
-  #store section:last-of-type #products li .price i {
-    margin: 0 2rem;
+  #store section:last-of-type #products button i {
+    right: 3rem;
+    top: 3rem;
+    font-size: 8rem;
+  }
+
+  #store section:last-of-type #products button:hover i {
+    font-size: 10rem;
+    transform: translate(2rem, -2rem) rotate(30deg);
   }
 
   /* ================================================== Pop-Up ================================================== */
 
   #pop-up section {
-    width: 115rem;
+    width: calc(100vw - 10rem);
     padding: 5rem;
-    font-size: 6rem;
-    transform: translate(-50%, 15rem);
-    box-shadow: 1rem 1rem 5rem var(--fade);
-  }
-
-  #pop-up section .close {
-    padding: 0.5rem 1.2rem;
-    top: 5rem;
-    right: 3rem;
+    font-size: 5rem;
+    transform: translate(-50%, 30rem);
+    box-shadow: 0 0 5rem var(--shadow);
   }
 
   #pop-up section h3 {
-    font-size: 7.5rem;
+    font-size: 10rem;
     margin-bottom: 10rem;
   }
 
@@ -421,20 +486,26 @@
     margin-bottom: 5rem;
   }
 
-  .input input {
+  .input input,
+  .input select {
     width: 80rem;
     border: 0.8rem solid var(--blue);
-    padding: 0.75rem 2.5rem 0.75rem 10rem;
+  }
+
+  .input input {
+    padding: 1rem 2.5rem 1rem 10rem;
+  }
+
+  .input select {
+    padding: 1rem 2.5rem 1rem 8.5rem;
   }
 
   .input i {
-    position: absolute;
     left: 3rem;
-    top: 50%;
   }
 
   .button {
-    padding: 0.75rem 5rem;
+    padding: 1rem 5rem;
     margin-bottom: 2.5rem;
   }
 
@@ -456,6 +527,12 @@
     height: 45rem;
   }
 
+  /* ================================================== Loading ================================================== */
+
+  #loading {
+    font-size: 10rem;
+  }
+
   /* ================================================== Notification ================================================== */
 
   #notification {
@@ -463,27 +540,257 @@
     min-width: 100rem;
     font-size: 6rem;
     padding: 2rem;
-    box-shadow: 0 0 5rem var(--fade);
+    box-shadow: 0 0 5rem var(--shadow);
   }
 
   #notification.active {
     top: 10rem;
   }
 
-  /* ================================================== FIX ================================================== */
-  /* ================================================== FIX ================================================== */
+  /* ================================================== Product ================================================== */
+
+  /* Pop-Up Design Removed */
+
+  #product {
+    padding: 20rem 0 0;
+    align-items: flex-end;
+  }
+
+  #product #product-cover {
+    height: 75%;
+    background-position: 0% 50%;
+  }
+
+  #product #product-cover div {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15rem;
+    background: var(--cover-shadow-mobile);
+  }
+
+  #product #product-section {
+    margin-bottom: 5rem;
+    width: calc(100vw - 10rem);
+    height: 150rem;
+    box-shadow: 0 0 5rem var(--white-shadow);
+  }
+
+  #product #product-section #product-image {
+    display: none;
+  }
+
+  #product #product-section #product-content {
+    padding: 10rem;
+  }
+
+  #pop-up #product-section #product-content h3,
+  #product #product-section #product-content h3 {
+    font-weight: 400;
+    font-size: 8rem;
+    flex-wrap: wrap;
+  }
+
+  #pop-up #product-section #product-content h3 span:first-of-type,
+  #product #product-section #product-content h3 span:first-of-type {
+    margin-left: 2.5rem;
+  }
+
+  #pop-up #product-section #product-content h3 span:last-of-type,
+  #product #product-section #product-content h3 span:last-of-type {
+    font-size: 8rem;
+    margin-left: 5rem;
+    font-weight: 600;
+  }
+
+  #pop-up #product-section #product-content h3 button,
+  #product #product-section #product-content h3 button {
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+    font-size: 5rem;
+    padding: 0.5rem 5rem;
+    border-radius: 10rem;
+    border: 0.8rem solid;
+  }
+
+  #product #product-section #product-content h3 button:first-of-type {
+    margin-left: 0;
+  }
+
+  #product #product-section #product-content h3 button:last-of-type {
+    margin-left: 5rem;
+  }
+
+  #product #product-section #product-content p {
+    text-align: left;
+    margin-top: 10rem;
+  }
+
+  /* ================================================== Cart & Inventory ================================================== */
+
+  #cart-button.active {
+    border-radius: 0;
+  }
+
+  #cart-button.active span {
+    margin-left: 2.5rem;
+    max-width: 10rem;
+  }
+
+  #pop-up #cart-section {
+    width: calc(100vw - 10rem);
+    max-height: calc(100vh - 10rem);
+  }
+
+  #pop-up #cart-section > div:first-of-type,
+  #pop-up #cart-section ul li,
+  #pop-up #user-section #inventory > div:first-of-type,
+  #pop-up #user-section #inventory ul li {
+    font-size: 5rem;
+  }
+
+  #pop-up #cart-section hr,
+  #pop-up #user-section #inventory hr {
+    margin: 2.5rem 0 0;
+  }
+
+  #pop-up #cart-section ul li,
+  #pop-up #user-section #inventory ul li {
+    padding: 2.5rem 0;
+    border-bottom: 0.4rem solid var(--gray);
+  }
+
+  #pop-up #cart-section ul li:last-of-type,
+  #pop-up #user-section #inventory ul li:last-of-type {
+    margin-bottom: 10rem;
+  }
+
+  #pop-up #cart-section ul li img,
+  #pop-up #user-section #inventory ul li img {
+    width: 25rem;
+    margin-right: 2.5rem;
+  }
+
+  #pop-up #cart-section ul li > div div span:not(:last-of-type),
+  #pop-up #user-section #inventory ul li > div div span:not(:last-of-type) {
+    margin-bottom: 3.5rem;
+  }
+
+  #pop-up #cart-section > #cart-checkout {
+    margin-bottom: 15rem;
+  }
+
+  #pop-up #cart-section button {
+    font-size: 4rem;
+    padding: 1rem 5rem;
+  }
+
+  #pop-up #cart-section #cart-control,
+  #pop-up #cart-section #cart-loading {
+    backdrop-filter: blur(1rem);
+  }
+
+  #pop-up #cart-section #cart-loading {
+    font-size: 10rem;
+  }
+
+  #pop-up #cart-section #cart-control p {
+    padding: 2.5rem;
+    width: calc(100% - 10rem);
+    margin-bottom: 5rem;
+  }
+
+  #pop-up #cart-section #cart-control button:first-of-type {
+    margin-right: 5rem;
+  }
 
   #mobile-cart {
     position: fixed;
     display: flex;
-    bottom: 0;
-    right: 0;
-    background-color: red;
-
-    height: 10rem;
-    width: 10rem;
+    top: 30rem;
+    right: 5rem;
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--green);
+    color: var(--white);
+    padding: 1rem 5rem;
+    border-radius: 10rem;
+    opacity: 50%;
+    box-shadow: 0 0 2.5rem var(--white-shadow);
+    transition: top var(--fast), opacity var(--slow);
   }
 
-  /* ================================================== FIX ================================================== */
-  /* ================================================== FIX ================================================== */
+  nav.initial ~ #mobile-cart {
+    top: 35rem;
+  }
+
+  #mobile-cart i {
+    margin-left: 2.5rem;
+  }
+
+  #mobile-cart span {
+    margin-left: 0;
+    max-width: 0;
+    overflow: hidden;
+    transition: max-width var(--fast), margin-left var(--fast);
+  }
+
+  #mobile-cart.active {
+    opacity: 1;
+  }
+
+  #mobile-cart.beat {
+    animation: beat var(--slow);
+  }
+
+  #mobile-cart.active span {
+    max-width: 10rem;
+    margin-left: 2.5rem;
+  }
+
+  /* ================================================== User Pop-Up ================================================== */
+
+  #pop-up #user-section {
+    width: calc(100vw - 10rem);
+    max-height: calc(100vh - 10rem);
+  }
+
+  #pop-up #user-section h3 {
+    margin-bottom: 10rem;
+  }
+
+  #pop-up #user-section #user-information {
+    grid-template-columns: 1fr 2fr;
+    row-gap: 5rem;
+  }
+
+  #pop-up #user-section #user-image {
+    grid-row: unset;
+    grid-column: span 2;
+    font-size: 25rem;
+    margin: 0;
+  }
+
+  #pop-up #user-section #user-save {
+    margin: 5rem 0 0;
+  }
+
+  #pop-up #user-section hr {
+    margin: 10rem 0;
+  }
+
+  #pop-up #user-section #user-loading {
+    backdrop-filter: blur(1rem);
+  }
+
+  #pop-up #user-section #inventory {
+    width: unset;
+  }
+
+  #pop-up #user-section #inventory button {
+    border-radius: 3rem;
+    margin-bottom: 0;
+  }
 }
