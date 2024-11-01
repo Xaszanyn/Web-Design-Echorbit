@@ -58,10 +58,7 @@ nav ul a i {
   margin-left: 0.5rem;
 }
 
-nav #close {
-  display: none;
-}
-
+nav #close,
 nav #close-screen {
   display: none;
 }
@@ -903,7 +900,7 @@ footer p {
   margin-top: 5rem;
 }
 
-/* ================================================== Cart Pop-Up & Inventory ================================================== */
+/* ================================================== Cart & Inventory ================================================== */
 
 #cart-button {
   transition: background-color var(--fast), color var(--fast),
@@ -1069,6 +1066,10 @@ footer p {
   opacity: 1;
   left: 0 !important;
   transition: opacity var(--instant);
+}
+
+#mobile-cart {
+  display: none;
 }
 
 /* ================================================== User Pop-Up ================================================== */

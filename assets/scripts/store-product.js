@@ -35,6 +35,7 @@ const cartCheckoutButton = document.querySelector(
   "#cart-section #cart-checkout button"
 );
 const cartLoading = document.querySelector("#cart-section #cart-loading");
+const cartMobileButton = document.querySelector("#mobile-cart");
 
 var scrollPosition = 0;
 
@@ -111,6 +112,7 @@ var coverInterpolation = 0;
   renderCartButton();
 
   assign(cartButton, viewCart);
+  assign(cartMobileButton, viewCart);
 
   assign(loginFromCartSection, () => {
     closePopUp();

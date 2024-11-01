@@ -1,20 +1,4 @@
 @media (max-aspect-ratio: 1/1) {
-  audio::-webkit-media-controls-mute-button,
-  audio::-webkit-media-controls-timeline-container,
-  audio::-webkit-media-controls-current-time-display,
-  audio::-webkit-media-controls-time-remaining-display,
-  audio::-webkit-media-controls-timeline,
-  audio::-webkit-media-controls-volume-slider-container,
-  audio::-webkit-media-controls-volume-slider,
-  audio::-webkit-media-controls-seek-back-button,
-  audio::-webkit-media-controls-seek-forward-button,
-  audio::-webkit-media-controls-fullscreen-button,
-  audio::-webkit-media-controls-rewind-button,
-  audio::-webkit-media-controls-return-to-realtime-button,
-  audio::-webkit-media-controls-toggle-closed-captions-button {
-    display: none;
-  }
-
   /* ================================================== Navigation ================================================== */
 
   nav {
@@ -68,21 +52,29 @@
 
   nav li {
     border-bottom: 0.5rem solid var(--blue);
+    min-width: 50%;
   }
 
   nav ul a {
-    padding: 5rem 0;
+    padding: 5rem 0 !important;
     width: 100%;
   }
 
+  nav ul a i {
+    font-size: 6rem;
+    margin-left: 2.5rem;
+  }
+
   nav #close {
-    display: block;
+    display: inline;
     position: absolute;
-    padding: 0;
     top: 2rem;
     right: 2rem;
-    width: 5rem;
-    height: auto;
+  }
+
+  nav #close i {
+    margin-left: 0;
+    color: var(--red);
   }
 
   nav #close-screen {
@@ -477,4 +469,21 @@
   #notification.active {
     top: 10rem;
   }
+
+  /* ================================================== FIX ================================================== */
+  /* ================================================== FIX ================================================== */
+
+  #mobile-cart {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    right: 0;
+    background-color: red;
+
+    height: 10rem;
+    width: 10rem;
+  }
+
+  /* ================================================== FIX ================================================== */
+  /* ================================================== FIX ================================================== */
 }
