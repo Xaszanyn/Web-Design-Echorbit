@@ -74,7 +74,6 @@
   nav #close-screen {
     display: block;
     position: absolute;
-    /* right: -20rem; */
     right: calc(20rem - 100%);
     top: 0;
     width: 100rem;
@@ -413,10 +412,6 @@
     font-size: 6rem;
     margin: 10rem 0;
   }
-
-  /* --- */
-
-  /* --- */
 
   #store section:last-of-type #products button img {
     border-radius: 3rem;
