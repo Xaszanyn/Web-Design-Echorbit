@@ -1,8 +1,6 @@
 /* =========={ General }========================================================================================== */
 
 function assign(element, action, mobile = false, event = true) {
-  if (mobile) console.log(element);
-
   if (event) {
     element.addEventListener("click", (event) => {
       event.preventDefault();

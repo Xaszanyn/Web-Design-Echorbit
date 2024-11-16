@@ -45,6 +45,9 @@ var user = {
   favorites: [],
 };
 
+if (localStorage.getItem("guest"))
+  user = JSON.parse(localStorage.getItem("guest"));
+
 const userSection = document.querySelector("#user-section");
 const userName = document.querySelector("#user-section #user-name");
 const userEmail = document.querySelector("#user-section #user-email");
@@ -176,7 +179,7 @@ function renderFeatured() {
 function renderProducts() {
   list.innerHTML = `<center><i class="fa-solid fa-circle-notch fa-spin"></i></center>`;
 
-  let result = [...products];
+  let result = products.filter((product) => product.display);
 
   if (type) result = result.filter((product) => product.type == type);
   if (search)
@@ -436,13 +439,15 @@ function viewCart() {
       price += product.price;
       return (
         content +
-        `<li><i onclick="uncart(${product.id}, event)" class="fa-solid fa-xmark close"></i><div><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/small/${product.image}" /><div><span>${product.name}</span><span>Type: <b>${product.type}</b></span></div></div><span>&euro;${product.price}</span></li>`
+        `<li><i onclick="uncart(${product.id}, event)" class="fa-solid fa-xmark close"></i><div><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/small/${product.image}" /><div><span>${product.stripe_name}</span><span>Type: <b>${product.type}</b></span></div></div><span>&euro;${product.price}</span></li>`
       );
     } else return content;
   }, "");
 
   if (price) {
-    cartCheckout.children[0].innerHTML = `Total Price: &euro;${price}`;
+    cartCheckout.children[0].innerHTML = `Total Price: &euro;${price.toFixed(
+      1
+    )}`;
     cartCheckout.style.display = "flex";
   } else {
     cartCheckout.children[0].innerHTML = "";
@@ -458,6 +463,9 @@ function renderProduct() {
     (item) => parseInt(location.href.split("?")[1]) == item.id
   );
 
+  if (product.premium && Number.isInteger(product.premium))
+    product.premium = products.find((item) => product.premium == item.id);
+
   if (!product) {
     notify();
     return;
@@ -466,17 +474,27 @@ function renderProduct() {
   productCover.style.backgroundImage = `url("https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}")`;
 
   productImage.src = `https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}`;
-  productContent.innerHTML = `<h3>${product.name}<span>&euro;${
+  productContent.innerHTML = `<h3>${product.stripe_name}<span>&euro;${
     product.price
-  }</span><span>${product.type}</span>${
-    user.favorites.includes(product.id)
-      ? `<button class="active" onclick="unfavorite(${product.id})"><i class="fa-solid fa-heart"></i> Liked</button>`
-      : `<button onclick="favorite(${product.id})"><i class="fa-solid fa-heart"></i> Like</button>`
-  }<button ${
+  }</span><span>${product.type}</span><button ${
     user.cart.includes(product.id)
-      ? `class="disabled" onclick="uncart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Added`
-      : `onclick="cart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Add`
-  } to Cart</button></h3>${product.soundcloud}<p>${product.content}</p>`;
+      ? `class="cart-button disabled" onclick="uncart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Added`
+      : `class="cart-button" onclick="cart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Add`
+  } to Cart</button>${
+    user.favorites.includes(product.id)
+      ? `<button class="favorite-button active" onclick="unfavorite(${product.id})"><i class="fa-solid fa-heart"></i> Liked</button>`
+      : `<button class="favorite-button" onclick="favorite(${product.id})"><i class="fa-solid fa-heart"></i> Like</button>`
+  }</h3>${
+    product.premium
+      ? `<h3>${product.premium.stripe_name}<span>&euro;${
+          product.premium.price
+        }</span><span>${product.premium.type}</span><button ${
+          user.cart.includes(product.premium.id)
+            ? `class="cart-button disabled" onclick="uncart(${product.premium.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Added`
+            : `class="cart-button" onclick="cart(${product.premium.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Add`
+        } to Cart</button></h3>`
+      : ""
+  }${product.soundcloud}<p>${product.content}</p>`;
 }
 
 async function checkout() {
