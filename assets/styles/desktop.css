@@ -978,6 +978,7 @@ footer p {
 #cart-button {
   transition: background-color var(--fast), color var(--fast),
     border-radius var(--fast);
+  margin-left: 0.5rem;
 }
 
 #cart-button.active {

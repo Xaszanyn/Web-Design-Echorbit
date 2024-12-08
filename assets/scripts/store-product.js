@@ -101,6 +101,10 @@ const sfxButton = document.querySelector("#store #store-first #type .sfx");
       openPopUp(userSection);
     });
 
+    redirect("cart", () => {
+      viewCart();
+    });
+
     assign(userSaveButton, userInputSave);
 
     assign(musicButton, () => selectType("music"));
@@ -183,12 +187,15 @@ function renderProducts() {
       product.name.toLowerCase().includes(search)
     );
   if (categories.length)
-    result = result.filter(
-      (product) =>
-        product.category
-          .split(",")
-          .filter((category) => categories.includes(category)).length
-    );
+    result = result.filter((product) => {
+      let productsCategories = product.category.split(",");
+
+      for (let index = 0; index < categories.length; index++)
+        if (!productsCategories.includes(categories[index])) return false;
+
+      return true;
+    });
+
   switch (sortState) {
     case 1:
       result.sort((first, second) => second.favorite - first.favorite);
@@ -558,6 +565,10 @@ function setUserInventory() {
         : "")
     );
   }, "");
+
+  if (userInventoryProducts.innerHTML == "")
+    userInventoryProducts.innerHTML =
+      "<li>You haven't made a purchase yet.</li>";
 }
 
 async function download(id) {
