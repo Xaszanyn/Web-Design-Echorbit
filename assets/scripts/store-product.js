@@ -63,12 +63,8 @@ const productCover = document.querySelector("#product-cover");
 var coverPercentage = 0;
 var coverInterpolation = 0;
 
-const musicButton = document.querySelector(
-  "#store section:first-of-type #type .music"
-);
-const sfxButton = document.querySelector(
-  "#store section:first-of-type #type .sfx"
-);
+const musicButton = document.querySelector("#store #store-first #type .music");
+const sfxButton = document.querySelector("#store #store-first #type .sfx");
 
 (async function () {
   await loginUserSession(setUser);

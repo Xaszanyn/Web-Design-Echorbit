@@ -299,11 +299,29 @@ footer p {
   padding: 9rem 15rem 15rem;
 }
 
-#store section:first-of-type {
-  padding: 2.5rem 0;
+.initial + #store #store-first {
+  top: 9rem;
 }
 
-#store section:first-of-type h5 {
+#store #store-first {
+  margin: 0 -2.5rem;
+  padding: 2.5rem;
+  position: fixed;
+  width: 25rem;
+  background-color: var(--white);
+  max-height: calc(100vh - 9rem);
+  overflow-y: scroll;
+  top: 7rem;
+  transition: top var(--fast);
+  border-bottom-left-radius: 2.5rem;
+  border-bottom-right-radius: 2.5rem;
+}
+
+#store #store-first::-webkit-scrollbar {
+  display: none;
+}
+
+#store #store-first h5 {
   font-size: 1.2rem;
   color: var(--gray);
   margin-bottom: 0.5rem;
@@ -311,18 +329,18 @@ footer p {
   font-weight: 600;
 }
 
-#store section:first-of-type hr {
+#store #store-first hr {
   border: 0.1rem solid var(--gray);
   margin: 1.5rem 0;
 }
 
-#store section:first-of-type #type {
+#store #store-first #type {
   display: grid;
   grid-template-columns: 5fr 3fr;
   column-gap: 1rem;
 }
 
-#store section:first-of-type #type div {
+#store #store-first #type div {
   position: relative;
   height: 3.5rem;
   padding: 0;
@@ -330,7 +348,7 @@ footer p {
   cursor: pointer;
 }
 
-#store section:first-of-type #type h4 {
+#store #store-first #type h4 {
   position: absolute;
   margin-bottom: 0;
   font-size: 2.5rem;
@@ -338,46 +356,46 @@ footer p {
   width: 100%;
 }
 
-#store section:first-of-type #type div h4:last-of-type {
+#store #store-first #type div h4:last-of-type {
   transition: clip-path var(--fast), background-color var(--fast);
   color: var(--white);
   background-color: var(--blue);
 }
 
-#store section:first-of-type #type .music h4 {
+#store #store-first #type .music h4 {
   text-align: right;
 }
 
-#store section:first-of-type #type .sfx h4 {
+#store #store-first #type .sfx h4 {
   text-align: left;
 }
 
-#store section:first-of-type #type .music h4:last-of-type {
+#store #store-first #type .music h4:last-of-type {
   clip-path: inset(0% 0% 0% 100%);
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
 }
 
-#store section:first-of-type #type .sfx h4:last-of-type {
+#store #store-first #type .sfx h4:last-of-type {
   clip-path: inset(0% 100% 0% 0%);
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }
 
-#store section:first-of-type #type div:hover h4:last-of-type {
+#store #store-first #type div:hover h4:last-of-type {
   clip-path: inset(0% 0% 0% 0%);
 }
 
-#store section:first-of-type #type div.selected h4:last-of-type {
+#store #store-first #type div.selected h4:last-of-type {
   background-color: var(--black);
   clip-path: inset(0% 0% 0% 0%);
 }
 
-#store section:first-of-type #search {
+#store #store-first #search {
   position: relative;
 }
 
-#store section:first-of-type #search input {
+#store #store-first #search input {
   width: 100%;
   font-size: 1.2rem;
   padding: 0.25rem 0.5rem 0.25rem 2.25rem;
@@ -386,11 +404,11 @@ footer p {
   transition: border-color var(--fast);
 }
 
-#store section:first-of-type #search input:focus {
+#store #store-first #search input:focus {
   border-color: var(--blue);
 }
 
-#store section:first-of-type #search i {
+#store #store-first #search i {
   position: absolute;
   color: var(--gray);
   font-size: 1.2rem;
@@ -399,35 +417,35 @@ footer p {
   transform: translateY(-45%);
 }
 
-#store section:first-of-type #category button:first-of-type {
+#store #store-first #category button:first-of-type {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
 
-#store section:first-of-type #category button:last-of-type {
+#store #store-first #category button:last-of-type {
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }
 
-#store section:first-of-type #category button.selected {
+#store #store-first #category button.selected {
   background-color: var(--blue);
   color: var(--white);
 }
 
-#store section:first-of-type #category span {
+#store #store-first #category span {
   font-weight: 600;
   color: var(--blue);
   display: inline-block;
   margin-top: 0.5rem;
 }
 
-#store section:first-of-type #category center {
+#store #store-first #category center {
   width: 100%;
   margin: 2.5rem 0;
   font-size: 1.2rem;
 }
 
-#store section:first-of-type button {
+#store #store-first button {
   background-color: transparent;
   width: 100%;
   display: flex;
@@ -439,19 +457,19 @@ footer p {
   transition: background-color var(--fast), color var(--fast);
 }
 
-#store section:first-of-type button img,
-#store section:first-of-type button div {
+#store #store-first button img,
+#store #store-first button div {
   margin-right: 0.5rem;
   width: 2rem;
   height: 2rem;
   object-fit: contain;
 }
 
-#store section:first-of-type button.radio {
+#store #store-first button.radio {
   padding: 0.25rem 0;
 }
 
-#store section:first-of-type button.radio div {
+#store #store-first button.radio div {
   width: 1.2rem;
   height: 1.2rem;
   border-radius: 10rem;
@@ -459,7 +477,7 @@ footer p {
   transition: background-color var(--fast), border-color var(--fast);
 }
 
-#store section:first-of-type button.selected.radio div {
+#store #store-first button.selected.radio div {
   border-color: var(--black);
 }
 
@@ -467,24 +485,24 @@ footer p {
   display: none;
 }
 
-#store section:last-of-type {
+#store #store-second {
   padding: 2.5rem 0 0;
 }
 
-#store section:last-of-type h5 {
+#store #store-second h5 {
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 2.5rem;
 }
 
-#store section:last-of-type #featured {
+#store #store-second #featured {
   display: grid;
   grid-template-columns: auto 20rem 20rem;
   column-gap: 2.5rem;
   margin-bottom: 5rem;
 }
 
-#store section:last-of-type #featured img {
+#store #store-second #featured img {
   height: 15rem;
   width: 100%;
   border-radius: 1rem;
@@ -493,54 +511,54 @@ footer p {
     box-shadow var(--fast);
 }
 
-#store section:last-of-type #featured img:hover {
+#store #store-second #featured img:hover {
   border-radius: 0;
   transform: scale(110%);
   box-shadow: 0 0 1rem var(--shadow);
 }
 
-#store section:last-of-type #products {
+#store #store-second #products {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   row-gap: 2.5rem;
   column-gap: 2.5rem;
 }
 
-#store section:last-of-type #products center {
+#store #store-second #products center {
   grid-column: span 4;
   font-size: 2rem;
   margin: 5rem 0;
 }
 
-#store section:last-of-type #products button {
+#store #store-second #products button {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
 }
 
-#store section:last-of-type #products button img {
+#store #store-second #products button img {
   border-radius: 1rem;
   margin-bottom: 0.5rem;
   transition: border-radius var(--fast), transform var(--fast);
 }
 
-#store section:last-of-type #products button:hover img {
+#store #store-second #products button:hover img {
   border-radius: 0;
   transform: scale(90%);
 }
 
-#store section:last-of-type #products button h6 {
+#store #store-second #products button h6 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
-#store section:last-of-type #products button h6 span {
+#store #store-second #products button h6 span {
   color: var(--green);
   font-weight: 500;
 }
 
-#store section:last-of-type #products button a {
+#store #store-second #products button a {
   color: var(--blue);
   border: 0.2rem solid var(--blue);
   font-weight: 600;
@@ -551,22 +569,22 @@ footer p {
     border-color var(--fast), transform var(--fast);
 }
 
-#store section:last-of-type #products button a:hover {
+#store #store-second #products button a:hover {
   background-color: var(--blue);
   color: var(--white);
 }
 
-#store section:last-of-type #products button a:active {
+#store #store-second #products button a:active {
   transform: scale(110%);
 }
 
-#store section:last-of-type #products button a.disabled {
+#store #store-second #products button a.disabled {
   background-color: var(--blue);
   color: var(--white);
   border-color: var(--blue);
 }
 
-#store section:last-of-type #products button i {
+#store #store-second #products button i {
   position: absolute;
   right: 1rem;
   top: 1rem;
@@ -575,7 +593,7 @@ footer p {
   transition: font-size var(--fast), transform var(--fast);
 }
 
-#store section:last-of-type #products button:hover i {
+#store #store-second #products button:hover i {
   font-size: 3rem;
   transform: translate(1.5rem, -1rem) rotate(30deg);
 }
