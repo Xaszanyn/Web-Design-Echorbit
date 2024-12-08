@@ -2,7 +2,7 @@
   --dark-black: #000;
   --black: #19191b;
   --white: #ffffff;
-  --blue: #3b658b;
+  --blue: #386996;
   --dark-blue: #2b4966;
   --gray: #bfbecc;
   --red: #e93535;
@@ -23,7 +23,6 @@
     rgba(25, 25, 27, 15%),
     transparent
   );
-  --cover-shadow-mobile: linear-gradient(transparent, #19191b);
 }
 
 @keyframes slide {
@@ -38,4 +37,42 @@
   100% {
     transform: translateX(0);
   }
+}
+
+/* ================================================== Dark ================================================== */
+
+:root .dark {
+  --blue: #397fc0;
+  --dark-blue: #386996;
+  --red: #c41414;
+  --green: #1b920b;
+
+  --navigation-shadow: linear-gradient(rgba(0, 0, 0, 25%), transparent);
+  --navigation-shadow-mobile: linear-gradient(rgba(0, 0, 0, 30%), transparent);
+}
+
+.dark nav {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.dark nav ul {
+  background-color: var(--black);
+}
+
+.dark nav #logo {
+  background-color: var(--white);
+}
+
+.dark main {
+  background-color: var(--black);
+}
+
+.dark main section {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.dark main #showcase {
+  background-color: var(--white);
 }

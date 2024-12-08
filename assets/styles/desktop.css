@@ -9,7 +9,8 @@ nav {
   width: 100%;
   position: fixed;
   z-index: 100;
-  transition: height var(--fast);
+  transition: height var(--fast), background-color var(--fast),
+    color var(--fast);
 }
 
 nav.initial {
@@ -23,6 +24,8 @@ nav #menu {
 nav #logo {
   height: 3rem;
   margin-right: 1rem;
+  transform: background-color var(--fast);
+  border-radius: 100%;
 }
 
 nav h1 {
@@ -37,6 +40,7 @@ nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: background-color var(--fast);
 }
 
 nav li.small {
@@ -56,6 +60,15 @@ nav ul a {
 nav ul a i {
   font-size: 0.9rem;
   margin-left: 0.5rem;
+}
+
+nav li:last-of-type i {
+  font-size: 1.5rem;
+  min-width: 1.5rem;
+}
+
+nav li:last-of-type i.beat {
+  animation: beat var(--slow);
 }
 
 nav #close,
@@ -125,6 +138,10 @@ header a {
 
 /* ================================================== Main ================================================== */
 
+main {
+  transition: background-color var(--fast);
+}
+
 main#about-us,
 main#our-services,
 main#product {
@@ -133,6 +150,7 @@ main#product {
 
 main section {
   padding: 15rem;
+  transition: background-color var(--fast), color var(--fast);
 }
 
 main section.dark {
@@ -221,6 +239,7 @@ main #showcase {
   display: flex;
   height: 30rem;
   animation: slide 40s linear infinite;
+  transition: background-color var(--fast);
 }
 
 main #showcase a {
@@ -310,6 +329,7 @@ footer p {
   position: fixed;
   width: 25rem;
   background-color: var(--white);
+  color: var(--black);
   max-height: calc(100vh - 9rem);
   overflow-y: scroll;
   top: 7rem;

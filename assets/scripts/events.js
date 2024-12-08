@@ -3,6 +3,9 @@ window.addEventListener("scroll", () => {
   else navigation.classList.remove("initial");
 });
 
+assign(darkButton, () => dark(false));
+if (localStorage.getItem("dark")) dark(true);
+
 assign(menuButton, () => menu.classList.toggle("closed"), true);
 assign(menuCloseButton, () => menu.classList.add("closed"), true);
 assign(menuCloseScreenButton, () => menu.classList.add("closed"), true);

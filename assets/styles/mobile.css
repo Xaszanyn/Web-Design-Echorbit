@@ -66,6 +66,10 @@
     margin-left: 2.5rem;
   }
 
+  nav li:last-of-type i {
+    font-size: 6rem;
+  }
+
   nav #close,
   nav #close-screen {
     display: unset;
@@ -255,7 +259,7 @@
   }
 
   #store #store-first {
-    padding: 15rem 0 0;
+    padding: 15rem 0 5rem;
     position: unset;
     width: unset;
     border-radius: unset;

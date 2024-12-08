@@ -50,3 +50,5 @@ const register = {
 };
 
 const userButton = document.querySelector("#user-button");
+
+const darkButton = document.querySelector("nav #dark-button");

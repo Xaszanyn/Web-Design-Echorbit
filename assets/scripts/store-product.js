@@ -421,7 +421,7 @@ function renderCartButtons() {
   setTimeout(() => {
     cartButton.classList.remove("beat");
     cartMobileButton.classList.remove("beat");
-  }, 350);
+  }, 500);
 
   if (user.cart.length) {
     cartButton.classList.add("active");
