@@ -299,11 +299,7 @@
   #store section:first-of-type #search input {
     font-size: 5rem;
     padding: 1rem 1rem 1rem 9rem;
-    border: 1rem solid transparent;
-  }
-
-  #store section:first-of-type #search input:focus {
-    border: 1rem solid var(--gray);
+    border-width: 1rem;
   }
 
   #store section:first-of-type #search i {

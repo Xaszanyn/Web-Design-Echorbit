@@ -382,12 +382,12 @@ footer p {
   font-size: 1.2rem;
   padding: 0.25rem 0.5rem 0.25rem 2.25rem;
   border-radius: 10rem;
-  border: 0.2rem solid transparent;
-  transition: border var(--fast);
+  border: 0.2rem solid var(--gray);
+  transition: border-color var(--fast);
 }
 
 #store section:first-of-type #search input:focus {
-  border: 0.2rem solid var(--gray);
+  border-color: var(--blue);
 }
 
 #store section:first-of-type #search i {
