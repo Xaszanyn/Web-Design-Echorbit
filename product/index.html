@@ -14,7 +14,7 @@
     />
   </head>
   <body>
-    <nav>
+    <nav class="initial">
       <a id="menu"><i class="fa-solid fa-bars"></i></a>
       <a href="/"
         ><img
@@ -41,15 +41,37 @@
       <div id="shadow"></div>
     </nav>
     <main id="product">
-      <div id="product-cover"><div></div></div>
-      <div class="blur"></div>
-      <section id="product-section" onscroll="setCoverPercentage(this)">
+      <!-- <div id="product-cover"><div></div></div> -->
+      <!-- <div class="blur"></div> -->
+      <section id="product-section">
+        <!-- onscroll="setCoverPercentage(this)" -->
+        <a id="store-button" href="/store"
+          ><i class="fa-solid fa-chevron-left"></i> Store</a
+        >
         <img id="product-image" />
         <div id="product-content">
           <center><i class="fa-solid fa-circle-notch fa-spin"></i></center>
         </div>
       </section>
     </main>
+    <footer>
+      <div class="flex">
+        <span
+          ><img
+            src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/logo.png"
+            alt="Logo"
+          />Echorbit Audio</span
+        >
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/store">Store</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/team">Team</a></li>
+          <li><a href="/our-services/">Our Services</a></li>
+        </ul>
+      </div>
+      <p>Echorbit Audio OÜ &copy; All rights reserved.</p>
+    </footer>
     <section id="pop-up">
       <section id="register-section">
         <i class="fa-solid fa-xmark close"></i>

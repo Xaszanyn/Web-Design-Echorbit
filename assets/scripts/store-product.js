@@ -59,9 +59,9 @@ const userInventoryProducts = document.querySelector(
   "#user-section #inventory #inventory-products"
 );
 
-const productCover = document.querySelector("#product-cover");
-var coverPercentage = 0;
-var coverInterpolation = 0;
+// const productCover = document.querySelector("#product-cover");
+// var coverPercentage = 0;
+// var coverInterpolation = 0;
 
 const musicButton = document.querySelector("#store #store-first #type .music");
 const sfxButton = document.querySelector("#store #store-first #type .sfx");
@@ -112,19 +112,21 @@ const sfxButton = document.querySelector("#store #store-first #type .sfx");
   } else {
     renderProduct();
 
-    setInterval(() => {
-      coverInterpolation =
-        coverInterpolation + (coverPercentage - coverInterpolation) * 0.025;
+    // Cover Interpolation Removed
 
-      if (innerWidth / innerHeight > 1)
-        productCover.style.backgroundPosition = `50% ${coverInterpolation.toFixed(
-          2
-        )}%`;
-      else
-        productCover.style.backgroundPosition = `${coverInterpolation.toFixed(
-          2
-        )}% 50%`;
-    }, 10);
+    // setInterval(() => {
+    //   coverInterpolation =
+    //     coverInterpolation + (coverPercentage - coverInterpolation) * 0.025;
+
+    //   if (innerWidth / innerHeight > 1)
+    //     productCover.style.backgroundPosition = `50% ${coverInterpolation.toFixed(
+    //       2
+    //     )}%`;
+    //   else
+    //     productCover.style.backgroundPosition = `${coverInterpolation.toFixed(
+    //       2
+    //     )}% 50%`;
+    // }, 10);
   }
 
   renderCartButtons();
@@ -474,7 +476,7 @@ function renderProduct() {
     return;
   }
 
-  productCover.style.backgroundImage = `url("https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}")`;
+  // productCover.style.backgroundImage = `url("https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}")`;
 
   productImage.src = `https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}`;
   productContent.innerHTML = `<h3>${product.stripe_name}<span>&euro;${
@@ -597,7 +599,7 @@ async function download(id) {
   }
 }
 
-function setCoverPercentage(cover) {
-  coverPercentage =
-    (cover.scrollTop / (cover.scrollHeight - cover.clientHeight)) * 100;
-}
+// function setCoverPercentage(cover) {
+//   coverPercentage =
+//     (cover.scrollTop / (cover.scrollHeight - cover.clientHeight)) * 100;
+// }

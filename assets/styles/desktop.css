@@ -126,7 +126,8 @@ header a {
 /* ================================================== Main ================================================== */
 
 main#about-us,
-main#our-services {
+main#our-services,
+main#product {
   padding-top: 9rem;
 }
 
@@ -654,8 +655,7 @@ footer p {
   transition: transform var(--fast);
 }
 
-#pop-up section h3,
-#product section h3 {
+#pop-up section h3 {
   font-size: 2.5rem;
   font-weight: 300;
   margin-bottom: 2.5rem;
@@ -814,46 +814,20 @@ footer p {
 
 /* ================================================== Product ================================================== */
 
-#product {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 12rem 0 0;
-  height: 100vh;
-  background-color: var(--black);
-}
-
-#product #product-cover {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-size: cover;
-  background-position: 50% 0%;
-}
-
 #product #product-section {
-  padding: 0;
-  width: 100rem;
-  height: calc(100vh - 17rem);
-  overflow-y: scroll;
-  position: relative;
-  z-index: 10;
-  background-color: var(--white);
-  box-shadow: 0 0 2.5rem var(--white-shadow);
+  padding: 2.5rem 15rem 15rem;
 }
 
-#pop-up #product-section {
-  width: calc(100vw - 50rem);
-  height: calc(100vh - 5rem);
-  padding: 0;
-  overflow-y: scroll;
+#product #product-section #store-button {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
-#pop-up #product-section::-webkit-scrollbar {
-  display: none;
+#product #product-section #store-button i {
+  font-size: 2rem;
+  margin-right: 0.5rem;
 }
 
 #product #product-section #product-image {
@@ -861,44 +835,33 @@ footer p {
   height: 35rem;
 }
 
-#pop-up #product-section #product-image {
-  width: calc(100vw - 50rem);
-  height: 30rem;
-}
-
 #product #product-section #product-content {
-  padding: 5rem;
+  padding: 5rem 0 0;
 }
 
-#pop-up #product-section #product-content {
-  padding: 2.5rem;
-}
-
-#pop-up #product-section #product-content h3,
 #product #product-section #product-content h3 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
   display: flex;
   align-items: center;
 }
 
-#pop-up #product-section #product-content h3 span,
 #product #product-section #product-content h3 span {
   text-transform: uppercase;
 }
 
-#pop-up #product-section #product-content h3 span:first-of-type,
 #product #product-section #product-content h3 span:first-of-type {
   margin-left: 2.5rem;
   color: var(--green);
 }
 
-#pop-up #product-section #product-content h3 span:last-of-type,
 #product #product-section #product-content h3 span:last-of-type {
   font-size: 1.5rem;
   font-weight: 400;
   margin-left: auto;
 }
 
-#pop-up #product-section #product-content h3 button,
 #product #product-section #product-content h3 button {
   margin-left: 2.5rem;
   font-size: 1.2rem;
@@ -911,67 +874,131 @@ footer p {
     transform var(--fast);
 }
 
-#pop-up #product-section #product-content h3 button:first-of-type,
 #product #product-section #product-content h3 .favorite-button {
   background-color: var(--white);
   color: var(--red);
 }
 
-#pop-up #product-section #product-content h3 button:first-of-type:hover,
 #product #product-section #product-content h3 .favorite-button:hover {
   background-color: var(--red);
   border-color: var(--red);
   color: var(--white);
 }
 
-#pop-up #product-section #product-content h3 button:first-of-type.active,
 #product #product-section #product-content h3 .favorite-button.active {
   background-color: var(--red);
   border-color: var(--red);
   color: var(--white);
 }
 
-#pop-up #product-section #product-content h3 button:first-of-type.active:hover,
 #product #product-section #product-content h3 .favorite-button.active:hover {
   background-color: var(--white);
   color: var(--red);
 }
 
-#pop-up #product-section #product-content h3 button:last-of-type,
 #product #product-section #product-content h3 .cart-button {
   background-color: var(--white);
   border-color: var(--blue);
   color: var(--blue);
 }
 
-#pop-up #product-section #product-content h3 button:last-of-type:hover,
 #product #product-section #product-content h3 .cart-button:hover {
   background-color: var(--blue);
   color: var(--white);
 }
 
-#pop-up #product-section #product-content h3 button:last-of-type.disabled,
 #product #product-section #product-content h3 .cart-button.disabled {
   background-color: var(--blue);
   color: var(--white);
   border-color: var(--blue);
 }
 
+#product #product-section #product-content p {
+  text-align: justify;
+  margin-top: 5rem;
+}
+
+/* Pop-Up Design Removed
+
+#pop-up #product-section #product-content h3 {
+  display: flex;
+  align-items: center;
+}
+
+#pop-up #product-section #product-content h3 span {
+  text-transform: uppercase;
+}
+
+#pop-up #product-section #product-content h3 span:first-of-type {
+  margin-left: 2.5rem;
+  color: var(--green);
+}
+
+#pop-up #product-section #product-content h3 span:last-of-type {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-left: auto;
+}
+
+#pop-up #product-section #product-content h3 button {
+  margin-left: 2.5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: 0.2rem solid;
+  transition: background-color var(--fast), color var(--fast),
+    transform var(--fast);
+}
+
+#pop-up #product-section #product-content h3 button:first-of-type {
+  background-color: var(--white);
+  color: var(--red);
+}
+
+#pop-up #product-section #product-content h3 button:first-of-type:hover {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+#pop-up #product-section #product-content h3 button:first-of-type.active {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+#pop-up #product-section #product-content h3 button:first-of-type.active:hover {
+  background-color: var(--white);
+  color: var(--red);
+}
+
+#pop-up #product-section #product-content h3 button:last-of-type {
+  background-color: var(--white);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+#pop-up #product-section #product-content h3 button:last-of-type:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+#pop-up #product-section #product-content h3 button:last-of-type.disabled {
+  background-color: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+}
+
 #pop-up #product-section #product-content h3 button:first-of-type:active,
-#product #product-section #product-content h3 .favorite-button:active,
-#pop-up #product-section #product-content h3 button:last-of-type:active,
-#product #product-section #product-content h3 .cart-button:active {
+#pop-up #product-section #product-content h3 button:last-of-type:active {
   transform: scale(110%);
 }
 
 #pop-up #product-section #product-content p {
   margin-top: 2.5rem;
-}
-
-#product #product-section #product-content p {
-  text-align: justify;
-  margin-top: 5rem;
-}
+} */
 
 /* ================================================== Cart & Inventory ================================================== */
 
