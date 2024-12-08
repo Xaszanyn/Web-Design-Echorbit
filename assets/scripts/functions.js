@@ -95,6 +95,19 @@ function showPassword(element) {
   element.classList.toggle("fa-eye-slash");
 }
 
+function dark(force) {
+  darkButton.children[0].classList.toggle("fa-moon");
+  darkButton.children[0].classList.toggle("fa-sun");
+  darkButton.children[0].classList.add("beat");
+  document.body.classList.toggle("dark");
+  setTimeout(() => darkButton.children[0].classList.remove("beat"), 500);
+
+  if (force) return;
+
+  if (localStorage.getItem("dark")) localStorage.removeItem("dark");
+  else localStorage.setItem("dark", true);
+}
+
 /* =========={ Register }========================================================================================== */
 
 async function registerFirstPhase(event) {
