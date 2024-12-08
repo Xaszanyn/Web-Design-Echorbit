@@ -598,6 +598,21 @@ footer p {
   transform: translate(1.5rem, -1rem) rotate(30deg);
 }
 
+#store #top {
+  padding: 1rem 2rem;
+  width: 10rem;
+  margin: 2.5rem auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+#store #top i {
+  margin-left: 0.5rem;
+  font-size: 2rem;
+}
+
 /* ================================================== Pop-Up ================================================== */
 
 #pop-up {

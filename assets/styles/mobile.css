@@ -458,6 +458,18 @@
     transform: translate(2rem, -2rem) rotate(30deg);
   }
 
+  #store #top {
+    padding: 5rem 10rem;
+    width: 40rem;
+    margin: 15rem auto 0;
+    font-size: 6rem;
+  }
+
+  #store #top i {
+    margin-left: 2.5rem;
+    font-size: 8rem;
+  }
+
   /* ================================================== Pop-Up ================================================== */
 
   #pop-up section {
