@@ -88,6 +88,13 @@ function closePopUp() {
     sections.forEach((section) => section.classList.remove("active"));
 }
 
+function showPassword(element) {
+  element.parentElement.children[1].type =
+    element.parentElement.children[1].type == "password" ? "text" : "password";
+  element.classList.toggle("fa-eye");
+  element.classList.toggle("fa-eye-slash");
+}
+
 /* =========={ Register }========================================================================================== */
 
 async function registerFirstPhase(event) {

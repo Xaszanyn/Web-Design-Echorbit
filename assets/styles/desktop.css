@@ -676,6 +676,13 @@ footer p {
   color: var(--blue);
 }
 
+.input i.fa-eye,
+.input i.fa-eye-slash {
+  left: unset;
+  right: 1rem;
+  cursor: pointer;
+}
+
 .button {
   background-color: var(--blue);
   color: var(--white) !important;
