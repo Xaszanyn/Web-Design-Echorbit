@@ -809,4 +809,55 @@
     border-radius: 3rem;
     margin-bottom: 0;
   }
+
+  /* ================================================== Team ================================================== */
+
+  #team-showcase {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 15rem;
+    margin: 0;
+  }
+
+  #team-showcase a {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  #team-showcase a:nth-of-type(even) {
+    flex-direction: row-reverse;
+  }
+
+  #team-showcase > div {
+    display: none;
+  }
+
+  #team-showcase a img {
+    width: 40rem;
+    height: 40rem;
+    box-shadow: 0 0 3rem var(--shadow);
+    border-width: 1.6rem;
+    margin: 0 7.5rem 0 0;
+  }
+
+  #team-showcase a:nth-of-type(even) img {
+    margin: 0 0 0 7.5rem;
+  }
+
+  #team-showcase a div {
+    align-items: flex-start;
+  }
+
+  #team-showcase a:nth-of-type(even) div {
+    align-items: flex-end;
+  }
+
+  #team-showcase span:first-of-type {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+  }
+
+  #team-showcase span:last-of-type {
+    font-size: 5rem;
+  }
 }

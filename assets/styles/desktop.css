@@ -1231,3 +1231,49 @@ footer p {
 #pop-up #user-section #inventory button {
   justify-self: flex-start;
 }
+
+/* ================================================== Team ================================================== */
+
+#team-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 5rem;
+  column-gap: 5rem;
+  margin: 0 5rem;
+}
+
+#team-showcase a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#team-showcase img {
+  width: 20rem;
+  height: 20rem;
+  box-shadow: 0 0 1rem var(--shadow);
+  border: 0.4rem solid var(--white);
+  border-radius: 100%;
+  margin-bottom: 2.5rem;
+}
+
+#team-showcase div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#team-showcase span:first-of-type {
+  font-size: 1.5rem;
+  color: var(--blue);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+#team-showcase span:last-of-type {
+  font-size: 1.25rem;
+  font-weight: 500;
+  font-style: italic;
+}
