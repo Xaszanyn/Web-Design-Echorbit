@@ -449,7 +449,7 @@ function viewCart() {
     } else return content;
   }, "");
 
-  if (price) {
+  if (price || cartProducts.innerHTML) {
     cartCheckout.children[0].innerHTML = `Total Price: &euro;${price.toFixed(
       1
     )}`;
