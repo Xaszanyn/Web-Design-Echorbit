@@ -2,8 +2,7 @@
   --dark-black: #000;
   --black: #19191b;
   --white: #ffffff;
-  --blue: #386996;
-  --dark-blue: #2b4966;
+  --blue: #384e96;
   --gray: #bfbecc;
   --red: #e93535;
   --green: #139e01;
@@ -18,9 +17,9 @@
 
   --shadow: rgba(25, 25, 27, 45%);
   --white-shadow: rgba(255, 255, 255, 25%);
-  --navigation-shadow: linear-gradient(rgba(25, 25, 27, 10%), transparent);
+  --navigation-shadow: linear-gradient(rgba(25, 25, 27, 15%), transparent);
   --navigation-shadow-mobile: linear-gradient(
-    rgba(25, 25, 27, 15%),
+    rgba(25, 25, 27, 10%),
     transparent
   );
 }
@@ -42,22 +41,25 @@
 /* ================================================== Dark ================================================== */
 
 :root .dark {
-  --blue: #397fc0;
-  --dark-blue: #386996;
   --red: #c41414;
   --green: #1b920b;
+}
 
-  --navigation-shadow: linear-gradient(rgba(0, 0, 0, 25%), transparent);
-  --navigation-shadow-mobile: linear-gradient(rgba(0, 0, 0, 30%), transparent);
+.dark::-webkit-scrollbar-thumb {
+  background-color: var(--white);
+}
+
+.dark::-webkit-scrollbar-thumb:active {
+  background-color: var(--blue);
 }
 
 .dark nav {
-  background-color: var(--black);
+  background-color: var(--blue);
   color: var(--white);
 }
 
 .dark nav ul {
-  background-color: var(--black);
+  background-color: var(--blue);
 }
 
 .dark nav #logo {
@@ -75,4 +77,8 @@
 
 .dark main #showcase {
   background-color: var(--white);
+}
+
+.dark #product #product-section #product-content h3 button {
+  border: none;
 }
