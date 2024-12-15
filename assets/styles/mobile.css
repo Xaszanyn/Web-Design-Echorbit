@@ -833,12 +833,23 @@
   }
 
   #team-showcase a {
+    grid-column: span 1;
     flex-direction: row;
     justify-content: flex-start;
   }
 
   #team-showcase a:nth-of-type(even) {
     flex-direction: row-reverse;
+  }
+
+  #team-showcase a:nth-of-type(even) span {
+    text-align: right;
+  }
+
+  #team-showcase a:last-child:nth-child(3n - 1),
+  #team-showcase a:nth-last-child(2):nth-child(3n + 1),
+  #team-showcase a:nth-last-child(2):nth-child(3n - 2) {
+    grid-column-end: unset !important;
   }
 
   #team-showcase > div {

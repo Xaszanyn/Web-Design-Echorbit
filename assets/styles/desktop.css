@@ -1283,17 +1283,30 @@ footer p {
 
 #team-showcase {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   row-gap: 5rem;
   column-gap: 5rem;
   margin: 0 5rem;
 }
 
 #team-showcase a {
+  grid-column: span 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#team-showcase a:last-child:nth-child(3n - 1) {
+  grid-column-end: -2;
+}
+
+#team-showcase a:nth-last-child(2):nth-child(3n + 1) {
+  grid-column-end: 4;
+}
+
+#team-showcase a:last-child:nth-child(3n - 2) {
+  grid-column-end: 5;
 }
 
 #team-showcase img {
@@ -1303,6 +1316,7 @@ footer p {
   border: 0.4rem solid var(--white);
   border-radius: 100%;
   margin-bottom: 2.5rem;
+  flex-shrink: 0;
 }
 
 #team-showcase div {
