@@ -588,6 +588,7 @@ footer p {
   text-transform: uppercase;
   transition: background-color var(--fast), color var(--fast),
     border-color var(--fast), transform var(--fast);
+  margin-bottom: 0.5rem;
 }
 
 #store #store-second #products button a:hover {
@@ -857,12 +858,15 @@ footer p {
 
 #product #product-section #product-content {
   padding: 5rem 0 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2.5rem;
+  font-size: 1.5rem;
 }
 
 #product #product-section #product-content h3 {
   font-size: 2.5rem;
   font-weight: 300;
-  margin-bottom: 2.5rem;
   display: flex;
   align-items: center;
 }
@@ -935,8 +939,19 @@ footer p {
 
 #product #product-section #product-content p {
   text-align: justify;
-  margin-top: 5rem;
+  margin: 0;
 }
+
+#product #product-section #product-content ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 0.5rem;
+  list-style: unset;
+  list-style-position: inside;
+  list-style-type: "➤ ";
+}
+
+/* =========================????????????????????????????????????????????????????????????? */
 
 /* Pop-Up Design Removed
 

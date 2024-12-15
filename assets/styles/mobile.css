@@ -591,13 +591,14 @@
 
   #product #product-section #product-content {
     padding: 10rem 0 0;
+    font-size: 6rem;
+    row-gap: 10rem;
   }
 
   #product #product-section #product-content h3 {
     display: block;
     font-weight: 700;
     font-size: 8rem;
-    margin-bottom: 10rem;
   }
 
   #product #product-section #product-content h3 span:first-of-type {
@@ -622,10 +623,6 @@
     border-radius: 10rem;
     border: 0.8rem solid;
     margin: 2.5rem 0 5rem 2.5rem;
-  }
-
-  #product #product-section #product-content p {
-    margin-top: 15rem;
   }
 
   /* Pop-Up Design Removed

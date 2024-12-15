@@ -233,6 +233,10 @@ function renderProducts() {
             user.favorites.includes(product.id)
               ? `<i class="fa-solid fa-heart"></i>`
               : `<i class="fa-solid fa-heart hidden"></i>`
+          }${
+            product.soundcloud
+              ? `<iframe width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${product.soundcloud}&color=%23384e96&inverse=false&auto_play=false&show_user=false"></iframe>`
+              : ""
           }</button>`)
     );
   }, "");
@@ -505,7 +509,11 @@ function renderProduct() {
             : `class="cart-button" onclick="cart(${product.premium.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Add`
         } to Cart</button></h3>`
       : ""
-  }${product.soundcloud}<p>${product.content}</p>`;
+  }${
+    product.soundcloud
+      ? `<iframe width="100%" height="175" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${product.soundcloud}&color=%23384e96&inverse=false&auto_play=false&show_user=true"></iframe>`
+      : ""
+  }${product.content}`;
 }
 
 async function checkout() {
