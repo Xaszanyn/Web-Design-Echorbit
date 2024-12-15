@@ -806,6 +806,10 @@
     margin: 5rem 0 0;
   }
 
+  #pop-up #user-section #user-logout {
+    margin: 2.5rem 0 0;
+  }
+
   #pop-up #user-section hr {
     margin: 10rem 0;
   }

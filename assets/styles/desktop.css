@@ -1240,6 +1240,11 @@ footer p {
   margin: 2.5rem 0 0;
 }
 
+#pop-up #user-section #user-logout {
+  background-color: var(--red);
+  margin: 1rem 0 0;
+}
+
 #pop-up #user-section #user-save.disabled {
   background-color: var(--gray);
   cursor: unset;

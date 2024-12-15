@@ -54,6 +54,7 @@ const userEmail = document.querySelector("#user-section #user-email");
 const userPhone = document.querySelector("#user-section #user-phone");
 const userCountry = document.querySelector("#user-section #user-country");
 const userSaveButton = document.querySelector("#user-section #user-save");
+const userLogoutButton = document.querySelector("#user-section #user-logout");
 const userLoading = document.querySelector("#user-section #user-loading");
 const userInventoryProducts = document.querySelector(
   "#user-section #inventory #inventory-products"
@@ -72,6 +73,13 @@ const sfxButton = document.querySelector("#store #store-first #type .sfx");
   products = await get("get.php?target=products");
 
   setUserInventory();
+
+  assign(userSaveButton, userInputSave);
+  assign(userLogoutButton, () => {
+    localStorage.removeItem("session");
+    localStorage.removeItem("guest");
+    location.href = "";
+  });
 
   if (location.href.includes("store")) {
     allCategories = await get("get.php?target=categories");
@@ -104,8 +112,6 @@ const sfxButton = document.querySelector("#store #store-first #type .sfx");
     redirect("cart", () => {
       viewCart();
     });
-
-    assign(userSaveButton, userInputSave);
 
     assign(musicButton, () => selectType("music"));
     assign(sfxButton, () => selectType("sfx"));
