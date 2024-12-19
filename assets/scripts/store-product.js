@@ -156,6 +156,8 @@ const sfxButton = document.querySelector("#store #store-first #type .sfx");
 function selectType(selectedType) {
   if (type == selectedType) return;
 
+  categories = [];
+
   type = selectedType;
 
   switch (selectedType) {
@@ -248,7 +250,7 @@ function renderCategories() {
 
   allCategories.forEach((category) => {
     if (type == category.type)
-      content += `<button data-id="${category.id}" onclick="selectCategory(event)"><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/icons/${category.image}" /> ${category.name}</button>`;
+      content += `<button data-id="${category.id}" onclick="selectCategory(event)">${category.name}</button>`;
   });
 
   category.innerHTML = content;

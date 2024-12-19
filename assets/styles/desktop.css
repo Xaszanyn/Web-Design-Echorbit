@@ -472,13 +472,12 @@ footer p {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+  padding: 0.5rem;
   font-size: 1.2rem;
   font-weight: 500;
   transition: background-color var(--fast), color var(--fast);
 }
 
-#store #store-first button img,
 #store #store-first button div {
   margin-right: 0.5rem;
   width: 2rem;
