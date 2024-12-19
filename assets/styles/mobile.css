@@ -100,10 +100,21 @@
   /* ================================================== Header ================================================== */
 
   header {
-    height: 80vh;
+    height: 100vw;
+    margin-top: 20rem;
   }
 
-  header .cover {
+  .initial + header {
+    height: 100vw;
+    margin-top: 25rem;
+  }
+
+  header i {
+    font-size: 10rem;
+    padding: 10rem 5rem;
+  }
+
+  /* header .cover {
     padding: 50rem 10rem;
     justify-content: flex-start;
   }
@@ -129,7 +140,7 @@
     padding: 2rem 8rem;
     border-radius: 10rem;
     background-color: var(--blue);
-  }
+  } */
 
   /* ================================================== Main ================================================== */
 
