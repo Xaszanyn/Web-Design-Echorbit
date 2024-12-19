@@ -40,7 +40,6 @@ nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: background-color var(--fast);
 }
 
 nav li.small {
@@ -83,6 +82,31 @@ nav #shadow {
   background: var(--navigation-shadow);
   bottom: -0.5rem;
   left: 0;
+}
+
+nav #about-us-navigation {
+  position: relative;
+}
+
+nav #about-us-navigation div {
+  position: absolute;
+  z-index: 10;
+  background-color: var(--white);
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 100%);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 0 0.25rem;
+  box-shadow: 0 -0.5rem var(--white), 0 0 0.5rem var(--shadow);
+  transition: opacity var(--fast), clip-path var(--fast);
+  opacity: 0;
+  clip-path: inset(0% 0% 100% 0%);
+}
+
+nav #about-us-navigation:hover div {
+  opacity: 1;
+  clip-path: inset(0% -0.5rem -0.5rem -0.5rem);
 }
 
 /* ================================================== Header ================================================== */
@@ -1341,7 +1365,7 @@ footer p {
   justify-self: flex-start;
 }
 
-/* ================================================== Team ================================================== */
+/* ================================================== The Team ================================================== */
 
 #team-showcase {
   display: grid;

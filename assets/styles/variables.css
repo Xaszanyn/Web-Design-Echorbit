@@ -22,6 +22,7 @@
     rgba(25, 25, 27, 10%),
     transparent
   );
+  --navigation-about-us: #eeeeee;
 }
 
 @keyframes slide {
@@ -58,8 +59,18 @@
   color: var(--white);
 }
 
-.dark nav ul {
+.dark nav #about-us-navigation div {
   background-color: var(--blue);
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .dark nav ul {
+    background-color: var(--blue);
+  }
+}
+
+.dark nav #about-us-navigation div {
+  box-shadow: 0 -0.5rem var(--blue), 0 0 0.5rem var(--shadow); /* Fixes the thin line. */
 }
 
 .dark nav #logo {

@@ -33,18 +33,17 @@
     left: 0;
     bottom: 0;
     transform: translate(0, 100%);
-    width: 120rem;
+    width: 90rem;
     height: calc(100vh - 20rem);
     background-color: var(--white);
     flex-direction: column;
     padding: 15rem 5rem;
     font-size: 6rem;
-    transition: left var(--fast);
-    z-index: 10;
+    transition: left var(--fast), background-color var(--fast);
   }
 
   nav ul.closed {
-    left: -120rem;
+    left: -90rem;
   }
 
   nav li {
@@ -78,17 +77,19 @@
   nav #close-screen {
     display: block;
     position: absolute;
-    right: calc(20rem - 100%);
+    left: 100%;
     top: 0;
-    width: 100rem;
+    width: 100vw;
     height: calc(100vh - 20rem);
     background-color: var(--fade);
-    transition: width var(--fast), right var(--fast);
+    opacity: 1;
+    transition: opacity var(--fast);
   }
 
   nav ul.closed #close-screen {
-    width: 0;
-    right: 0;
+    opacity: 0;
+    left: -50rem;
+    transition: opacity var(--fast), left var(--fast-delay);
   }
 
   nav #shadow {
