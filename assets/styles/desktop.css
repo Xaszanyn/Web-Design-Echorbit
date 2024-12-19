@@ -332,19 +332,30 @@ main #showcase img {
 footer {
   background-color: var(--dark-black);
   color: var(--white);
-  padding: 5rem 15rem 1rem;
+  padding: 5rem 1rem 1rem;
   font-weight: 500;
   text-transform: uppercase;
 }
 
-footer .flex {
+footer div {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 4rem;
 }
 
-footer img {
+footer > div:first-of-type {
+  margin-bottom: 5rem;
+}
+
+footer > div:first-of-type > a:not(:last-of-type) {
+  margin: 0 1rem 0 0;
+}
+
+footer > div:first-of-type div {
+  margin: 0 5rem 0 0;
+}
+
+footer > div:first-of-type img {
   width: 3rem;
   height: 3rem;
   margin-right: 1rem;
@@ -353,28 +364,18 @@ footer img {
   background-color: var(--white);
 }
 
+footer > div:last-of-type {
+  justify-content: space-between;
+}
+
+footer > div:last-of-type img {
+  height: 1.5rem;
+  margin-left: 0.5rem;
+}
+
 footer span {
-  font-size: 2rem;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  margin-right: 5rem;
-  text-align: center;
-}
-
-footer ul {
-  margin-left: 5rem;
-  text-align: center;
-}
-
-footer a {
-  display: inline-block;
-  padding: 0.5rem 0;
-}
-
-footer p {
-  font-size: 0.75rem;
-  text-align: center;
+  color: var(--dark-gray);
+  font-size: 0.8rem;
 }
 
 /* ================================================== Store ================================================== */

@@ -226,37 +226,46 @@
   /* ================================================== Footer ================================================== */
 
   footer {
-    padding: 15rem 15rem 5rem;
+    padding: 15rem 5rem 5rem;
+    font-size: 5rem;
   }
 
-  footer .flex {
+  footer > div:first-of-type {
     flex-direction: column;
-    margin-bottom: 10rem;
+    margin-bottom: 15rem;
   }
 
-  footer img {
+  footer > div:first-of-type > a:not(:last-of-type) {
+    margin: 0 0 5rem;
+  }
+
+  footer > div:first-of-type div {
+    margin: 0 0 15rem;
+  }
+
+  footer > div:first-of-type img {
     width: 12rem;
     height: 12rem;
-    margin-right: 3rem;
+    margin-right: 5rem;
+    padding: 1rem;
     border-radius: 3rem;
   }
 
+  footer > div:last-of-type {
+    flex-direction: column;
+  }
+
+  footer > div:last-of-type img {
+    height: 6rem;
+    margin-left: 2.5rem;
+  }
+
   footer span {
-    font-size: 6rem;
-    margin: 0 0 10rem;
+    font-size: 3.5rem;
   }
 
-  footer ul {
-    margin: 0;
-  }
-
-  footer a {
-    font-size: 5rem;
-    padding: 2.5rem 0;
-  }
-
-  footer p {
-    font-size: 3rem;
+  footer > div:last-of-type > span {
+    margin-bottom: 2.5rem;
   }
 
   /* ================================================== Store ================================================== */
