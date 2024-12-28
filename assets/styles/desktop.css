@@ -904,7 +904,7 @@ footer span {
 /* ================================================== Product ================================================== */
 
 #product #product-section {
-  padding: 2.5rem 15rem 15rem;
+  padding: 2.5rem 15rem 0;
 }
 
 #product #product-section #store-button {
