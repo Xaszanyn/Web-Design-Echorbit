@@ -489,8 +489,8 @@ function renderProduct() {
   }
 
   // productCover.style.backgroundImage = `url("https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}")`;
+  // productImage.src = `https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}`;
 
-  productImage.src = `https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}`;
   productContent.innerHTML = `<h3>${product.stripe_name}<span>&euro;${
     product.price
   }</span><span>${product.type}</span><button ${
@@ -511,11 +511,49 @@ function renderProduct() {
             : `class="cart-button" onclick="cart(${product.premium.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Add`
         } to Cart</button></h3>`
       : ""
-  }${
-    product.soundcloud
-      ? `<iframe width="100%" height="175" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${product.soundcloud}&color=%23384e96&inverse=false&auto_play=false&show_user=true"></iframe>`
-      : ""
-  }${product.content}`;
+  }<div class="content"></div>`;
+
+  renderProductImages(product.content, product.soundcloud);
+}
+
+async function renderProductImages(content, soundcloud) {
+  let contentHTML = "";
+
+  console.log(soundcloud);
+
+  for (let index = 1; index < 10; index++) {
+    if (await getImage(index + ".jpg")) {
+      contentHTML += `<img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/product-images/${content}/${index}.jpg" />`;
+      continue;
+    } else if (await getImage(index + ".png")) {
+      contentHTML += `<img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/product-images/${content}/${index}.png" />`;
+      continue;
+    } else if (await getImage(index + "-soundcloud.jpg")) {
+      contentHTML += `<div class="soundcloud"><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/product-images/${content}/${index}-soundcloud.jpg" />${
+        soundcloud
+          ? `<div><iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${soundcloud}&color=%23384e96&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe></div>`
+          : ""
+      }</div>`;
+      continue;
+    } else if (await getImage(index + "-soundcloud.png")) {
+      contentHTML += `<div class="soundcloud"><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/product-images/${content}/${index}-soundcloud.png" />${
+        soundcloud
+          ? `<div><iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${soundcloud}&color=%23384e96&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe></div>`
+          : ""
+      }</div>`;
+      continue;
+    } else break;
+  }
+
+  document.querySelector(".content").innerHTML = contentHTML;
+
+  async function getImage(image) {
+    return await fetch(
+      `https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/product-images/${content}/${image}`
+    )
+      .then((response) => response.status != 403)
+      .catch(() => false);
+  }
 }
 
 async function checkout() {

@@ -371,6 +371,7 @@ footer > div:last-of-type {
 footer > div:last-of-type img {
   height: 1.5rem;
   margin-left: 0.5rem;
+  opacity: 0.75;
 }
 
 footer span {
@@ -924,7 +925,6 @@ footer span {
 }
 
 #product #product-section #product-content {
-  padding: 5rem 0 0;
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 2.5rem;
@@ -936,6 +936,7 @@ footer span {
   font-weight: 300;
   display: flex;
   align-items: center;
+  margin-bottom: 2.5rem;
 }
 
 #product #product-section #product-content h3 span {
@@ -1004,21 +1005,31 @@ footer span {
   border-color: var(--blue);
 }
 
-#product #product-section #product-content p {
-  text-align: justify;
-  margin: 0;
+#product #product-section #product-content .content {
+  margin: 0 -15rem;
+  background-color: var(--black);
 }
 
-#product #product-section #product-content ul {
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 0.5rem;
-  list-style: unset;
-  list-style-position: inside;
-  list-style-type: "➤ ";
+#product #product-section #product-content .content img {
+  display: block;
 }
 
-/* =========================????????????????????????????????????????????????????????????? */
+#product #product-section #product-content .content .soundcloud {
+  position: relative;
+}
+
+#product #product-section #product-content .content .soundcloud div {
+  width: 87.5rem;
+  height: 100%;
+  background-color: var(--white);
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem;
+}
 
 /* Pop-Up Design Removed
 
