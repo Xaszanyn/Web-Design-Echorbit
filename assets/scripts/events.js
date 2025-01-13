@@ -32,6 +32,18 @@ assign(register.thirdButton, registerThirdPhase);
 
 assign(login.button, loginUser);
 
+assign(forgotFromRegisterSection, () => {
+  closePopUp();
+  setTimeout(() => openPopUp(forgotSection), 200);
+});
+assign(forgotFromLoginSection, () => {
+  closePopUp();
+  setTimeout(() => openPopUp(forgotSection), 200);
+});
+assign(forgot.firstButton, forgotFirstPhase);
+assign(forgot.secondButton, forgotSecondPhase);
+assign(forgot.thirdButton, forgotThirdPhase);
+
 assign(popUp, (event) => {
   if (event.target == popUp) closePopUp();
 });

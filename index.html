@@ -185,6 +185,12 @@
                 ><i class="fa-solid fa-user"></i> Sign-in</u
               >
             </p>
+            <p>
+              Can't remember?
+              <u id="forgot-from-register-section"
+                ><i class="fa-solid fa-question"></i> Forgot Password</u
+              >
+            </p>
           </div>
           <div class="second form">
             <p>
@@ -240,6 +246,57 @@
             ><i class="fa-solid fa-user"></i> Sign-up</u
           >
         </p>
+        <p>
+          Can't remember?
+          <u id="forgot-from-login-section"
+            ><i class="fa-solid fa-question"></i> Forgot Password</u
+          >
+        </p>
+      </section>
+      <section id="forgot-section">
+        <i class="fa-solid fa-xmark close"></i>
+        <h3>Forgot Password</h3>
+        <div id="forgot-phase" class="first">
+          <div class="first">
+            <div class="form">
+              <div class="input">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="text" placeholder="Registered E-mail" />
+              </div>
+              <button class="button">
+                <i class="fa-solid fa-right-to-bracket"></i> Get Code
+              </button>
+            </div>
+          </div>
+          <div class="second form">
+            <p>
+              If you cannot find the verification code, check your spam folder.
+            </p>
+            <div class="input">
+              <i class="fa-solid fa-shield-halved"></i>
+              <input type="text" placeholder="Verification Code" />
+            </div>
+            <button class="button">
+              <i class="fa-solid fa-right-to-bracket"></i> Continue
+            </button>
+          </div>
+          <div class="third form">
+            <input type="hidden" />
+            <div class="input">
+              <i class="fa-solid fa-key"></i>
+              <input type="password" placeholder="New Password" />
+              <i class="fa-solid fa-eye" onclick="showPassword(this)"></i>
+            </div>
+            <div class="input">
+              <i class="fa-solid fa-check"></i>
+              <input type="password" placeholder="New Password (Again)" />
+              <i class="fa-solid fa-eye" onclick="showPassword(this)"></i>
+            </div>
+            <button class="button">
+              <i class="fa-solid fa-check"></i> Complete
+            </button>
+          </div>
+        </div>
       </section>
     </section>
     <section id="loading">

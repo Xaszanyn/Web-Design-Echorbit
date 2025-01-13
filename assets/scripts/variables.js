@@ -52,3 +52,28 @@ const register = {
 const userButton = document.querySelector("#user-button");
 
 const darkButton = document.querySelector("nav #dark-button");
+
+const forgotFromRegisterSection = document.querySelector(
+  "#register-section #forgot-from-register-section"
+);
+const forgotFromLoginSection = document.querySelector(
+  "#login-section #forgot-from-login-section"
+);
+const forgotSection = document.querySelector("#forgot-section");
+const forgot = {
+  phase: document.querySelector("#forgot-phase"),
+
+  email: document.querySelector("#forgot-phase .first input"),
+  code: document.querySelector("#forgot-phase .second input"),
+  hidden: document.querySelector("#forgot-phase .third input[type=hidden]"),
+  password: document.querySelector(
+    "#forgot-phase .third .input:nth-of-type(1) input"
+  ),
+  check: document.querySelector(
+    "#forgot-phase .third .input:nth-of-type(2) input"
+  ),
+
+  firstButton: document.querySelector("#forgot-phase .first button"),
+  secondButton: document.querySelector("#forgot-phase .second button"),
+  thirdButton: document.querySelector("#forgot-phase .third button"),
+};

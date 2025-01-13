@@ -825,14 +825,16 @@ footer span {
 }
 
 #register-phase.first {
+  height: 17.5rem;
+}
+
+#register-phase.second,
+#forgot-phase.second {
   height: 12.5rem;
 }
 
-#register-phase.second {
-  height: 12.5rem;
-}
-
-#register-phase.third {
+#register-phase.third,
+#forgot-phase.third {
   height: 10.5rem;
 }
 
@@ -844,6 +846,38 @@ footer span {
 }
 
 #register-phase > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity var(--slow);
+}
+
+#register-section p:first-of-type:not(:last-of-type),
+#login-section p:first-of-type:not(:last-of-type) {
+  margin-bottom: 1rem;
+}
+
+/* ================================================== Forgot Password ================================================== */
+
+#forgot-phase {
+  position: relative;
+  transition: height var(--slow);
+}
+
+#forgot-phase.first {
+  height: 7.5rem;
+}
+
+#forgot-phase.first .first,
+#forgot-phase.second .second,
+#forgot-phase.third .third {
+  opacity: 1;
+  z-index: 10;
+}
+
+#forgot-phase > * {
   position: absolute;
   top: 50%;
   left: 50%;

@@ -554,18 +554,28 @@
     margin-bottom: 2.5rem;
   }
 
-  /* ================================================== Sign Up ================================================== */
+  /* ================================================== Sign Up & Forgot Password ================================================== */
 
   #register-phase.first {
-    height: 55rem;
+    height: 70rem;
   }
 
-  #register-phase.second {
+  #register-phase.second,
+  #forgot-phase.second {
     height: 50rem;
   }
 
-  #register-phase.third {
+  #register-phase.third,
+  #forgot-phase.third {
     height: 45rem;
+  }
+
+  #forgot-phase.first {
+    height: 25rem;
+  }
+
+  #register-phase p:first-of-type:not(:last-of-type) {
+    margin-bottom: 2.5rem;
   }
 
   /* ================================================== Loading ================================================== */

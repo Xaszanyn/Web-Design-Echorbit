@@ -110,7 +110,7 @@ function dark(force) {
 
 /* =========={ Register }========================================================================================== */
 
-async function registerFirstPhase(event) {
+async function registerFirstPhase() {
   if (!register.email.value) {
     notify("Please enter your e-mail address.");
     return;
@@ -144,7 +144,7 @@ async function registerFirstPhase(event) {
   }
 }
 
-async function registerSecondPhase(event) {
+async function registerSecondPhase() {
   if (!register.code.value) {
     notify("Please enter the verification code.");
     return;
@@ -187,7 +187,7 @@ async function registerSecondPhase(event) {
   }
 }
 
-async function registerThirdPhase(event) {
+async function registerThirdPhase() {
   if (!register.password.value) {
     notify("Please enter your password.");
     return;
@@ -223,6 +223,134 @@ async function registerThirdPhase(event) {
       notify("You have reached your maximum number of attempts.");
       register.phase.classList.remove("third");
       register.phase.classList.add("first");
+      closePopUp();
+      break;
+    case "code_invalid":
+      notify("You entered an incorrect code, please try again.");
+      break;
+    case "success":
+      localStorage.setItem("registered", true);
+      localStorage.setItem("session", response.session);
+
+      redirect(
+        "store",
+        () => loginUserSession(setUser),
+        () => (location.href = "/store/?user")
+      );
+
+      break;
+  }
+}
+
+/* =========={ Forgot Password }========================================================================================== */
+
+async function forgotFirstPhase() {
+  if (!forgot.email.value) {
+    notify("Please enter your registered e-mail address.");
+    return;
+  }
+
+  loading.classList.add("loading");
+
+  let response = await post("forgot.php", {
+    phase: "forgot",
+    email: forgot.email.value,
+  });
+
+  loading.classList.remove("loading");
+
+  switch (response.status) {
+    case "error":
+      notify();
+      break;
+    case "email_invalid":
+      notify("Unfortunately, this e-mail address is not in use.");
+      break;
+    case "success":
+      forgot.phase.classList.remove("first");
+      forgot.phase.classList.add("second");
+      break;
+  }
+}
+
+async function forgotSecondPhase() {
+  if (!forgot.code.value) {
+    notify("Please enter the verification code.");
+    return;
+  }
+
+  loading.classList.add("loading");
+
+  let response = await post("forgot.php", {
+    phase: "confirm",
+    code: forgot.code.value,
+  });
+
+  loading.classList.remove("loading");
+
+  forgot.hidden.value = response.code;
+
+  switch (response.status) {
+    case "error":
+      notify();
+      break;
+    case "timeout":
+      notify("The verification code has timed out.");
+      forgot.phase.classList.remove("second");
+      forgot.phase.classList.add("first");
+      closePopUp();
+      break;
+    case "maximum_attempt":
+      notify("You have reached your maximum number of attempts.");
+      forgot.phase.classList.remove("second");
+      forgot.phase.classList.add("first");
+      closePopUp();
+      break;
+    case "code_invalid":
+      notify("You entered an incorrect code, please try again.");
+      break;
+    case "success":
+      forgot.phase.classList.remove("second");
+      forgot.phase.classList.add("third");
+      break;
+  }
+}
+
+async function forgotThirdPhase() {
+  if (!forgot.password.value) {
+    notify("Please enter your password.");
+    return;
+  }
+
+  if (forgot.password.value != forgot.check.value) {
+    notify("Passwords do not match, please try again.");
+    return;
+  }
+
+  loading.classList.add("loading");
+
+  let response = await post("forgot.php", {
+    phase: "change",
+    code: forgot.hidden.value,
+    password: forgot.password.value,
+  });
+
+  loading.classList.remove("loading");
+
+  switch (response.status) {
+    case "error":
+      notify();
+      break;
+    case "timeout":
+      notify("Operation has timed out.");
+      forgot.phase.classList.remove("third");
+      forgot.phase.classList.add("first");
+      closePopUp();
+      break;
+    case "maximum_attempt":
+      notify("You have reached your maximum number of attempts.");
+      forgot.phase.classList.remove("third");
+      forgot.phase.classList.add("first");
       closePopUp();
       break;
     case "code_invalid":
