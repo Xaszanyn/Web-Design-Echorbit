@@ -113,13 +113,13 @@ nav #about-us-navigation:hover div {
 
 header {
   position: relative;
-  height: calc(100vh - 6rem);
-  margin-top: 6rem;
+  height: 55rem;
+  margin: 6rem 15rem 0;
+  overflow-x: hidden;
   transition: margin-top var(--fast), height var(--fast);
 }
 
 .initial + header {
-  height: calc(100vh - 9rem);
   margin-top: 9rem;
 }
 
@@ -305,7 +305,7 @@ main #showcase {
   width: max-content;
   display: flex;
   height: 30rem;
-  animation: slide 40s linear infinite;
+  animation: slide 90s linear infinite;
   transition: background-color var(--fast);
 }
 
@@ -365,7 +365,16 @@ footer > div:first-of-type img {
 }
 
 footer > div:last-of-type {
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+footer > div:last-of-type span:last-of-type {
+  justify-self: center;
+}
+
+footer > div:last-of-type > div {
+  justify-content: right;
 }
 
 footer > div:last-of-type img {
@@ -942,7 +951,7 @@ footer div div span {
 /* ================================================== Product ================================================== */
 
 #product #product-section {
-  padding: 2.5rem 15rem 0;
+  padding: 11rem 15rem 0;
 }
 
 #product #product-section #store-button {
@@ -970,11 +979,49 @@ footer div div span {
 }
 
 #product #product-section #product-content h3 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 300;
   display: flex;
   align-items: center;
-  margin-bottom: 2.5rem;
+  padding: 1rem 15rem 1rem;
+  background-color: var(--white);
+  z-index: 10;
+  position: fixed;
+  top: 9rem;
+  width: 100%;
+  left: 0;
+  transition: top var(--fast);
+}
+
+#product #product-section #product-content h3:first-of-type:not(:last-of-type) {
+  padding-bottom: 0.5rem;
+}
+
+#product #product-section #product-content h3:last-of-type:not(:first-of-type) {
+  padding-top: 0.5rem;
+  top: 12.75rem;
+}
+
+#product
+  #product-section
+  #product-content
+  h3:last-of-type:not(:first-of-type)::after,
+#product
+  #product-section
+  #product-content
+  h3:first-of-type:last-of-type::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.5rem;
+  background: var(--inverted-navigation-shadow);
+}
+
+#product #product-section #product-content h3 b {
+  font-weight: inherit;
+  width: 37.5rem;
 }
 
 #product #product-section #product-content h3 span {
@@ -982,7 +1029,6 @@ footer div div span {
 }
 
 #product #product-section #product-content h3 span:first-of-type {
-  margin-left: 2.5rem;
   color: var(--green);
 }
 
@@ -1043,6 +1089,26 @@ footer div div span {
   border-color: var(--blue);
 }
 
+#product
+  #product-section
+  #product-content
+  h3:not(:has(.favorite-button))
+  .cart-button {
+  margin-right: 9rem;
+}
+
+:not(.initial) + #product #product-section #product-content h3:first-of-type {
+  top: 7rem;
+}
+
+:not(.initial)
+  + #product
+  #product-section
+  #product-content
+  h3:last-of-type:not(:first-of-type) {
+  top: 10.75rem;
+}
+
 #product #product-section #product-content .content {
   margin: 0 -15rem;
   background-color: var(--black);
@@ -1067,6 +1133,27 @@ footer div div span {
   justify-content: center;
   align-items: center;
   padding: 2.5rem;
+}
+
+#product #product-section #product-relateds {
+  padding: 5rem 0;
+}
+
+#product #product-section #product-relateds h3 {
+  font-size: 2rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+#product #product-section #product-relateds div {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 5rem;
+}
+
+#product #product-section #product-relateds div img {
+  border-radius: 1rem;
 }
 
 /* Pop-Up Design Removed

@@ -93,20 +93,19 @@
   }
 
   nav #shadow {
-    height: 10rem;
-    bottom: -10rem;
+    height: 5rem;
+    bottom: -5rem;
     background: var(--navigation-shadow-mobile);
   }
 
   /* ================================================== Header ================================================== */
 
   header {
-    height: 100vw;
-    margin-top: 20rem;
+    margin: 20rem 0 -5rem;
+    height: 85rem;
   }
 
   .initial + header {
-    height: 100vw;
     margin-top: 25rem;
   }
 
@@ -615,12 +614,12 @@
   /* ================================================== Product ================================================== */
 
   #product #product-section {
-    padding: 25rem 10rem 0;
+    padding: 62.5rem 10rem 0;
   }
 
   #product #product-section #store-button {
     font-size: 6rem;
-    margin-bottom: 10rem;
+    margin-bottom: 0;
   }
 
   #product #product-section #store-button i {
@@ -634,7 +633,7 @@
   }
 
   #product #product-section #product-content {
-    padding: 10rem 0 0;
+    padding: 5rem 0 0;
     font-size: 6rem;
     row-gap: 10rem;
   }
@@ -642,7 +641,37 @@
   #product #product-section #product-content h3 {
     display: block;
     font-weight: 700;
-    font-size: 8rem;
+    font-size: 6rem;
+    padding: 5rem;
+    top: 25rem;
+  }
+
+  #product
+    #product-section
+    #product-content
+    h3:first-of-type:not(:last-of-type) {
+    padding-bottom: 2.5rem;
+  }
+
+  #product
+    #product-section
+    #product-content
+    h3:last-of-type:not(:first-of-type) {
+    padding-top: 2.5rem;
+    padding-bottom: 0;
+    top: 55rem;
+  }
+
+  #product
+    #product-section
+    #product-content
+    h3:last-of-type:not(:first-of-type)::after,
+  #product
+    #product-section
+    #product-content
+    h3:first-of-type:last-of-type::after {
+    background: var(--navigation-inverted-shadow-mobile);
+    height: 5rem;
   }
 
   #product #product-section #product-content h3 span:first-of-type {
@@ -653,7 +682,7 @@
     content: "";
     display: block;
     width: 100%;
-    height: 5rem;
+    height: 2.5rem;
   }
 
   #product #product-section #product-content h3 span:last-of-type {
@@ -667,6 +696,40 @@
     border-radius: 10rem;
     border: 0.8rem solid;
     margin: 2.5rem 0 5rem 2.5rem;
+  }
+
+  :not(.initial) + #product #product-section #product-content h3:first-of-type {
+    top: 20rem;
+  }
+
+  :not(.initial)
+    + #product
+    #product-section
+    #product-content
+    h3:last-of-type:not(:first-of-type) {
+    top: 50rem;
+  }
+
+  #product #product-section #product-relateds {
+    padding: 10rem 0;
+  }
+
+  #product #product-section #product-relateds h3 {
+    font-size: 6rem;
+    font-weight: 700;
+    margin-bottom: 10rem;
+  }
+
+  #product #product-section #product-relateds div {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 10rem;
+  }
+
+  #product #product-section #product-relateds div img {
+    width: 100%;
+    height: 50rem;
+    border-radius: 3rem;
   }
 
   /* Pop-Up Design Removed

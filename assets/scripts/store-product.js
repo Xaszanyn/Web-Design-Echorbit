@@ -14,6 +14,9 @@ const productImage = document.querySelector("#product-section #product-image");
 const productContent = document.querySelector(
   "#product-section #product-content"
 );
+const productRelateds = document.querySelector(
+  "#product-section #product-relateds"
+);
 
 const featured = document.querySelector("#featured");
 
@@ -491,9 +494,11 @@ function renderProduct() {
   // productCover.style.backgroundImage = `url("https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}")`;
   // productImage.src = `https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}`;
 
-  productContent.innerHTML = `<h3>${product.stripe_name}<span>&euro;${
-    product.price
-  }</span><span>${product.type}</span><button ${
+  productContent.innerHTML = `<h3><b>${
+    product.stripe_name
+  }</b><span>&euro;${product.price.toFixed(2)}</span><span>${
+    product.type
+  }</span><button ${
     user.cart.includes(product.id)
       ? `class="cart-button disabled" onclick="uncart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Added`
       : `class="cart-button" onclick="cart(${product.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Add`
@@ -503,9 +508,11 @@ function renderProduct() {
       : `<button class="favorite-button" onclick="favorite(${product.id})"><i class="fa-solid fa-heart"></i> Like</button>`
   }</h3>${
     product.premium
-      ? `<h3>${product.premium.stripe_name}<span>&euro;${
-          product.premium.price
-        }</span><span>${product.premium.type}</span><button ${
+      ? `<h3><b>${
+          product.premium.stripe_name
+        }</b><span>&euro;${product.premium.price.toFixed(2)}</span><span>${
+          product.premium.type
+        }</span><button ${
           user.cart.includes(product.premium.id)
             ? `class="cart-button disabled" onclick="uncart(${product.premium.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Added`
             : `class="cart-button" onclick="cart(${product.premium.id}, event)"><i class="fa-solid fa-cart-shopping"></i> Add`
@@ -514,6 +521,30 @@ function renderProduct() {
   }<div class="content"></div>`;
 
   renderProductImages(product.content, product.soundcloud);
+
+  let relatedProducts = products
+    .reduce(
+      (relateds, relatedProduct) =>
+        product.id == relatedProduct.id
+          ? relateds
+          : relateds.concat([
+              {
+                ...relatedProduct,
+                relation:
+                  (product.type == relatedProduct.type ? 5 : 0) +
+                  product.category
+                    .split(",")
+                    .filter((category) =>
+                      relatedProduct.category.split(",").includes(category)
+                    ).length +
+                  (Math.abs(product.price - relatedProduct.price) < 10 ? 2 : 0),
+              },
+            ]),
+      []
+    )
+    .sort((current, next) => next.relation - current.relation);
+
+  productRelateds.innerHTML = `<h3>Related Products</h3><div><a href="#" onclick="view(${relatedProducts[0].id})" ><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${relatedProducts[0].image}" /></a><a href="#" onclick="view(${relatedProducts[1].id})" ><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${relatedProducts[1].image}" /></a><a href="#" onclick="view(${relatedProducts[2].id})" ><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${relatedProducts[2].image}" /></a></div>`;
 }
 
 function renderProductImages(content, soundcloud) {
