@@ -32,8 +32,8 @@ function notify(
 
 async function post(endpoint, body) {
   try {
-    return await fetch("https://echorbitaudio.com/services/" + endpoint, {
-      // return await fetch("/services/" + endpoint, {
+    // return await fetch("https://echorbitaudio.com/services/" + endpoint, {
+    return await fetch("/services/" + endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -47,8 +47,8 @@ async function post(endpoint, body) {
 
 async function get(endpoint) {
   try {
-    return await fetch("https://echorbitaudio.com/services/" + endpoint, {
-      // return await fetch("/services/" + endpoint, {
+    // return await fetch("https://echorbitaudio.com/services/" + endpoint, {
+    return await fetch("/services/" + endpoint, {
       headers: { "Content-Type": "application/json" },
     }).then((response) => response.json());
   } catch {
