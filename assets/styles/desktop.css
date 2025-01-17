@@ -113,8 +113,8 @@ nav #about-us-navigation:hover div {
 
 header {
   position: relative;
-  height: 55rem;
-  margin: 6rem 15rem 0;
+  height: 42.5rem;
+  margin: 6rem 0 0;
   overflow-x: hidden;
   transition: margin-top var(--fast), height var(--fast);
 }

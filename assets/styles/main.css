@@ -22,6 +22,10 @@ body {
   overflow-x: hidden;
 }
 
+body {
+  background-color: var(--white);
+}
+
 ::-webkit-scrollbar {
   width: 25px;
 }
