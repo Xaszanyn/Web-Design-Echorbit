@@ -1547,7 +1547,7 @@ footer #ssl-text i {
   margin: 0 5rem;
 }
 
-#team-showcase a {
+#team-showcase > div {
   grid-column: span 2;
   display: flex;
   flex-direction: column;
@@ -1555,15 +1555,15 @@ footer #ssl-text i {
   align-items: center;
 }
 
-#team-showcase a:last-child:nth-child(3n - 1) {
+#team-showcase > div:last-child:nth-child(3n - 1) {
   grid-column-end: -2;
 }
 
-#team-showcase a:nth-last-child(2):nth-child(3n + 1) {
+#team-showcase > div:nth-last-child(2):nth-child(3n + 1) {
   grid-column-end: 4;
 }
 
-#team-showcase a:last-child:nth-child(3n - 2) {
+#team-showcase > div:last-child:nth-child(3n - 2) {
   grid-column-end: 5;
 }
 
@@ -1577,7 +1577,7 @@ footer #ssl-text i {
   flex-shrink: 0;
 }
 
-#team-showcase div {
+#team-showcase > div div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1595,6 +1595,13 @@ footer #ssl-text i {
   font-size: 1.25rem;
   font-weight: 500;
   font-style: italic;
+}
+
+#team-showcase a {
+  font-size: 1.2rem;
+  color: var(--blue);
+  font-weight: 600;
+  margin-top: 1rem;
 }
 
 /* ================================================== Contact ================================================== */

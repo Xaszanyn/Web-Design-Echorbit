@@ -966,31 +966,27 @@
     margin: 0;
   }
 
-  #team-showcase a {
+  #team-showcase > div {
     grid-column: span 1;
     flex-direction: row;
     justify-content: flex-start;
   }
 
-  #team-showcase a:nth-of-type(even) {
+  #team-showcase > div:nth-of-type(even) {
     flex-direction: row-reverse;
   }
 
-  #team-showcase a:nth-of-type(even) span {
+  #team-showcase > div:nth-of-type(even) span {
     text-align: right;
   }
 
-  #team-showcase a:last-child:nth-child(3n - 1),
-  #team-showcase a:nth-last-child(2):nth-child(3n + 1),
-  #team-showcase a:nth-last-child(2):nth-child(3n - 2) {
+  #team-showcase > div:last-child:nth-child(3n - 1),
+  #team-showcase > div:nth-last-child(2):nth-child(3n + 1),
+  #team-showcase > div:nth-last-child(2):nth-child(3n - 2) {
     grid-column-end: unset !important;
   }
 
-  #team-showcase > div {
-    display: none;
-  }
-
-  #team-showcase a img {
+  #team-showcase > div img {
     width: 40rem;
     height: 40rem;
     box-shadow: 0 0 3rem var(--shadow);
@@ -998,15 +994,15 @@
     margin: 0 7.5rem 0 0;
   }
 
-  #team-showcase a:nth-of-type(even) img {
+  #team-showcase > div:nth-of-type(even) img {
     margin: 0 0 0 7.5rem;
   }
 
-  #team-showcase a div {
+  #team-showcase > div div {
     align-items: flex-start;
   }
 
-  #team-showcase a:nth-of-type(even) div {
+  #team-showcase > div:nth-of-type(even) div {
     align-items: flex-end;
   }
 
@@ -1017,6 +1013,13 @@
 
   #team-showcase span:last-of-type {
     font-size: 5rem;
+  }
+
+  #team-showcase a {
+    font-size: 5rem;
+    color: var(--blue);
+    font-weight: 600;
+    margin-top: 2.5rem;
   }
 
   /* ================================================== Contact ================================================== */
