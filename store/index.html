@@ -642,6 +642,29 @@
           <i class="fa-solid fa-circle-notch fa-spin"></i>
         </div>
       </section>
+      <section id="cookie-section">
+        <i class="fa-solid fa-xmark close"></i>
+        <h3>Cookie Settings</h3>
+        <div>
+          <input type="checkbox" id="necessary" checked disabled />
+          <label for="necessary">Necessary Cookies</label>
+        </div>
+        <div>
+          <input type="checkbox" id="performance" disabled />
+          <label for="necessary">Performance & Analytics Cookies</label>
+        </div>
+        <div>
+          <input type="checkbox" id="targeting" disabled />
+          <label for="necessary">Targeting Cookies</label>
+        </div>
+        <div>
+          <input type="checkbox" id="functionality" disabled />
+          <label for="necessary">Functionality Cookies</label>
+        </div>
+        <button onclick="closePopUp(); acceptCookies('necessary');">
+          Accept Cookies
+        </button>
+      </section>
     </section>
     <section id="loading">
       <i class="fa-solid fa-circle-notch fa-spin"></i>

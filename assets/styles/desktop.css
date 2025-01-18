@@ -1692,3 +1692,16 @@ footer #ssl-text i {
 #cookie button:last-of-type {
   background-color: var(--dark-gray);
 }
+
+#cookie-section div {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+#cookie-section button {
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 0.25rem 1.5rem;
+  font-size: 1.5rem;
+  border-radius: 10rem;
+}
