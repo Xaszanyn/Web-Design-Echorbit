@@ -287,6 +287,17 @@
     margin-top: 2.5rem;
   }
 
+  footer #ssl-text {
+    font-size: 3.5rem;
+    bottom: 6rem;
+    right: unset;
+    left: 2.5rem;
+  }
+
+  footer #ssl-text i {
+    margin-right: 0.5rem;
+  }
+
   /* ================================================== Store ================================================== */
 
   #store {

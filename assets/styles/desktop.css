@@ -342,6 +342,7 @@ footer {
   padding: 5rem 1rem 1rem;
   font-weight: 500;
   text-transform: uppercase;
+  position: relative;
 }
 
 footer div {
@@ -396,6 +397,18 @@ footer span {
 }
 
 footer div div span {
+  margin-right: 0.5rem;
+}
+
+footer #ssl-text {
+  position: absolute;
+  bottom: 3.25rem;
+  right: 2.5rem;
+  color: var(--dark-gray);
+  font-size: 0.8rem;
+}
+
+footer #ssl-text i {
   margin-right: 0.5rem;
 }
 
