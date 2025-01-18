@@ -1051,3 +1051,26 @@
     padding: 1rem 10rem;
   }
 }
+
+/* ================================================== Cookie ================================================== */
+
+#cookie {
+  width: calc(100vw - 5rem);
+  right: 2.5rem;
+  bottom: 2.5rem;
+  border-width: 0.8rem;
+  border-radius: 3rem;
+  padding: 2.5rem;
+  row-gap: 2.5rem;
+  font-size: 5rem;
+}
+
+#cookie h5 {
+  font-size: 6rem;
+  margin-bottom: 0.5rem;
+}
+
+#cookie button {
+  padding: 1.5rem 7.5rem;
+  margin-right: 2.5rem;
+}

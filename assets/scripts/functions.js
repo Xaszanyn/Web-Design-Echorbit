@@ -74,6 +74,16 @@ function redirect(redirect, action, alternative = () => {}) {
     alternative();
 }
 
+async function acceptCookies(cookie) {
+  document.querySelector("#cookie").style.display = "none";
+  localStorage.setItem("cookie", true);
+
+  await post("user.php", {
+    action: "cookie",
+    cookie,
+  });
+}
+
 /* =========={ UI }========================================================================================== */
 
 function openPopUp(section) {

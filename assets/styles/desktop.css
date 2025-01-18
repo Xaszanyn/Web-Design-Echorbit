@@ -1654,3 +1654,41 @@ footer #ssl-text i {
 #contact button:hover {
   background-color: var(--black);
 }
+
+/* ================================================== Cookie ================================================== */
+
+#cookie {
+  display: none;
+  position: fixed;
+  width: 32.5rem;
+  right: 1rem;
+  bottom: 1rem;
+  background-color: var(--white);
+  border: 0.2rem solid var(--black);
+  border-radius: 1rem;
+  padding: 1rem;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+}
+
+#cookie h5 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+#cookie a {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+#cookie button {
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 0.5rem 2rem;
+  margin-right: 1rem;
+  border-radius: 10rem;
+}
+
+#cookie button:last-of-type {
+  background-color: var(--dark-gray);
+}

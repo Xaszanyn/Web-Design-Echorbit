@@ -47,3 +47,7 @@ assign(forgot.thirdButton, forgotThirdPhase);
 assign(popUp, (event) => {
   if (event.target == popUp) closePopUp();
 });
+
+if (!localStorage.getItem("cookie")) {
+  document.querySelector("#cookie").style.display = "grid";
+}
