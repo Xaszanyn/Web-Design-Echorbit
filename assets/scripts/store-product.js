@@ -545,6 +545,10 @@ function renderProduct() {
     .sort((current, next) => next.relation - current.relation);
 
   productRelateds.innerHTML = `<h3>Related Products</h3><div><a href="#" onclick="view(${relatedProducts[0].id})" ><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${relatedProducts[0].image}" /></a><a href="#" onclick="view(${relatedProducts[1].id})" ><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${relatedProducts[1].image}" /></a><a href="#" onclick="view(${relatedProducts[2].id})" ><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${relatedProducts[2].image}" /></a></div>`;
+
+  if (product.type == "music")
+    document.querySelector("#eula a:nth-of-type(2)").style.display = "none";
+  else document.querySelector("#eula a:nth-of-type(1)").style.display = "none";
 }
 
 function renderProductImages(content, soundcloud) {

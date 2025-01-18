@@ -48,63 +48,17 @@
       </ul>
       <div id="shadow"></div>
     </nav>
-    <header>
-      <div id="slider" data-slide="0">
-        <img
-          src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/header/welcome.png"
-        />
-        <img
-          src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/header/cinematic-impacts-coming-soon.png"
-        />
-        <img
-          src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/header/ambiances-coming-soon.png"
-        />
-      </div>
-      <i class="fa-solid fa-chevron-left left"></i>
-      <i class="fa-solid fa-chevron-right right"></i>
-      <!-- <video autoplay loop muted>
-        <source
-          src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/header.mp4"
-          type="video/mp4"
-        />
-      </video>
-      <div class="cover">
-        <h2>Stunning sounds and music for your videos and games.</h2>
-        <p>
-          Crafting immersive soundscapes that transform every scene into an
-          unforgettable experience <br />— where creativity meets innovation.
-        </p>
-        <a href="/store">View</a>
-      </div> -->
-    </header>
-    <main>
-      <section id="home">
-        <h4>Home</h4>
-        <p>
-          Welcome to Echorbit Audio – your partner in creating immersive and
-          high-quality sound design solutions for the film and gaming
-          industries. We specialize in providing comprehensive audio services,
-          including sound design, music composition, and post-production, that
-          bring your creative visions to life. With a commitment to innovation
-          and excellence, we collaborate closely with our clients to deliver
-          soundscapes that captivate audiences and elevate the impact of their
-          projects.
-        </p>
-        <div id="featured-showcase"></div>
-        <p>
-          At Echorbit Audio, we believe that sound has the power to transform
-          narratives and engage audiences on a deeper level. Our team of
-          experienced sound designers, composers, and engineers are dedicated to
-          pushing the boundaries of what is possible in sound design. From
-          crafting subtle ambient atmospheres to creating dynamic, action-packed
-          sound effects, we bring a passion for excellence and a focus on
-          quality to every project we undertake.
-        </p>
-        <div id="showcase"></div>
-        <p>
-          Explore our services, browse our sound design libraries, and discover
-          how we can help you create unforgettable audio experiences.
-        </p>
+    <main id="contact">
+      <section>
+        <h4>Contact</h4>
+        <a href="mailto:mail@echorbitaudio.com">mail@echorbitaudio.com</a>
+        <form>
+          <input type="text" placeholder="Name" />
+          <input type="email" placeholder="Email" />
+          <input type="text" placeholder="Phone" />
+          <textarea placeholder="Message"></textarea>
+          <center><button>Send</button></center>
+        </form>
       </section>
     </main>
     <footer>
@@ -311,6 +265,42 @@
     <script src="/assets/scripts/variables.js?version=0.96"></script>
     <script src="/assets/scripts/functions.js?version=0.96"></script>
     <script src="/assets/scripts/events.js?version=0.96"></script>
-    <script src="/assets/scripts/home.js?version=0.96"></script>
+    <script>
+      document
+        .querySelector("button")
+        .addEventListener("click", async (event) => {
+          event.preventDefault();
+
+          loading.classList.add("loading");
+
+          let response = await post("user.php", {
+            action: "contact",
+            name: document.querySelector("#contact form input:nth-of-type(1)")
+              .value,
+            email: document.querySelector("#contact form input:nth-of-type(2)")
+              .value,
+            phone: document.querySelector("#contact form input:nth-of-type(3)")
+              .value,
+            message: document.querySelector("#contact form textarea").value,
+          });
+
+          if (response.status == "success") {
+            notify("Your message successfully sended.");
+
+            document.querySelector("#contact form input:nth-of-type(1)").value =
+              "";
+            document.querySelector("#contact form input:nth-of-type(2)").value =
+              "";
+            document.querySelector("#contact form input:nth-of-type(3)").value =
+              "";
+            document.querySelector("#contact form textarea").value = "";
+
+            loading.classList.remove("loading");
+          } else {
+            notify();
+            loading.classList.remove("loading");
+          }
+        });
+    </script>
   </body>
 </html>

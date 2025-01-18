@@ -85,7 +85,8 @@ ul {
 
 button,
 input,
-select {
+select,
+textarea {
   background-color: unset;
   color: inherit;
   outline: none;

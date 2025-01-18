@@ -146,7 +146,8 @@
 
   main#about-us,
   main#our-services,
-  main#product {
+  main#product,
+  main#contact {
     padding-top: 25rem;
   }
 
@@ -175,6 +176,11 @@
 
   main p:last-of-type {
     margin-bottom: 0;
+  }
+
+  #our-services img {
+    width: 100%;
+    margin: 5rem auto;
   }
 
   /* ================================================== Featured Showcase ================================================== */
@@ -614,10 +620,14 @@
   /* ================================================== Product ================================================== */
 
   #product #product-section {
+    padding: 40rem 10rem 0;
+  }
+
+  #product #product-section:has(h3 + h3) {
     padding: 62.5rem 10rem 0;
   }
 
-  #product #product-section #store-button {
+  /* #product #product-section #store-button {
     font-size: 6rem;
     margin-bottom: 0;
   }
@@ -625,7 +635,7 @@
   #product #product-section #store-button i {
     font-size: 8rem;
     margin-right: 2.5rem;
-  }
+  } */
 
   #product #product-section #product-image {
     width: 100%;
@@ -730,6 +740,11 @@
     width: 100%;
     height: 50rem;
     border-radius: 3rem;
+  }
+
+  #product #product-section #eula {
+    font-size: 5rem;
+    margin-top: 5rem;
   }
 
   /* Pop-Up Design Removed
@@ -991,5 +1006,37 @@
 
   #team-showcase span:last-of-type {
     font-size: 5rem;
+  }
+
+  /* ================================================== Contact ================================================== */
+
+  #contact h4 {
+    margin-bottom: 10rem;
+  }
+
+  #contact a {
+    margin-bottom: 10rem;
+    font-size: 6rem;
+  }
+
+  #contact form {
+    row-gap: 5rem;
+    font-size: 5rem;
+    width: 100%;
+  }
+
+  #contact form input,
+  #contact form textarea {
+    border-width: 0.8rem;
+    border-radius: 5rem;
+    padding: 1rem 2.5rem;
+  }
+
+  #contact form textarea {
+    min-height: 50rem;
+  }
+
+  #contact button {
+    padding: 1rem 10rem;
   }
 }

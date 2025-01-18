@@ -211,7 +211,8 @@ main {
 
 main#about-us,
 main#our-services,
-main#product {
+main#product,
+main#contact {
   padding-top: 9rem;
 }
 
@@ -250,6 +251,12 @@ main h5 {
 
 main p:last-of-type {
   margin-bottom: 0;
+}
+
+#our-services img {
+  display: block;
+  width: 60rem;
+  margin: 2.5rem auto;
 }
 
 /* ================================================== Featured Showcase ================================================== */
@@ -951,10 +958,18 @@ footer div div span {
 /* ================================================== Product ================================================== */
 
 #product #product-section {
-  padding: 11rem 15rem 0;
+  padding: 5rem 15rem 0;
+}
+
+#product #product-section:has(h3 + h3) {
+  padding: 8.5rem 15rem 0;
 }
 
 #product #product-section #store-button {
+  display: none;
+}
+
+/* #product #product-section #store-button {
   display: flex;
   align-items: center;
   font-size: 1.5rem;
@@ -964,7 +979,7 @@ footer div div span {
 #product #product-section #store-button i {
   font-size: 2rem;
   margin-right: 0.5rem;
-}
+} */
 
 #product #product-section #product-image {
   width: 100%;
@@ -1154,6 +1169,13 @@ footer div div span {
 
 #product #product-section #product-relateds div img {
   border-radius: 1rem;
+}
+
+#product #product-section #eula {
+  margin-top: 2.5rem;
+  font-size: 1.5rem;
+  color: var(--blue);
+  font-weight: 600;
 }
 
 /* Pop-Up Design Removed
@@ -1560,4 +1582,62 @@ footer div div span {
   font-size: 1.25rem;
   font-weight: 500;
   font-style: italic;
+}
+
+/* ================================================== Contact ================================================== */
+
+#contact section {
+  padding-top: 10rem;
+}
+
+#contact h4 {
+  margin-bottom: 5rem;
+}
+
+#contact a {
+  display: block;
+  text-align: center;
+  margin-bottom: 5rem;
+  font-size: 1.2rem;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+#contact form {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2.5rem;
+  font-size: 1.5rem;
+  width: 40rem;
+  margin: auto;
+}
+
+#contact form input,
+#contact form textarea {
+  border: 0.2rem solid var(--blue);
+  border-radius: 2rem;
+  padding: 0.25rem 1rem;
+  transition: border-color var(--fast);
+}
+
+#contact form input:focus,
+#contact form textarea:focus {
+  border-color: var(--black);
+}
+
+#contact form textarea {
+  min-height: 10rem;
+  resize: vertical;
+}
+
+#contact button {
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 0.5rem 3rem;
+  border-radius: 10rem;
+  transition: background-color var(--fast);
+}
+
+#contact button:hover {
+  background-color: var(--black);
 }

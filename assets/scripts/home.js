@@ -22,7 +22,15 @@ const showcase = document.querySelector("#showcase");
 
   (await get("get.php?target=featured-showcase")).forEach(
     (product) =>
-      (featuredShowcase.innerHTML += `<a href="/product/?${product.id}" target="_blank"><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${product.image}" /><span>${product.name}</span></a>`)
+      (featuredShowcase.innerHTML += `<a href="/product/?${
+        product.id
+      }" target="_blank"><img ${
+        product.name == "No Light Here"
+          ? `style="object-position: bottom;"`
+          : ""
+      } src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/${
+        product.image
+      }" /><span>${product.name}</span></a>`)
   );
 
   (await get("get.php?target=products")).forEach(
