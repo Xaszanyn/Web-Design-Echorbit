@@ -56,7 +56,7 @@
         <form>
           <input type="text" placeholder="Name" />
           <input type="email" placeholder="Email" />
-          <input type="text" placeholder="Phone" />
+          <input type="text" placeholder="Company" />
           <input type="text" placeholder="Subject" />
           <textarea placeholder="Message"></textarea>
           <center><button>Send</button></center>
@@ -321,8 +321,9 @@
               .value,
             email: document.querySelector("#contact form input:nth-of-type(2)")
               .value,
-            phone: document.querySelector("#contact form input:nth-of-type(3)")
-              .value,
+            company: document.querySelector(
+              "#contact form input:nth-of-type(3)"
+            ).value,
             subject: document.querySelector(
               "#contact form input:nth-of-type(4)"
             ).value,

@@ -102,7 +102,7 @@
 
   header {
     margin: 20rem 0 -5rem;
-    height: 85rem;
+    height: 60rem;
   }
 
   .initial + header {
@@ -178,9 +178,53 @@
     margin-bottom: 0;
   }
 
-  #our-services img {
+  #our-services .services {
+    row-gap: 15rem;
+  }
+
+  #our-services .services > div {
+    grid-template-columns: 1fr;
+    padding: 65rem 0 0;
+  }
+
+  #our-services .services > div img {
+    top: 0;
     width: 100%;
-    margin: 5rem auto;
+    height: 60rem;
+    mask-image: unset;
+    mask-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 1) 50rem,
+      rgba(0, 0, 0, 0) 60rem
+    );
+  }
+
+  #our-services .services > div h5 {
+    text-align: center;
+  }
+
+  #our-services .services > div:nth-of-type(even) {
+    grid-template-columns: 1fr;
+  }
+
+  #our-services .services > div:nth-of-type(even) img {
+    mask-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 1) 50rem,
+      rgba(0, 0, 0, 0) 60rem
+    );
+  }
+
+  #our-services .programs {
+    margin-top: 20rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #our-services .programs img {
+    max-height: 25rem;
+    max-width: 40rem;
+    margin-bottom: 10rem;
   }
 
   /* ================================================== Featured Showcase ================================================== */
