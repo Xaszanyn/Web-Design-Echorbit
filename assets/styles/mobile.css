@@ -147,7 +147,8 @@
   main#about-us,
   main#our-services,
   main#product,
-  main#contact {
+  main#contact,
+  main#portfolio {
     padding-top: 25rem;
   }
 
@@ -225,6 +226,26 @@
     max-height: 25rem;
     max-width: 40rem;
     margin-bottom: 10rem;
+  }
+
+  #portfolio h4 {
+    margin-bottom: 15rem;
+  }
+
+  #portfolio h5 {
+    font-size: 6rem;
+    text-align: center;
+  }
+
+  #portfolio iframe,
+  #portfolio video {
+    width: 100%;
+    height: 60rem;
+    margin: 0 auto 10rem;
+  }
+
+  #home {
+    padding-top: 15rem;
   }
 
   /* ================================================== Featured Showcase ================================================== */
@@ -1096,6 +1117,13 @@
 
   #contact button {
     padding: 1rem 10rem;
+  }
+
+  #contact iframe {
+    width: 100%;
+    height: 260rem;
+    display: block;
+    margin: 10rem auto;
   }
 
   /* ================================================== Cookie ================================================== */

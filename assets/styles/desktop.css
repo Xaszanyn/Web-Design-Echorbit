@@ -209,7 +209,6 @@ main {
   transition: background-color var(--fast);
 }
 
-main#about-us,
 main#product,
 main#contact {
   padding-top: 9rem;
@@ -311,6 +310,22 @@ main p:last-of-type {
 
 #our-services .programs img {
   max-height: 5rem;
+}
+
+#portfolio h4 {
+  margin-bottom: 5rem;
+}
+
+#portfolio iframe,
+#portfolio video {
+  display: block;
+  width: 50rem;
+  height: 30rem;
+  margin: 0 auto 5rem;
+}
+
+#home {
+  padding-top: 10rem;
 }
 
 /* ================================================== Featured Showcase ================================================== */
@@ -473,6 +488,7 @@ footer #ssl-text i {
   grid-template-columns: 20rem auto;
   column-gap: 5rem;
   padding: 9rem 15rem 15rem;
+  min-height: 80rem;
 }
 
 .initial + #store #store-first {
@@ -1714,6 +1730,13 @@ footer #ssl-text i {
 
 #contact button:hover {
   background-color: var(--black);
+}
+
+#contact iframe {
+  width: 42.5rem;
+  height: 47.5rem;
+  display: block;
+  margin: 5rem auto;
 }
 
 /* ================================================== Cookie ================================================== */
