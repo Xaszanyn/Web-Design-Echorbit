@@ -228,6 +228,10 @@
     margin-bottom: 10rem;
   }
 
+  #our-services .fix {
+    height: 60rem !important;
+  }
+
   #portfolio .grid {
     grid-template-columns: 1fr;
   }
