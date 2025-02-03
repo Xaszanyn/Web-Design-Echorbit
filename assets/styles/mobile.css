@@ -228,6 +228,10 @@
     margin-bottom: 10rem;
   }
 
+  #portfolio .grid {
+    grid-template-columns: 1fr;
+  }
+
   #portfolio h4 {
     margin-bottom: 15rem;
   }

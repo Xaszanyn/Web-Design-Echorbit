@@ -312,16 +312,21 @@ main p:last-of-type {
   max-height: 5rem;
 }
 
+#portfolio .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 2.5rem;
+}
+
 #portfolio h4 {
   margin-bottom: 5rem;
 }
 
 #portfolio iframe,
 #portfolio video {
-  display: block;
-  width: 50rem;
-  height: 30rem;
-  margin: 0 auto 5rem;
+  width: 100%;
+  height: 20rem;
+  margin-bottom: 5rem;
 }
 
 #home {
