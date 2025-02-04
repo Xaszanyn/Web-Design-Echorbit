@@ -39,6 +39,9 @@ const cartCheckoutButton = document.querySelector(
 );
 const cartLoading = document.querySelector("#cart-section #cart-loading");
 const cartMobileButton = document.querySelector("#mobile-cart");
+const cartConfirmation = document.querySelector(
+  "#cart-section #cart-confirmation i"
+);
 
 var scrollPosition = 0;
 
@@ -573,6 +576,11 @@ function renderProductImages(content, soundcloud) {
 }
 
 async function checkout() {
+  if (!cartConfirmation.classList.contains("fa-square-check")) {
+    notify("Please accept the terms & conditions.");
+    return;
+  }
+
   cartLoading.classList.add("loading");
 
   let response = await post("user.php", {

@@ -909,7 +909,7 @@
   }
 
   #pop-up #cart-section > #cart-checkout {
-    margin-bottom: 15rem;
+    margin: 10rem auto 10rem;
   }
 
   #pop-up #cart-section button {

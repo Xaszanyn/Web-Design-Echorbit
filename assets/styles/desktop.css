@@ -1386,6 +1386,15 @@ footer #ssl-text i {
   max-width: 1rem;
 }
 
+#cart-confirmation i {
+  cursor: pointer;
+}
+
+#cart-confirmation a {
+  font-weight: 600;
+  color: var(--blue);
+}
+
 #pop-up #cart-section {
   width: 50rem;
   max-height: calc(100vh - 5rem);
@@ -1463,7 +1472,7 @@ footer #ssl-text i {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 7.5rem;
+  margin: 2.5rem auto 2.5rem;
 }
 
 #pop-up #cart-section button {
