@@ -494,6 +494,7 @@ function viewCart() {
           }<a href="#" onclick="window.open('/eula/sfx/2025.pdf')">EULA SFX</a>`
         : ""
     } terms`;
+  else cartConfirmation.innerHTML = "";
 
   openPopUp(cartSection);
 }
