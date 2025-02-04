@@ -40,7 +40,7 @@ const cartCheckoutButton = document.querySelector(
 const cartLoading = document.querySelector("#cart-section #cart-loading");
 const cartMobileButton = document.querySelector("#mobile-cart");
 const cartConfirmation = document.querySelector(
-  "#cart-section #cart-confirmation i"
+  "#cart-section #cart-confirmation p"
 );
 
 var scrollPosition = 0;
@@ -451,6 +451,8 @@ function renderCartButtons() {
 }
 
 function viewCart() {
+  let sfx = (music = false);
+
   localStorage.getItem("session")
     ? cartControl.classList.add("hidden")
     : cartControl.classList.remove("hidden");
@@ -460,6 +462,8 @@ function viewCart() {
   cartProducts.innerHTML = products.reduce((content, product) => {
     if (user.cart.includes(product.id)) {
       price += product.price;
+      if (!sfx && product.type == "sfx") sfx = true;
+      if (!music && product.type == "music") music = true;
       return (
         content +
         `<li><i onclick="uncart(${product.id}, event)" class="fa-solid fa-xmark close"></i><div><img src="https://echorbit-audio-public.s3.eu-north-1.amazonaws.com/covers/small/${product.image}" /><div><span>${product.stripe_name}</span><span>Type: <b>${product.type}</b></span></div></div><span>&euro;${product.price}</span></li>`
@@ -477,6 +481,19 @@ function viewCart() {
     cartCheckout.style.display = "none";
     cartProducts.innerHTML = `<li>Cart is empty.</li>`;
   }
+
+  if (music || sfx)
+    cartConfirmation.innerHTML = `By clicking checkout I agree Echorbit Audio ${
+      music
+        ? `<a href="#" onclick="window.open('/eula/music/2025.pdf')">EULA MUSIC</a>`
+        : ""
+    }${
+      sfx
+        ? `${
+            music ? " and " : ""
+          }<a href="#" onclick="window.open('/eula/sfx/2025.pdf')">EULA SFX</a>`
+        : ""
+    } terms`;
 
   openPopUp(cartSection);
 }
@@ -576,11 +593,6 @@ function renderProductImages(content, soundcloud) {
 }
 
 async function checkout() {
-  if (!cartConfirmation.classList.contains("fa-square-check")) {
-    notify("Please accept the terms & conditions.");
-    return;
-  }
-
   cartLoading.classList.add("loading");
 
   let response = await post("user.php", {

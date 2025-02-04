@@ -946,7 +946,19 @@ footer #ssl-text i {
   height: 12.5rem;
 }
 
-#register-phase.third,
+#register-phase.third {
+  height: 17.5rem;
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: var(--blue);
+    font-weight: 600;
+  }
+}
+
 #forgot-phase.third {
   height: 10.5rem;
 }
