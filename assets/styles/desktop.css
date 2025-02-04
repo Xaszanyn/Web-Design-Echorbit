@@ -84,11 +84,13 @@ nav #shadow {
   left: 0;
 }
 
-nav #about-us-navigation {
+nav #about-us-navigation,
+nav #support-navigation {
   position: relative;
 }
 
-nav #about-us-navigation div {
+nav #about-us-navigation div,
+nav #support-navigation div {
   position: absolute;
   z-index: 10;
   background-color: var(--white);
@@ -102,9 +104,11 @@ nav #about-us-navigation div {
   transition: opacity var(--fast), clip-path var(--fast);
   opacity: 0;
   clip-path: inset(0% 0% 100% 0%);
+  text-align: center;
 }
 
-nav #about-us-navigation:hover div {
+nav #about-us-navigation:hover div,
+nav #support-navigation:hover div {
   opacity: 1;
   clip-path: inset(0% -0.5rem -0.5rem -0.5rem);
 }

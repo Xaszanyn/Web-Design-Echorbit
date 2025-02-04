@@ -68,18 +68,16 @@
   color: var(--white);
 }
 
-.dark nav #about-us-navigation div {
+.dark nav #about-us-navigation div,
+.dark nav #support-navigation div {
   background-color: var(--blue);
+  box-shadow: 0 -0.5rem var(--blue), 0 0 0.5rem var(--shadow); /* Fixes the thin line. */
 }
 
 @media (max-aspect-ratio: 1/1) {
   .dark nav ul {
     background-color: var(--blue);
   }
-}
-
-.dark nav #about-us-navigation div {
-  box-shadow: 0 -0.5rem var(--blue), 0 0 0.5rem var(--shadow); /* Fixes the thin line. */
 }
 
 .dark nav #logo {
