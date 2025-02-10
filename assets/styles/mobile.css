@@ -555,7 +555,7 @@
 
   #store #store-second #products button h6 {
     font-size: 4rem;
-    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
   }
 
   #store #store-second #products button a {
@@ -1093,6 +1093,7 @@
 
   #team-showcase span:last-of-type {
     font-size: 5rem;
+    text-align: unset;
   }
 
   #team-showcase a {

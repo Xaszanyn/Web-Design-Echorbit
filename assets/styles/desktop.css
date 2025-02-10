@@ -327,6 +327,16 @@ main p:last-of-type {
   column-gap: 2.5rem;
 }
 
+#portfolio .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 2.5rem;
+}
+
+#portfolio .grid * {
+  grid-column: span 2;
+}
+
 #portfolio h4 {
   margin-bottom: 5rem;
 }
@@ -756,7 +766,8 @@ footer #ssl-text i {
 
 #store #store-second #products button h6 {
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: auto;
 }
 
 #store #store-second #products button h6 span {
@@ -1700,6 +1711,7 @@ footer #ssl-text i {
   font-size: 1.25rem;
   font-weight: 500;
   font-style: italic;
+  text-align: center;
 }
 
 #team-showcase a {
