@@ -1047,7 +1047,7 @@
   }
 
   #team-showcase > div {
-    grid-column: span 1;
+    grid-column: span 4;
     flex-direction: row;
     justify-content: flex-start;
   }
