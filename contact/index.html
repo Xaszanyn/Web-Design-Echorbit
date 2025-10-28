@@ -335,6 +335,8 @@
         .addEventListener("click", async (event) => {
           event.preventDefault();
 
+          if (!document.querySelector("#contact form textarea").value) return;
+
           loading.classList.add("loading");
 
           let response = await post("user.php", {
