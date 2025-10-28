@@ -22,13 +22,13 @@ nav #menu {
 }
 
 nav #logo {
-  height: 3rem;
-  margin-right: 1rem;
-  transform: background-color var(--fast);
-  border-radius: 100%;
+  height: 8rem;
+  margin: -0.8rem 1rem 0 -3rem;
+  transition: filter var(--fast);
 }
 
 nav h1 {
+  display: none;
   font-weight: 400;
   font-size: 2rem;
   text-transform: uppercase;
@@ -457,11 +457,12 @@ footer > div:first-of-type div {
 }
 
 footer > div:first-of-type img {
-  width: 3rem;
+  width: 4rem;
   height: 3rem;
   margin-right: 1rem;
   padding: 0.5rem;
-  border-radius: 10rem;
+  border-radius: 0.5rem;
+  object-fit: contain;
   background-color: var(--white);
 }
 

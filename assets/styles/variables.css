@@ -81,7 +81,7 @@
 }
 
 .dark nav #logo {
-  background-color: var(--white);
+  filter: invert(1);
 }
 
 .dark main {
